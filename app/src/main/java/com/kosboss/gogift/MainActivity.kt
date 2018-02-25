@@ -1,10 +1,12 @@
 package com.kosboss.gogift
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
@@ -12,11 +14,12 @@ import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView : AdView
-    lateinit var mImageViewPager : ViewPager
+    lateinit var viewPager: ViewPager
     lateinit var mTabLayout : TabLayout
     lateinit var fm : FragmentManager
 
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,11 +31,13 @@ class MainActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build()
         mAdView.loadAd(adRequest)
 
-        mImageViewPager = findViewById(R.id.pager);
+        viewPager = findViewById(R.id.pager);
+        // deni swipes for view pager
+        viewPager.setOnTouchListener(View.OnTouchListener{view, motionEvent -> return@OnTouchListener true})
         mTabLayout = findViewById(R.id.tabDots);
-        mTabLayout.setupWithViewPager(mImageViewPager, true);
+        mTabLayout.setupWithViewPager(viewPager, true);
         val pagesAdapter = PagesAdapter(supportFragmentManager);
-        mImageViewPager.adapter = pagesAdapter
+        viewPager.adapter = pagesAdapter
 
 
 
