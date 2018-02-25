@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1001910857521",
+    "firebase_url": "https://gogift-350f9.firebaseio.com",
+    "project_id": "gogift-350f9",
+    "storage_bucket": "gogift-350f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001910857521:android:d8c71a2574ec006a",
+        "android_client_info": {
+          "package_name": "com.kosboss.gogift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001910857521-citc32hbb6tgskmg6hougarmjhlhcccp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kosboss.gogift",
+            "certificate_hash": "a5c6511228dad4422b6ac7fbf5f64b92cabbe207"
+          }
+        },
+        {
+          "client_id": "1001910857521-fp9u3ghvni04suebf3b2pn6o9pvm5ss0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYECAjJX0lujcU4Ut863DviS9QbwQoIY8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001910857521-fp9u3ghvni04suebf3b2pn6o9pvm5ss0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
