@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
 
+    // very sexy seekbar
+    compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
 
 
 

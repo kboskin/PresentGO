@@ -3,6 +3,9 @@ package com.kosboss.gogift
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.kosboss.gogift.fragments.GenderFragment
+import com.kosboss.gogift.fragments.WhatBudgetFragment
+import com.kosboss.gogift.fragments.WhomToGiftFragment
 
 /**
  * Created by hp on 025 25.02.2018.
@@ -16,8 +19,15 @@ class PagesAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
             return (WhomToGiftFragment.newInstance())
 
         }
+        else if (position == 1)
+        {
+            return GenderFragment.newInstance()
+        }
+        else if (position == 2){
+            return WhatBudgetFragment.newInstance()
+        }
         else{
-            return( WhomToGiftFragment.newInstance())
+            return WhatBudgetFragment.newInstance()
         }
     }
 

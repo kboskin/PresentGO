@@ -12,7 +12,7 @@ import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()  {
     lateinit var mAdView : AdView
     lateinit var viewPager: ViewPager
     lateinit var mTabLayout : TabLayout
@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         mTabLayout.setupWithViewPager(viewPager, true);
         val pagesAdapter = PagesAdapter(supportFragmentManager);
         viewPager.adapter = pagesAdapter
+        pagesAdapter.getItem(1)
 
 
 

@@ -9,4 +9,12 @@
     <string name="beloved">Beloved</string>
     <string name="superiors">Superiors</string>
     <string name="the_man_i_hate">Person I hate</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="to_whom_is_the_gift">To whom is the gift?</string>
+    <string name="choose_gender">Choose gender</string>
+    <string name="what_budget">What budget?</string>
+    <string name="choose_the_amount_you_want_to_spend">Choose the amount you want to spend</string>
+    <string name="infinity">&#8734;</string>
+
 </resources>

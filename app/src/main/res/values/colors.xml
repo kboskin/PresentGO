@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorTransparent">#00ffffff</color>
     <color name="mostlyTextColor">#5f5c87</color>
+    <color name="colorYellow">#ffe600</color>
+    <color name="colorYellowDark">#ffd900</color>
 </resources>
