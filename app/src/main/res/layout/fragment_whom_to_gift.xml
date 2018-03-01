@@ -3,6 +3,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/to_whom_gift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/to_whom_is_the_gift"
@@ -11,12 +12,26 @@
         android:textStyle="bold"
         android:layout_marginTop="50dp"
         android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/to_whom_gift_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/tap_icon_to_choose_category"
+        android:textStyle="italic"
+        android:textColor="@color/mostlyTextColor"
+        android:layout_below="@id/to_whom_gift"
+        android:textSize="14sp" />
+
 
     <RelativeLayout
         android:id="@+id/main_grid_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/to_whom_gift_hint">
 
         <include layout="@layout/persons_layout" />
     </RelativeLayout>

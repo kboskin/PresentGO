@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statuses">
+        <item>stranger</item>
+        <item>one time seen</item>
+        <item>acquaintance</item>
+        <item>comrade</item>
+        <item>close person</item>
+    </string-array>
+</resources>

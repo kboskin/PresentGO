@@ -1,4 +1,4 @@
-package com.kosboss.gogift.seekbar;
+package com.kosboss.gogift.seekbar.budget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -28,6 +28,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kosboss.gogift.R;
+import com.kosboss.gogift.seekbar.BuilderParams;
+import com.kosboss.gogift.seekbar.IndicatorSeekBarType;
+import com.kosboss.gogift.seekbar.IndicatorType;
+import com.kosboss.gogift.seekbar.IndicatorUtils;
+import com.kosboss.gogift.seekbar.TickType;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -42,45 +47,45 @@ import java.util.List;
  */
 
 public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalLayoutListener, ViewTreeObserver.OnScrollChangedListener {
-    private static final int GAP_BETWEEN_SEEK_BAR_AND_BELOW_TEXT = 3;
-    private static final int CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH = 30;
-    private static final String INSTANCE_STATE_KEY = "isb_instance_state";
-    private BuilderParams p;
-    private float mTickRadius;
-    private Indicator mIndicator;
-    private List<Float> mTextLocationList;
-    private Rect mCoverRect;
-    private int[] mLocation;
-    private ArrayList<String> mTextList;
-    private Context mContext;
-    private Paint mStockPaint;
-    private TextPaint mTextPaint;
-    private float mTouchX;
-    private float mTrackY;
-    private float mSeekLength;
-    private float mSeekStart;
-    private float mSeekEnd;
-    private Rect mRect;
-    private int mPaddingLeft;
-    private int mPaddingRight;
-    private int mMeasuredWidth;
-    private float mSeekBlockLength;
-    private int mPaddingTop;
-    private Bitmap mTickDraw;
-    private Bitmap mThumbDraw;
-    private boolean mDrawAgain;
-    private boolean mIsTouching;
-    private float mThumbRadius;
-    private float mThumbTouchRadius;
-    private OnSeekBarChangeListener mListener;
-    private float lastProgress;
-    private float mFaultTolerance = -1;
-    private int mTextHeight;
-    private float mThumbTouchHeight;
-    private float mCustomDrawableMaxHeight;
-    private float mScreenWidth = -1;
-    private Builder mBuilder;
-    private BuilderParams mRawParams;
+     static final int GAP_BETWEEN_SEEK_BAR_AND_BELOW_TEXT = 3;
+     static final int CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH = 30;
+     static final String INSTANCE_STATE_KEY = "isb_instance_state";
+     BuilderParams p;
+     float mTickRadius;
+     Indicator mIndicator;
+     List<Float> mTextLocationList;
+     Rect mCoverRect;
+     int[] mLocation;
+     ArrayList<String> mTextList;
+     Context mContext;
+     Paint mStockPaint;
+     TextPaint mTextPaint;
+     float mTouchX;
+     float mTrackY;
+     float mSeekLength;
+     float mSeekStart;
+     float mSeekEnd;
+     Rect mRect;
+     int mPaddingLeft;
+     int mPaddingRight;
+     int mMeasuredWidth;
+     float mSeekBlockLength;
+     int mPaddingTop;
+     Bitmap mTickDraw;
+     Bitmap mThumbDraw;
+     boolean mDrawAgain;
+     boolean mIsTouching;
+     float mThumbRadius;
+     float mThumbTouchRadius;
+     OnSeekBarChangeListener mListener;
+     float lastProgress;
+     float mFaultTolerance = -1;
+     int mTextHeight;
+     float mThumbTouchHeight;
+     float mCustomDrawableMaxHeight;
+     float mScreenWidth = -1;
+     Builder mBuilder;
+     BuilderParams mRawParams;
 
     public IndicatorSeekBar(Context context) {
         this(context, null);
@@ -108,7 +113,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         initData();
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
+     void initAttrs(Context context, AttributeSet attrs) {
         p = new BuilderParams(context);
         if (attrs == null) {
             return;
@@ -177,7 +182,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         ta.recycle();
     }
 
-    private void initData() {
+     void initData() {
         if (mTextLocationList == null) {
             mTextLocationList = new ArrayList<>();
         } else {
@@ -279,7 +284,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         lastProgress = p.mProgress;
     }
 
-    private void calculateProgressTouchX() {
+     void calculateProgressTouchX() {
         //progress
         float touchX = (p.mProgress - p.mMin) * mSeekLength / (p.mMax - p.mMin) + mPaddingLeft;
         calculateTouchX(touchX);
@@ -290,11 +295,11 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return mTouchX;
     }
 
-    private boolean noTick() {
+     boolean noTick() {
         return p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS || p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS;
     }
 
-    private void initEndTexts() {
+     void initEndTexts() {
         if (mTextList.size() == 0) {
             if (p.mLeftEndText != null) {
                 mTextList.add(p.mLeftEndText);
@@ -322,7 +327,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void initDefaultPadding() {
+     void initDefaultPadding() {
         if (!p.mClearPadding) {
             int normalPadding = IndicatorUtils.dp2px(mContext, 16);
             if (getPaddingLeft() == 0) {
@@ -334,7 +339,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void initStrokePaint() {
+     void initStrokePaint() {
         if (mStockPaint == null) {
             mStockPaint = new Paint();
         }
@@ -347,7 +352,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void initTextPaint() {
+     void initTextPaint() {
         if (mTextPaint == null) {
             mTextPaint = new TextPaint();
             mTextPaint.setAntiAlias(true);
@@ -361,7 +366,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
     }
 
-    private boolean needDrawText() {
+     boolean needDrawText() {
         return p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS_TEXTS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS_TEXTS_ENDS || p.mThumbProgressStay;
     }
 
@@ -452,7 +457,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return true;
     }
 
-    private void initScreenWidth() {
+     void initScreenWidth() {
         DisplayMetrics metric = new DisplayMetrics();
         WindowManager systemService = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         if (systemService != null) {
@@ -461,7 +466,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void drawThumb(Canvas canvas, float thumbX) {
+     void drawThumb(Canvas canvas, float thumbX) {
         mStockPaint.setColor(p.mThumbColor);
         if (p.mThumbDrawable != null) {
             if (mThumbDraw == null) {
@@ -473,7 +478,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void drawThumbText(Canvas canvas, float thumbX) {
+     void drawThumbText(Canvas canvas, float thumbX) {
         if (p.mSeekBarType != IndicatorSeekBarType.CONTINUOUS && p.mSeekBarType != IndicatorSeekBarType.DISCRETE_TICKS) {
             return;
         }
@@ -482,7 +487,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void initSeekBarInfo() {
+     void initSeekBarInfo() {
         mMeasuredWidth = getMeasuredWidth();
         mPaddingLeft = getPaddingLeft();
         mPaddingRight = getPaddingRight();
@@ -499,7 +504,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         initLocationListData();
     }
 
-    private void drawTicks(Canvas canvas, float thumbX) {
+     void drawTicks(Canvas canvas, float thumbX) {
         if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS || p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS || p.mTickType == TickType.NONE) {
             return;
         }
@@ -549,7 +554,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
     }
 
-    private Bitmap getBitmapDraw(Drawable drawable, boolean isThumb) {
+     Bitmap getBitmapDraw(Drawable drawable, boolean isThumb) {
         if (drawable == null) {
             return null;
         }
@@ -581,13 +586,13 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return bitmap;
     }
 
-    private int getHeightByRatio(Drawable drawable, int width) {
+     int getHeightByRatio(Drawable drawable, int width) {
         int intrinsicWidth = drawable.getIntrinsicWidth();
         int intrinsicHeight = drawable.getIntrinsicHeight();
         return Math.round(1.0f * width * intrinsicHeight / intrinsicWidth);
     }
 
-    private void drawText(Canvas canvas) {
+     void drawText(Canvas canvas) {
         if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS) {
             return;
         }
@@ -616,7 +621,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
     @NonNull
-    private String getStringText(int i) {
+     String getStringText(int i) {
         String text;
         if (p.mTextArray != null) {
             if (i < p.mTextArray.length) {
@@ -631,7 +636,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
     @NonNull
-    private String getAllText() {
+     String getAllText() {
         StringBuilder sb = new StringBuilder();
         sb.append("j");
         if (p.mTextArray != null) {
@@ -642,7 +647,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return sb.toString();
     }
 
-    private void initLocationListData() {
+     void initLocationListData() {
         if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS) {
             return;
         }
@@ -664,7 +669,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void initDefaultTextArray(ArrayList<String> mTextList) {
+     void initDefaultTextArray(ArrayList<String> mTextList) {
         if (p.mTextArray != null) {
             return;
         }
@@ -675,7 +680,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         p.mTextArray = charSequence;
     }
 
-    private float getThumbX() {
+     float getThumbX() {
         float mThumbXCache = mTouchX - p.mBackgroundTrackSize / 2.0f;
         float mThumbX;
         if (mThumbXCache <= mSeekStart) {
@@ -741,7 +746,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return super.performClick();
     }
 
-    private void setListener(boolean formUserTouch) {
+     void setListener(boolean formUserTouch) {
         if (mListener != null) {
             mListener.onProgressChanged(this, getProgress(), getProgressFloat(), formUserTouch);
             if (p.mSeekBarType > 1) {
@@ -851,7 +856,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         checkIndicatorLoc();
     }
 
-    private void checkIndicatorLoc() {
+     void checkIndicatorLoc() {
         if (mIndicator == null || !p.mShowIndicator) {
             return;
         }
@@ -866,7 +871,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private void refreshSeekBar(MotionEvent event, boolean isDownTouch) {
+     void refreshSeekBar(MotionEvent event, boolean isDownTouch) {
         calculateTouchX(adjustTouchX(event));
         calculateProgress();
         mIsTouching = true;
@@ -893,7 +898,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
     }
 
-    private float adjustTouchX(MotionEvent event) {
+     float adjustTouchX(MotionEvent event) {
         float mTouchXCache;
         if (event.getX() < mPaddingLeft) {
             mTouchXCache = mPaddingLeft;
@@ -905,17 +910,17 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return mTouchXCache;
     }
 
-    private void calculateProgress() {
+     void calculateProgress() {
         lastProgress = p.mProgress;
         p.mProgress = p.mMin + (p.mMax - p.mMin) * (mTouchX - mPaddingLeft) / mSeekLength;
     }
 
-    private void calculateTouchX(float touchX) {
+     void calculateTouchX(float touchX) {
         int touchBlockSize = Math.round((touchX - mPaddingLeft) / mSeekBlockLength);
         mTouchX = mSeekBlockLength * touchBlockSize + mPaddingLeft;
     }
 
-    private boolean isTouchSeekBar(float mX, float mY) {
+     boolean isTouchSeekBar(float mX, float mY) {
         if (mFaultTolerance == -1) {
             mFaultTolerance = IndicatorUtils.dp2px(mContext, 5);
         }
@@ -924,21 +929,21 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         return inWidthRange && inHeightRange;
     }
 
-    private float getProgressFloat(int newScale) {
+     float getProgressFloat(int newScale) {
         BigDecimal bigDecimal = BigDecimal.valueOf(p.mProgress);
         return bigDecimal.setScale(newScale, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
-    private float getProgressFloat(int newScale, float progress) {
+     float getProgressFloat(int newScale, float progress) {
         BigDecimal bigDecimal = BigDecimal.valueOf(progress);
         return bigDecimal.setScale(newScale, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
-    private int getProgress(float progress) {
+     int getProgress(float progress) {
         return Math.round(progress);
     }
 
-    private String getProgressString(float progress) {
+     String getProgressString(float progress) {
         String progressString;
         if (p.mIsFloatProgress) {
             progressString = String.valueOf(getProgressFloat(1, progress));
@@ -1128,7 +1133,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      *
      * @param p a new BuilderParams
      */
-    private void apply(BuilderParams p) {
+     void apply(BuilderParams p) {
         if (p == null) {
             throw new NullPointerException(" BuilderParams can not be a null value. ");
         }

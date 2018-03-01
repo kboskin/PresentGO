@@ -13,13 +13,28 @@
         android:text="@string/choose_gender"
         android:textStyle="bold"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:id="@+id/choose_gender"/>
 
+
+    <TextView
+        android:id="@+id/to_whom_gift_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/simply_decide_what_sex_of_person"
+        android:textStyle="italic"
+        android:textColor="@color/mostlyTextColor"
+        android:layout_below="@+id/choose_gender"
+        android:textSize="14sp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:id="@+id/male_female">
+
 
         <LinearLayout
             android:layout_width="wrap_content"

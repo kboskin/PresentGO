@@ -2,6 +2,7 @@ package com.kosboss.gogift.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,7 @@ class GenderFragment : Fragment() {
 
 
     companion object {
-        fun newInstance(): GenderFragment {
+        fun newInstance(viewPager: ViewPager): GenderFragment {
             val fragment = GenderFragment()
             val args = Bundle()
             fragment.arguments = args

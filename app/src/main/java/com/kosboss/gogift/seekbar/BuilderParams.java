@@ -14,55 +14,55 @@ import android.view.View;
  */
 
 
-class BuilderParams {
+public class BuilderParams {
 
-    Context mContext;
+    public Context mContext;
     //seekBar
-    int mSeekBarType = 0;
-    float mMax = 100;
-    float mMin = 0;
-    float mProgress = 0;
-    boolean mClearPadding = false;
-    boolean mIsFloatProgress = false;
-    boolean mForbidUserSeek = false;
-    boolean mTouchToSeek = true;
+    public int mSeekBarType = 0;
+    public float mMax = 100;
+    public float mMin = 0;
+    public float mProgress = 0;
+    public boolean mClearPadding = false;
+    public boolean mIsFloatProgress = false;
+    public boolean mForbidUserSeek = false;
+    public boolean mTouchToSeek = true;
     //indicator
-    int mIndicatorType = 0;
-    boolean mShowIndicator = true;
-    boolean mIndicatorStay = false;
-    int mIndicatorColor = Color.parseColor("#FF4081");
-    int mIndicatorTextColor = Color.parseColor("#FFFFFF");
-    int mIndicatorTextSize;
-    View mIndicatorCustomView = null;
-    View mIndicatorCustomTopContentView = null;
+    public int mIndicatorType = 0;
+    public boolean mShowIndicator = true;
+    public boolean mIndicatorStay = false;
+    public int mIndicatorColor = Color.parseColor("#FF4081");
+    public int mIndicatorTextColor = Color.parseColor("#FFFFFF");
+    public int mIndicatorTextSize;
+    public View mIndicatorCustomView = null;
+    public View mIndicatorCustomTopContentView = null;
     //track
-    int mBackgroundTrackSize;
-    int mProgressTrackSize;
-    int mBackgroundTrackColor = Color.parseColor("#D7D7D7");
-    int mProgressTrackColor = Color.parseColor("#FF4081");
-    boolean mTrackRoundedCorners = true;
+    public int mBackgroundTrackSize;
+    public int mProgressTrackSize;
+    public int mBackgroundTrackColor = Color.parseColor("#D7D7D7");
+    public int mProgressTrackColor = Color.parseColor("#FF4081");
+    public boolean mTrackRoundedCorners = true;
     //tick
-    int mTickNum = 5;
-    int mTickType = 1;
-    int mTickSize;
-    int mTickColor = Color.parseColor("#FF4081");
-    boolean mTickHideBothEnds = false;
-    boolean mTickOnThumbLeftHide = false;
-    Drawable mTickDrawable = null;
+    public int mTickNum = 5;
+    public int mTickType = 1;
+    public int mTickSize;
+    public int mTickColor = Color.parseColor("#FF4081");
+    public boolean mTickHideBothEnds = false;
+    public boolean mTickOnThumbLeftHide = false;
+    public Drawable mTickDrawable = null;
     //text
-    int mTextSize;
-    int mTextColor = Color.parseColor("#FF4081");
-    String mLeftEndText = null;
-    String mRightEndText = null;
-    CharSequence[] mTextArray = null;
-    Typeface mTextTypeface = Typeface.DEFAULT;
+    public int mTextSize;
+    public int mTextColor = Color.parseColor("#FF4081");
+    public String mLeftEndText = null;
+    public String mRightEndText = null;
+    public CharSequence[] mTextArray = null;
+    public Typeface mTextTypeface = Typeface.DEFAULT;
     //thumb
-    int mThumbColor = Color.parseColor("#FF4081");
-    int mThumbSize;
-    Drawable mThumbDrawable = null;
-    boolean mThumbProgressStay = false;
+    public int mThumbColor = Color.parseColor("#FF4081");
+    public int mThumbSize;
+    public Drawable mThumbDrawable = null;
+    public boolean mThumbProgressStay = false;
 
-    BuilderParams(Context context) {
+    public BuilderParams(Context context) {
         this.mContext = context;
         this.mIndicatorTextSize = IndicatorUtils.sp2px(mContext, 13);
         this.mBackgroundTrackSize = IndicatorUtils.dp2px(mContext, 2);
@@ -72,7 +72,7 @@ class BuilderParams {
         this.mThumbSize = IndicatorUtils.dp2px(mContext, 14);
     }
 
-    BuilderParams copy(BuilderParams p) {
+    public BuilderParams copy(BuilderParams p) {
         this.mContext = p.mContext;
         //seekBar
         this.mSeekBarType = p.mSeekBarType;

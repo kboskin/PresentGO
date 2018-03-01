@@ -14,7 +14,25 @@
     <string name="to_whom_is_the_gift">To whom is the gift?</string>
     <string name="choose_gender">Choose gender</string>
     <string name="what_budget">What budget?</string>
-    <string name="choose_the_amount_you_want_to_spend">Choose the amount you want to spend</string>
+    <string name="choose_the_amount_you_want_to_spend">Choose the amount of money you want to spend</string>
     <string name="infinity">&#8734;</string>
+    <string name="child">Child</string>
+    <string name="teenager">Teenager</string>
+    <string name="adult">Adult</string>
+    <string name="elderly">Elderly</string>
+    <string name="what_is_the_age">What is the age?</string>
+    <string name="birthday">Birthday</string>
+    <string name="anniversary">Anniversary</string>
+    <string name="graduation">Graduation</string>
+    <string name="holiday">Holiday</string>
+    <string name="wedding">Wedding</string>
+    <string name="just_because">Just because</string>
+    <string name="what_occasion">What occasion?</string>
+    <string name="choose_the_occasion_for_gift_giving">Choose the occasion for gift giving</string>
+    <string name="tap_icon_to_choose_category">Tap icon to choose category</string>
+    <string name="simply_decide_what_sex_of_person">simply decide what sex of person</string>
+    <string name="lucky_guy_has_an_age_for_sure">lucky guy has an age for sure</string>
+    <string name="how_close_are_you">How close are you?</string>
+    <string name="choose_person_status_in_your_life">Choose person status in your life</string>
 
 </resources>

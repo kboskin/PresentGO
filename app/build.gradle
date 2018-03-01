@@ -52,7 +52,8 @@ dependencies {
 
     // very sexy seekbar
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
-
+    // vertical view pager
+    compile 'com.github.castorflex.verticalviewpager:library:19.0.1'
 
 
 }

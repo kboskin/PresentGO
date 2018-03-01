@@ -39,7 +39,7 @@ public class ArrowView extends View {
         mPaint.setStrokeWidth(1);
     }
 
-    void setColor(int color) {
+    public void setColor(int color) {
         mPaint.setColor(color);
         invalidate();
     }

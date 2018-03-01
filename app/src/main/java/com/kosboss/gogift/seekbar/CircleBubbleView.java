@@ -15,7 +15,7 @@ import android.view.View;
  * Created by ZhuangGuangquan on 2017/12/13.
  */
 
-class CircleBubbleView extends View {
+public class CircleBubbleView extends View {
     private int mIndicatorTextColor;
     private int mIndicatorColor;
     private int mIndicatorTextSize;
@@ -40,7 +40,7 @@ class CircleBubbleView extends View {
         init("100");
     }
 
-    CircleBubbleView(BuilderParams p, String maxLengthText) {
+    public CircleBubbleView(BuilderParams p, String maxLengthText) {
         super(p.mContext, null, 0);
         this.mContext = p.mContext;
         this.mIndicatorTextSize = p.mIndicatorTextSize;
@@ -88,7 +88,7 @@ class CircleBubbleView extends View {
         canvas.drawText(mProgress, mIndicatorWidth / 2f, mIndicatorHeight / 2 + mTextHeight / 4, mPaint);
     }
 
-    void setProgress(String progress) {
+    public void setProgress(String progress) {
         this.mProgress = progress;
         invalidate();
     }

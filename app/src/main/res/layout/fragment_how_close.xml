@@ -2,44 +2,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorTransparent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.kosboss.gogift.fragments.WhatBudgetFragment">
+    tools:context="com.kosboss.gogift.fragments.HowCloseFragment">
 
     <TextView
-        android:id="@+id/budget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="@string/what_budget"
+        android:text="@string/how_close_are_you"
         android:textStyle="bold"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:id="@+id/how_close_are_you"/>
+
+
     <TextView
-        android:id="@+id/budget_hint"
+        android:id="@+id/how_close_are_you_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="@string/choose_the_amount_you_want_to_spend"
+        android:text="@string/choose_person_status_in_your_life"
         android:textStyle="italic"
         android:textColor="@color/mostlyTextColor"
-        android:layout_below="@id/budget"
+        android:layout_below="@+id/how_close_are_you"
         android:textSize="14sp" />
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/dollarImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="75dp"
         android:layout_marginBottom="5dp"
-        android:layout_below="@id/budget_hint"
-        android:src="@drawable/money_bag"
+        android:layout_below="@id/how_close_are_you_hint"
+        android:src="@drawable/how_close"
         android:layout_centerHorizontal="true"/>
 
-
-    <com.kosboss.gogift.seekbar.budget.IndicatorSeekBar
+    <com.kosboss.gogift.seekbar.howclose.IndicatorSeekBar
         android:id="@+id/myOwnSeekBar"
         android:layout_below="@+id/dollarImageView"
         android:layout_width="match_parent"
@@ -47,13 +48,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         app:isb_track_background_bar_color="@color/colorYellowDark"
-        app:isb_progress="100"
-        app:isb_max="300"
-        app:isb_seek_bar_type="discrete_ticks_texts"
+        app:isb_progress="0"
+        app:isb_max="100"
+        app:isb_seek_bar_type="continuous_texts_ends"
         app:isb_tick_num="5"
-        app:isb_min="15"
+        app:isb_min="0"
         app:isb_indicator_custom_top_content_layout="@layout/custom_top_seekbar_layout"
         app:isb_tick_type="oval" />
-
 
 </RelativeLayout>

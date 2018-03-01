@@ -7,4 +7,8 @@
     <color name="mostlyTextColor">#5f5c87</color>
     <color name="colorYellow">#ffe600</color>
     <color name="colorYellowDark">#ffd900</color>
+    <color name="colorYellowBackground">#FFDC64</color>
+    <color name="colorBlueBackground">#a9d6ff</color>
+    <color name="colorGreenBackground">#abde8f</color>
+    <color name="colorPurpleBackground">#bfc3dc</color>
 </resources>

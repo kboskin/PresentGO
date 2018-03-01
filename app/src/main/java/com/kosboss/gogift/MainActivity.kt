@@ -36,11 +36,16 @@ class MainActivity : AppCompatActivity()  {
         viewPager.setOnTouchListener(View.OnTouchListener{view, motionEvent -> return@OnTouchListener true})
         mTabLayout = findViewById(R.id.tabDots);
         mTabLayout.setupWithViewPager(viewPager, true);
-        val pagesAdapter = PagesAdapter(supportFragmentManager);
+        val pagesAdapter = PagesAdapter(supportFragmentManager, viewPager);
         viewPager.adapter = pagesAdapter
         pagesAdapter.getItem(1)
 
 
+
+    }
+
+    fun setNewItem()
+    {
 
     }
 }

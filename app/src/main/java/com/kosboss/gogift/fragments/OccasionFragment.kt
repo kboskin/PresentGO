@@ -11,34 +11,25 @@ import com.kosboss.gogift.R
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [WhomToGiftFragment.OnFragmentInteractionListener] interface
+ * [OccasionFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [WhomToGiftFragment.newInstance] factory method to
+ * Use the [OccasionFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class WhomToGiftFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (arguments != null) {
-        }
-    }
+class OccasionFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater!!.inflate(R.layout.fragment_whom_to_gift, container, false)
-
-
-        return view
+        return inflater!!.inflate(R.layout.fragment_occasion, container, false)
     }
 
-
     companion object {
-
-        fun newInstance(viewPager: ViewPager): WhomToGiftFragment {
-            val fragment = WhomToGiftFragment()
+        fun newInstance(viewPager: ViewPager): OccasionFragment {
+            val fragment = OccasionFragment()
+            val args = Bundle()
+            fragment.arguments = args
             return fragment
         }
     }
-}
+}// Required empty public constructor

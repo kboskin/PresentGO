@@ -11,15 +11,15 @@ import android.view.ViewGroup;
  */
 
 public class IndicatorUtils {
-    static int dp2px(Context context, float dpValue) {
+    public static int dp2px(Context context, float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.getResources().getDisplayMetrics());
     }
 
-    static int sp2px(Context context, float spValue) {
+    public static int sp2px(Context context, float spValue) {
         return (int) (spValue * context.getResources().getDisplayMetrics().scaledDensity + 0.5f);
     }
 
-    static int px2sp(Context context, float pxValue) {
+    public static int px2sp(Context context, float pxValue) {
         return (int) (pxValue / context.getResources().getDisplayMetrics().scaledDensity + 0.5f);
     }
 
