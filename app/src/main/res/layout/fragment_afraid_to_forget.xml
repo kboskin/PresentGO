@@ -43,7 +43,7 @@
 
 
     <com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="120dp"
         android:layout_below="@+id/calendarImageView"
         android:layout_toStartOf="@+id/calendarImageView"
@@ -60,7 +60,7 @@
 
 
     <com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="120dp"
         android:layout_below="@+id/calendarImageView"
         android:layout_toEndOf="@+id/calendarImageView"
@@ -74,14 +74,4 @@
         app:mnpTextStyle="bold"
         app:mnpValue="10"
         app:mnpWrapped="false" />
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/day_picker"
-        android:layout_toEndOf="@+id/month_picker"
-        android:layout_marginTop="10dp">
-
-    </android.support.design.widget.TextInputLayout>
-
 </RelativeLayout>

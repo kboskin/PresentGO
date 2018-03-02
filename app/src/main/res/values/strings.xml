@@ -37,5 +37,8 @@
     <string name="short_description">short description</string>
     <string name="choose_the_date_and_we_will_remind_you">Choose the date and we will remind you</string>
     <string name="afraid_to_forget">Afraid to forget?</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="skip_this">Skip this</string>
 
 </resources>
