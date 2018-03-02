@@ -30,9 +30,12 @@
     <string name="what_occasion">What occasion?</string>
     <string name="choose_the_occasion_for_gift_giving">Choose the occasion for gift giving</string>
     <string name="tap_icon_to_choose_category">Tap icon to choose category</string>
-    <string name="simply_decide_what_sex_of_person">simply decide what sex of person</string>
-    <string name="lucky_guy_has_an_age_for_sure">lucky guy has an age for sure</string>
+    <string name="simply_decide_what_sex_of_person">Simply decide what sex of person</string>
+    <string name="lucky_guy_has_an_age_for_sure">Lucky guy has an age for sure!</string>
     <string name="how_close_are_you">How close are you?</string>
     <string name="choose_person_status_in_your_life">Choose person status in your life</string>
+    <string name="short_description">short description</string>
+    <string name="choose_the_date_and_we_will_remind_you">Choose the date and we will remind you</string>
+    <string name="afraid_to_forget">Afraid to forget?</string>
 
 </resources>

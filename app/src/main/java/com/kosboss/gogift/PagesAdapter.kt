@@ -10,7 +10,7 @@ import com.kosboss.gogift.fragments.*
  * Created by hp on 025 25.02.2018.
  */
 class PagesAdapter(fm: FragmentManager?, private val viewPager: ViewPager) : FragmentPagerAdapter(fm) {
-    private val NUM_ITEMS = 6
+    private val NUM_ITEMS = 7
 
 
     override fun getItem(position: Int): Fragment {
@@ -26,6 +26,8 @@ class PagesAdapter(fm: FragmentManager?, private val viewPager: ViewPager) : Fra
             return OccasionFragment.newInstance(viewPager)
         } else if (position == 5) {
             return HowCloseFragment.newInstance(viewPager)
+        } else if (position == 6) {
+            return AfraidToForgetFragment.newInstance(viewPager)
         } else {
             return WhatBudgetFragment.newInstance(viewPager)
         }

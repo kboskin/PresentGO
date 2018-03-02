@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kosboss.gogift.fragments.AfraidToForgetFragment">
+
+    <TextView
+        android:id="@+id/afraid_to_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/afraid_to_forget"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/afraid_to_forget_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/afraid_to_forget"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/choose_the_date_and_we_will_remind_you"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+
+    <ImageView
+        android:id="@+id/calendarImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/afraid_to_forget_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/calendar" />
+
+
+    <com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_below="@+id/calendarImageView"
+        android:layout_toStartOf="@+id/calendarImageView"
+        android:id="@+id/month_picker"
+        app:mnpEditable="false"
+        app:mnpMaxValue="12"
+        app:mnpMinValue="1"
+        app:mnpSeparatorColor="@color/colorAccent"
+        app:mnpTextColor="@color/mostlyTextColor"
+        app:mnpTextSize="14sp"
+        app:mnpTextStyle="bold"
+        app:mnpValue="10"
+        app:mnpWrapped="false" />
+
+
+    <com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_below="@+id/calendarImageView"
+        android:layout_toEndOf="@+id/calendarImageView"
+        android:id="@+id/day_picker"
+        app:mnpEditable="false"
+        app:mnpMaxValue="31"
+        app:mnpMinValue="1"
+        app:mnpSeparatorColor="@color/colorAccent"
+        app:mnpTextColor="@color/mostlyTextColor"
+        app:mnpTextSize="14sp"
+        app:mnpTextStyle="bold"
+        app:mnpValue="10"
+        app:mnpWrapped="false" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/day_picker"
+        android:layout_toEndOf="@+id/month_picker"
+        android:layout_marginTop="10dp">
+
+    </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>

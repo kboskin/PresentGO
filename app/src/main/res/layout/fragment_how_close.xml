@@ -30,7 +30,7 @@
         android:textSize="14sp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/dollarImageView"
+        android:id="@+id/calendarImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
@@ -42,7 +42,7 @@
 
     <com.kosboss.gogift.seekbar.howclose.IndicatorSeekBar
         android:id="@+id/myOwnSeekBar"
-        android:layout_below="@+id/dollarImageView"
+        android:layout_below="@+id/calendarImageView"
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content"

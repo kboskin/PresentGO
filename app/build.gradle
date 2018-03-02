@@ -52,8 +52,12 @@ dependencies {
 
     // very sexy seekbar
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
-    // vertical view pager
-    compile 'com.github.castorflex.verticalviewpager:library:19.0.1'
+    // pickers
+    compile "com.github.StephenVinouze:MaterialNumberPicker:1.0.5"
+    // joda time
+    compile 'joda-time:joda-time:2.9.9'
+
+
 
 
 }
