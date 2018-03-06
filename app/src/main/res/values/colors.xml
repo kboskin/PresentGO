@@ -11,4 +11,6 @@
     <color name="colorBlueBackground">#a9d6ff</color>
     <color name="colorGreenBackground">#abde8f</color>
     <color name="colorPurpleBackground">#bfc3dc</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorButtonDone">#42BEE2</color>
 </resources>

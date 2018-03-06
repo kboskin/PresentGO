@@ -14,6 +14,8 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
+import com.kosboss.gogift.events.PagerPasserEvent
+import org.greenrobot.eventbus.EventBus
 
 
 class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
@@ -24,11 +26,12 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
     lateinit var forwardButton: RelativeLayout
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val modelGift = Constants()
 
         MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")
 
@@ -45,19 +48,21 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
         // deny swipes for view pager
         viewPager.setOnTouchListener(View.OnTouchListener { view, motionEvent -> return@OnTouchListener true })
 
+
         mTabLayout = findViewById(R.id.tabDots);
         mTabLayout.setupWithViewPager(viewPager, true);
+
         mTabLayout.setOnTouchListener(View.OnTouchListener { view, motionEvent -> return@OnTouchListener true })
         val pagesAdapter = PagesAdapter(supportFragmentManager, viewPager);
         viewPager.adapter = pagesAdapter
 
+        // pass viewPager
+        val bus = EventBus.getDefault()
+        bus.post(object : PagerPasserEvent(viewPager){})
+
         // back click listener
         previousButton = findViewById(R.id.back_ui)
-        previousButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
-                viewPager.setCurrentItem(viewPager.currentItem - 1)
-            }
-        })
+        previousButton.setOnClickListener { viewPager.currentItem = viewPager.currentItem - 1 }
 
         // forward click listener
         forwardButton = findViewById(R.id.forward_ui)
@@ -70,8 +75,6 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
                 viewPager.setCurrentItem(viewPager.currentItem + 1)
             }
         })
-
-
     }
 
     private fun loadRewardedVideoAd() {

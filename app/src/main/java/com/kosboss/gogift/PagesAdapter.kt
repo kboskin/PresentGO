@@ -10,26 +10,21 @@ import com.kosboss.gogift.fragments.*
  * Created by hp on 025 25.02.2018.
  */
 class PagesAdapter(fm: FragmentManager?, private val viewPager: ViewPager) : FragmentPagerAdapter(fm) {
-    private val NUM_ITEMS = 7
+    private val NUM_ITEMS = 8
 
 
+    var constants = Constants()
     override fun getItem(position: Int): Fragment {
-        if (position == 0) {
-            return (WhomToGiftFragment.newInstance(viewPager))
-        } else if (position == 1) {
-            return GenderFragment.newInstance(viewPager)
-        } else if (position == 2) {
-            return AgeFragment.newInstance(viewPager)
-        } else if (position == 3) {
-            return WhatBudgetFragment.newInstance(viewPager)
-        } else if (position == 4) {
-            return OccasionFragment.newInstance(viewPager)
-        } else if (position == 5) {
-            return HowCloseFragment.newInstance(viewPager)
-        } else if (position == 6) {
-            return AfraidToForgetFragment.newInstance(viewPager)
-        } else {
-            return WhatBudgetFragment.newInstance(viewPager)
+        return when (position) {
+            0 -> WhomToGiftFragment.newInstance(viewPager, constants)
+            1 -> GenderFragment.newInstance(viewPager, constants)
+            2 -> AgeFragment.newInstance(viewPager, constants)
+            3 -> WhatBudgetFragment.newInstance(viewPager, constants)
+            4 -> OccasionFragment.newInstance(viewPager, constants)
+            5 -> HowCloseFragment.newInstance(viewPager, constants)
+            6 -> AfraidToForgetFragment.newInstance(viewPager, constants)
+            7 -> AfraidToForgetInputFragment.newInstance(viewPager)
+            else -> WhatBudgetFragment.newInstance(viewPager, constants)
         }
     }
 

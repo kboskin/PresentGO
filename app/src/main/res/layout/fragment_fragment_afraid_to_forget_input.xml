@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kosboss.gogift.fragments.AfraidToForgetFragment">
+    <TextView
+        android:id="@+id/afraid_to_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fifty_dp"
+        android:text="@string/afraid_to_forget"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="@dimen/thirty_sp"
+        android:textStyle="bold" />
+
+
+<TextView
+        android:id="@+id/afraid_to_forget_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/afraid_to_forget"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fifteen_dp"
+        android:text="@string/title_and_message_of_event_in_calendar"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="@dimen/fourteen_sp"
+        android:textStyle="italic" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/afraid_to_forget_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/seventy_five_dp">
+
+        <EditText
+            android:id="@+id/edit_text_title_real"
+            android:layout_width="@dimen/two_hundred_dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:backgroundTint="@color/colorAccent"
+            android:hint="@string/message_title"
+            android:maxLines="1"
+            android:maxLength="25"
+            android:singleLine="true"
+            android:textColor="@color/mostlyTextColor"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="16sp" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fifteen_dp">
+
+        <EditText
+            android:id="@+id/edit_text_description_real"
+            android:layout_width="@dimen/two_hundred_dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:backgroundTint="@color/colorAccent"
+            android:hint="@string/short_description"
+            android:maxLines="2"
+            android:maxLength="60"
+            android:lines="2"
+            android:singleLine="false"
+            android:textColor="@color/mostlyTextColor"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="16sp" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/button_done_finally"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/done"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_background"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"/>
+</RelativeLayout>

@@ -1,25 +1,49 @@
 package com.kosboss.gogift.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.kosboss.gogift.Constants
 import com.kosboss.gogift.R
+import com.kosboss.gogift.events.PagerPasserEvent
 import com.kosboss.gogift.seekbar.budget.IndicatorSeekBar
+import kotlinx.android.synthetic.main.fragment_what_budget.view.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [WhatBudgetFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [WhatBudgetFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class WhatBudgetFragment : Fragment() {
+class WhatBudgetFragment : Fragment(), View.OnClickListener {
+    override fun onClick(p0: View?) {
+        editor.putString(constants.BUDGET, budget)
+        editor.apply()
+        viewPager.currentItem = viewPager.currentItem + 1
+    }
+
+    lateinit var preferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
+    lateinit var budget : String;
+    lateinit var constants: Constants
+    lateinit var viewPager: ViewPager
+
+    // handling passing here viewPager via eventbus
+    var bus = EventBus.getDefault()
+    @Subscribe
+    public fun setUpViewPager(event : PagerPasserEvent)
+    {
+        viewPager = event.viewPager
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bus.register(this)
+    }
 
     @SuppressLint("InflateParams")
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -29,6 +53,16 @@ class WhatBudgetFragment : Fragment() {
         val view: View = inflater!!.inflate(R.layout.fragment_what_budget, container, false)
         val indicatorSeekBar: IndicatorSeekBar = view.findViewById(R.id.myOwnSeekBar)
 
+        constants = Constants()
+
+
+        // default value
+        budget = constants.BUDGET_MIDDLE
+
+        preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        editor = preferences.edit();
+
+        view.button_done_budget.setOnClickListener(this)
 
         indicatorSeekBar.setOnSeekChangeListener(object : IndicatorSeekBar.OnSeekBarChangeListener {
             override fun onStartTrackingTouch(seekBar: IndicatorSeekBar?, thumbPosOnTick: Int) {
@@ -49,25 +83,22 @@ class WhatBudgetFragment : Fragment() {
                 val prices: Array<out String>? = resources.getStringArray(R.array.prices)
 
                 when (progress) {
-/*
-                    15 -> hintTextView.text = prices!![0]
-                    86 -> hintTextView.text = prices!![1]
-                    158 -> hintTextView.text = prices!![2]
-                    229 -> hintTextView.text = prices!![3]
-                    300 -> hintTextView.text = prices!![4] + prices[5]
-*/
+                    15 -> budget = constants.BUDGET_MINIMAL
+                    86 -> budget = constants.BUDGET_LOW
+                    158 -> budget = constants.BUDGET_MIDDLE
+                    229 -> budget = constants.BUDGET_MIDDLE_PLUS
+                    300 -> budget = constants.BUDGET_HIGH
                 }
             }
         })
         return view
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-
     companion object {
-        fun newInstance(viewPager: ViewPager): WhatBudgetFragment {
+        fun newInstance(viewPager: ViewPager, constants: Constants): WhatBudgetFragment {
             val fragment = WhatBudgetFragment()
-            val args = Bundle()
+            fragment.constants = constants
+            fragment.viewPager = viewPager
             return fragment
         }
     }

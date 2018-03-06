@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/fifty_dp"
         android:text="@string/afraid_to_forget"
         android:textColor="@color/mostlyTextColor"
         android:textSize="30sp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/afraid_to_forget"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/fifteen_dp"
         android:text="@string/choose_the_date_and_we_will_remind_you"
         android:textColor="@color/mostlyTextColor"
         android:textSize="14sp"
@@ -32,19 +32,19 @@
 
     <ImageView
         android:id="@+id/calendarImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/one_hundred_fifty_dp"
+        android:layout_height="@dimen/one_hundred_fifty_dp"
         android:layout_below="@id/afraid_to_forget_hint"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="@dimen/seventy_five_dp"
         android:src="@drawable/calendar" />
 
 
     <com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
-        android:layout_width="70dp"
-        android:layout_height="120dp"
+        android:layout_width="@dimen/seventy_five_dp"
+        android:layout_height="@dimen/one_hundred_twenty_dp"
         android:layout_below="@+id/calendarImageView"
         android:layout_toStartOf="@+id/calendarImageView"
         android:id="@+id/month_picker"
@@ -60,8 +60,8 @@
 
 
     <com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
-        android:layout_width="70dp"
-        android:layout_height="120dp"
+        android:layout_width="@dimen/seventy_five_dp"
+        android:layout_height="@dimen/one_hundred_twenty_dp"
         android:layout_below="@+id/calendarImageView"
         android:layout_toEndOf="@+id/calendarImageView"
         android:id="@+id/day_picker"
@@ -74,4 +74,15 @@
         app:mnpTextStyle="bold"
         app:mnpValue="10"
         app:mnpWrapped="false" />
+
+    <Button
+        android:id="@+id/button_done_afraid_to_forget"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/done"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_background"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"/>
 </RelativeLayout>

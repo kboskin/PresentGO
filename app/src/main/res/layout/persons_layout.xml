@@ -4,8 +4,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginEnd="20dp"
-    android:layout_marginStart="20dp"
+    android:layout_marginEnd="@dimen/twenty_dp"
+    android:layout_marginStart="@dimen/twenty_dp"
     android:background="@color/colorTransparent"
     android:columnCount="2"
     android:rowCount="3"
@@ -13,22 +13,23 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="50dp"
+        android:id="@+id/family_cv"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_marginEnd="@dimen/fifty_dp"
         app:cardBackgroundColor="@color/colorTransparent"
         app:cardElevation="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/seventy_dp"
+            android:layout_height="@dimen/seventy_dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/five_dp"
             android:background="@drawable/family" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/twenty_dp"
             android:layout_gravity="bottom"
             android:text="@string/family"
             android:textAlignment="center"
@@ -39,22 +40,23 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
+        android:id="@+id/friends_cv"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_marginStart="@dimen/ten_dp"
         app:cardBackgroundColor="@color/colorTransparent"
         app:cardElevation="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/seventy_dp"
+            android:layout_height="@dimen/seventy_dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/five_dp"
             android:background="@drawable/teamwork" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/twenty_dp"
             android:layout_gravity="bottom"
             android:text="@string/friends"
             android:textAlignment="center"
@@ -65,23 +67,24 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/colleagues_cv"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty_dp"
         app:cardBackgroundColor="@color/colorTransparent"
         app:cardElevation="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/seventy_dp"
+            android:layout_height="@dimen/seventy_dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/five_dp"
             android:background="@drawable/team" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/twenty_dp"
             android:layout_gravity="bottom"
             android:text="@string/colleagues"
             android:textAlignment="center"
@@ -92,23 +95,24 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/beloved_cv"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_marginStart="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/twenty_dp"
         app:cardBackgroundColor="@color/colorTransparent"
         app:cardElevation="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/seventy_dp"
+            android:layout_height="@dimen/seventy_dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/five_dp"
             android:background="@drawable/in_love_together" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/twenty_dp"
             android:layout_gravity="bottom"
             android:text="@string/beloved"
             android:textAlignment="center"
@@ -119,22 +123,23 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/superiors_cv"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_marginTop="@dimen/twenty_dp"
         app:cardBackgroundColor="@color/colorTransparent"
         app:cardElevation="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/seventy_dp"
+            android:layout_height="@dimen/seventy_dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/five_dp"
             android:background="@drawable/interview" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/twenty_dp"
             android:layout_gravity="bottom"
             android:text="@string/superiors"
             android:textAlignment="center"
@@ -145,23 +150,25 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/person_i_hate_cv"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_marginStart="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/twenty_dp"
         app:cardBackgroundColor="@color/colorTransparent"
         app:cardElevation="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/seventy_dp"
+            android:layout_height="@dimen/seventy_dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/five_dp"
             android:background="@drawable/heart" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/twenty_dp"
+            android:textAlignment="center"
             android:layout_gravity="bottom"
             android:text="@string/the_man_i_hate"
             android:textColor="@color/mostlyTextColor"
