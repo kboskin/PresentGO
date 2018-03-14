@@ -1,6 +1,7 @@
 package com.kosboss.gogift
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
@@ -31,8 +32,6 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val modelGift = Constants()
-
         MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")
 
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this@MainActivity)
@@ -58,7 +57,7 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
 
         // pass viewPager
         val bus = EventBus.getDefault()
-        bus.post(object : PagerPasserEvent(viewPager){})
+        bus.post(object : PagerPasserEvent(viewPager) {})
 
         // back click listener
         previousButton = findViewById(R.id.back_ui)
@@ -66,15 +65,15 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
 
         // forward click listener
         forwardButton = findViewById(R.id.forward_ui)
-        forwardButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
-                if (viewPager.currentItem == 6) {
+        forwardButton.setOnClickListener {
+            if (viewPager.currentItem == 6) {
 
-                    loadRewardedVideoAd()
-                }
-                viewPager.setCurrentItem(viewPager.currentItem + 1)
+                loadRewardedVideoAd()
+            } else if (viewPager.currentItem == 7) {
+                startActivity(Intent(this@MainActivity, GiftActivity::class.java))
             }
-        })
+            viewPager.currentItem = viewPager.currentItem + 1
+        }
     }
 
     private fun loadRewardedVideoAd() {

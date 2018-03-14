@@ -42,5 +42,6 @@
     <string name="title_and_message_of_event_in_calendar">Title and message of event in calendar</string>
     <string name="message_title">message title</string>
     <string name="done">Done</string>
+    <string name="title_activity_gift">GiftActivity</string>
 
 </resources>

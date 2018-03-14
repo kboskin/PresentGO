@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.kosboss.gogift.GiftActivity"
+    tools:showIn="@layout/activity_gift"
+    android:background="@drawable/bg_lightblue">
+
+
+    <TextView
+        android:id="@+id/gift_title"
+        android:layout_width="210dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:textSize="30sp"
+        android:textColor="@color/mostlyTextColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/gift_description_0"
+        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_height="@dimen/twenty_dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="176dp"
+        android:textSize="16sp"
+        android:textColor="@color/mostlyTextColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gift_description_1"
+        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_height="@dimen/twenty_dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gift_description_0" />
+
+    <TextView
+        android:id="@+id/gift_description_2"
+        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_height="@dimen/twenty_dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gift_description_1" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/gift_image"
+        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_height="@dimen/two_hundred_dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="284dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

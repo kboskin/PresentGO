@@ -36,7 +36,7 @@ class AgeFragment : Fragment(), View.OnClickListener {
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.elderly_cv -> {
-                    editor.putString(constants.AGE, constants.AGE_EDLERLY)
+                    editor.putString(constants.AGE, constants.AGE_ELDERLY)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
 

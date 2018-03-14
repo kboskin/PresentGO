@@ -22,14 +22,14 @@ class Constants {
     var AGE_CHILD = "Child"
     var AGE_TEEN = "Teenager"
     var AGE_ADULT = "Adult"
-    var AGE_EDLERLY = "Elderly"
+    var AGE_ELDERLY = "Elderly"
 
     var BUDGET = "Budget"
-    var BUDGET_MINIMAL = "15"
-    var BUDGET_LOW = "86"
-    var BUDGET_MIDDLE = "158"
-    var BUDGET_MIDDLE_PLUS = "229"
-    var BUDGET_HIGH = "300"
+    var BUDGET_MINIMAL = "Budget_minimal"
+    var BUDGET_LOW = "Budget_low"
+    var BUDGET_MIDDLE = "Budget_middle"
+    var BUDGET_MIDDLE_PLUS = "Budget_middle_plus"
+    var BUDGET_HIGH = "Budget_high"
 
     var TIME = "Time"
 
@@ -46,5 +46,5 @@ class Constants {
     var CLOSE_ONE_TIME_SEEN = "One_time_seen"
     var CLOSE_ACQUAINTANCE = "Acquaintance"
     var CLOSE_COMRADE = "Comrade"
-    var CLOSE_CLOSE_PERSON = "Comrade"
+    var CLOSE_CLOSE_PERSON = "Close"
 }

@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -50,16 +51,14 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
 
-    // very sexy seekbar
-    compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
+    // picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
     // pickers
     compile "com.github.StephenVinouze:MaterialNumberPicker:1.0.5"
     // joda time
     compile 'joda-time:joda-time:2.9.9'
     // event bus
     compile 'org.greenrobot:eventbus:3.1.1'
-
-
 
 
 }
