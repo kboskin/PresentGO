@@ -16,4 +16,5 @@
     <dimen name="fourteen_sp">14sp</dimen>
     <dimen name="two_hundred_dp">200dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="twenty_five_dp">25dp</dimen>
 </resources>

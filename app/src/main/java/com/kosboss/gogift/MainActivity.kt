@@ -1,47 +1,63 @@
 package com.kosboss.gogift
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.ContextMenu
+import android.view.Menu
 import android.view.View
 import android.widget.RelativeLayout
-import android.widget.Toast
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.reward.RewardItem
-import com.google.android.gms.ads.reward.RewardedVideoAd
-import com.google.android.gms.ads.reward.RewardedVideoAdListener
+import com.google.android.gms.ads.*
 import com.kosboss.gogift.events.PagerPasserEvent
+import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 
 
-class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
+class MainActivity : AppCompatActivity() {
     lateinit var mAdView: AdView
     lateinit var viewPager: ViewPager
     lateinit var mTabLayout: TabLayout
     lateinit var previousButton: RelativeLayout
     lateinit var forwardButton: RelativeLayout
-    private lateinit var mRewardedVideoAd: RewardedVideoAd
+    private lateinit var mInterstitialAd: InterstitialAd
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // toolbar, title is empty
+        main_tool_bar.title = ""
+        setSupportActionBar(main_tool_bar)
 
         MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")
 
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this@MainActivity)
-        mRewardedVideoAd.rewardedVideoAdListener = this@MainActivity
-
-
+        // setting default preferences
+        setDefaultPrefs()
+        // admob
         mAdView = findViewById(R.id.adView)
         // add here your device id, you can see it in logs
         val adRequest = AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build()
         mAdView.loadAd(adRequest)
+
+        // banner between pages
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.adListener = object : AdListener() {
+
+            override fun onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
+                startActivity(Intent(this@MainActivity, GiftActivity::class.java))
+            }
+        }
+        mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
+
 
         viewPager = findViewById(R.id.pager);
         // deny swipes for view pager
@@ -66,65 +82,40 @@ class MainActivity : AppCompatActivity(), RewardedVideoAdListener {
         // forward click listener
         forwardButton = findViewById(R.id.forward_ui)
         forwardButton.setOnClickListener {
-            if (viewPager.currentItem == 6) {
-
-                loadRewardedVideoAd()
-            } else if (viewPager.currentItem == 7) {
-                startActivity(Intent(this@MainActivity, GiftActivity::class.java))
+            if (viewPager.currentItem == 7) {
+                if (mInterstitialAd.isLoaded) {
+                    mInterstitialAd.show()
+                } else {
+                }
+                Log.d("Pager item", viewPager.currentItem.toString())
+            } else {
+                viewPager.currentItem = viewPager.currentItem + 1
+                Log.d("Pager item", viewPager.currentItem.toString())
             }
-            viewPager.currentItem = viewPager.currentItem + 1
+
         }
     }
-
-    private fun loadRewardedVideoAd() {
-
-        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
-                AdRequest.Builder().build())
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        var inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return super.onCreateContextMenu(menu, v, menuInfo)
     }
 
-    override fun onPause() {
-        super.onPause()
-        mRewardedVideoAd.pause(this)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onResume() {
-        super.onResume()
-        mRewardedVideoAd.resume(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mRewardedVideoAd.destroy(this)
-    }
-
-    override fun onRewarded(reward: RewardItem) {
-        Toast.makeText(this, "onRewarded! currency: ${reward.type} amount: ${reward.amount}",
-                Toast.LENGTH_SHORT).show()
-        // Reward the user.
-    }
-
-    override fun onRewardedVideoAdLeftApplication() {
-        //Toast.makeText(this, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onRewardedVideoAdClosed() {
-        //Toast.makeText(this, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
-        //Toast.makeText(this, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onRewardedVideoAdLoaded() {
-        //Toast.makeText(this, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
-        mRewardedVideoAd.show()
-    }
-
-    override fun onRewardedVideoAdOpened() {
-        //Toast.makeText(this, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onRewardedVideoStarted() {
-        //Toast.makeText(this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
+    private fun setDefaultPrefs() {
+        var constants = Constants()
+        val prefs = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor = prefs.edit();
+        editor.putString(constants.CLOSE, "")
+        editor.putString(constants.OCCASION, "")
+        editor.putString(constants.BUDGET, "")
+        editor.putString(constants.AGE, "")
+        editor.putString(constants.CATEGORY, "")
+        editor.putString(constants.SEX, "")
+        editor.apply()
     }
 }

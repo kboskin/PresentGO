@@ -12,10 +12,11 @@
 
     <TextView
         android:id="@+id/gift_title"
-        android:layout_width="210dp"
-        android:layout_height="94dp"
+        android:layout_width="250dp"
+        android:minHeight="@dimen/one_hundred_dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="@dimen/fifty_dp"
         android:textSize="30sp"
         android:textColor="@color/mostlyTextColor"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,46 +26,47 @@
     <TextView
         android:id="@+id/gift_description_0"
         android:layout_width="@dimen/two_hundred_dp"
-        android:layout_height="@dimen/twenty_dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="176dp"
-        android:textSize="16sp"
+        android:layout_height="@dimen/twenty_five_dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="48dp"
         android:textColor="@color/mostlyTextColor"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/gift_title" />
 
     <TextView
         android:id="@+id/gift_description_1"
         android:layout_width="@dimen/two_hundred_dp"
-        android:layout_height="@dimen/twenty_dp"
-        android:layout_marginStart="80dp"
+        android:layout_height="@dimen/twenty_five_dp"
+        android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gift_description_0" />
 
     <TextView
         android:id="@+id/gift_description_2"
         android:layout_width="@dimen/two_hundred_dp"
-        android:layout_height="@dimen/twenty_dp"
-        android:layout_marginStart="80dp"
+        android:layout_height="@dimen/twenty_five_dp"
+        android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gift_description_1" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/gift_image"
         android:layout_width="@dimen/two_hundred_dp"
         android:layout_height="@dimen/two_hundred_dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.861"
+        android:adjustViewBounds="true"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/gift_description_2" />
 
 </android.support.constraint.ConstraintLayout>
