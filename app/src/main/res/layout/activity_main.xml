@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_lightblue"
     tools:context="com.kosboss.gogift.MainActivity">
 
 
@@ -20,8 +21,7 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/adView"
-        android:background="@drawable/bg_lightblue" />
+        android:layout_above="@+id/adView" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabDots"
