@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -16,6 +17,8 @@ import com.google.android.gms.ads.*
 import com.kosboss.gogift.events.PagerPasserEvent
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // toolbar, title is empty
         main_tool_bar.title = ""
+        // setting custom image instead of three dots
+        val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.setting_shape)
+        main_tool_bar.overflowIcon = drawable
         setSupportActionBar(main_tool_bar)
 
         MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")

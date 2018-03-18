@@ -3,6 +3,7 @@ package com.kosboss.gogift
 import android.annotation.SuppressLint
 import android.database.Cursor
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.ContextMenu
@@ -24,6 +25,9 @@ class GiftActivity : AppCompatActivity() {
         setContentView(R.layout.activity_gift)
         // removing title
         gift_tool_bar.title = ""
+        // setting custom image instead of three dots
+        val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.setting_shape)
+        gift_tool_bar.overflowIcon = drawable
         setSupportActionBar(gift_tool_bar)
 
         // creating helper
