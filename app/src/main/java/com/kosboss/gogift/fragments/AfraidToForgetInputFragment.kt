@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kosboss.gogift.R
+import com.kosboss.gogift.activities.GiftActivity
 import com.kosboss.gogift.events.DataPassingEvent
 import com.kosboss.gogift.events.PagerPasserEvent
 import kotlinx.android.synthetic.main.fragment_fragment_afraid_to_forget_input.*
@@ -54,6 +55,10 @@ class AfraidToForgetInputFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_fragment_afraid_to_forget_input, container, false)
+        // skip calendar integration and show fragment
+        view.show_me_gift.setOnClickListener{
+            startActivity(Intent(context, GiftActivity::class.java))
+        }
         view.button_done_finally.setOnClickListener {
 
             val intent = Intent(Intent.ACTION_EDIT)

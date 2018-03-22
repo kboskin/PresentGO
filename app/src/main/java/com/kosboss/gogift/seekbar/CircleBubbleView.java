@@ -57,8 +57,8 @@ public class CircleBubbleView extends View {
         mPaint.setTextSize(mIndicatorTextSize);
         Rect mRect = new Rect();
         mPaint.getTextBounds(maxLengthText, 0, maxLengthText.length(), mRect);
-        mIndicatorWidth = mRect.width() + IndicatorUtils.dp2px(mContext, 4);
-        int minWidth = IndicatorUtils.dp2px(mContext, 36);
+        mIndicatorWidth = mRect.width() + IndicatorUtils.INSTANCE.dp2px(mContext, 4);
+        int minWidth = IndicatorUtils.INSTANCE.dp2px(mContext, 36);
         if (mIndicatorWidth < minWidth) {
             mIndicatorWidth = minWidth;
         }

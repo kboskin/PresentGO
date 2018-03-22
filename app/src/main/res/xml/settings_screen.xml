@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+        android:title="@string/aaps_settings" >
+        <SwitchPreference
+            android:key="@string/tutorial"
+            android:summary="@string/show_tutorial"
+            android:title="@string/tutorial" />
+
+        <SwitchPreference
+            android:key="@string/animation_duration"
+            android:summary="@string/skip_animation"
+            android:title="@string/animation"/>
+    </PreferenceCategory>
+</PreferenceScreen>

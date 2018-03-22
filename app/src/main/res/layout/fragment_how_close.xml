@@ -31,10 +31,10 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/calendarImageView"
-        android:layout_width="@dimen/one_hundred_fifty_dp"
-        android:layout_height="@dimen/one_hundred_fifty_dp"
+        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_height="@dimen/two_hundred_dp"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/seventy_five_dp"
+        android:layout_marginTop="@dimen/fifty_dp"
         android:layout_marginBottom="@dimen/five_dp"
         android:layout_below="@id/how_close_are_you_hint"
         android:src="@drawable/how_close"
@@ -63,7 +63,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/thirty_dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_done_background"
         android:text="@string/done"
         android:textColor="@color/colorWhite" />
 

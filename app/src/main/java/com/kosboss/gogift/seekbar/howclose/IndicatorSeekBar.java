@@ -227,14 +227,14 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
 
         if (p.mTickDrawable != null) {
-            p.mTickType = TickType.REC;//set a not none type
+            p.mTickType = TickType.Companion.getREC();//set a not none type
         }
         if (p.mThumbDrawable == null) {
             mThumbRadius = p.mThumbSize / 2.0f;
             mThumbTouchRadius = mThumbRadius * 1.2f;
             mThumbTouchHeight = mThumbTouchRadius * 2.0f;
         } else {
-            int maxThumbWidth = IndicatorUtils.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
+            int maxThumbWidth = IndicatorUtils.INSTANCE.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
             if (p.mThumbSize > maxThumbWidth) {
                 mThumbRadius = maxThumbWidth / 2.0f;
             } else {
@@ -246,7 +246,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         if (p.mTickDrawable == null) {
             mTickRadius = p.mTickSize / 2.0f;
         } else {
-            int maxTickWidth = IndicatorUtils.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
+            int maxTickWidth = IndicatorUtils.INSTANCE.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
             if (p.mTickSize > maxTickWidth) {
                 mTickRadius = maxTickWidth / 2.0f;
             } else {
@@ -279,7 +279,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
             mTextPaint.setTypeface(p.mTextTypeface);
             mTextPaint.getTextBounds("jf1", 0, 3, mRect);
             mTextHeight = 0;
-            mTextHeight += mRect.height() + IndicatorUtils.dp2px(mContext, 2 * GAP_BETWEEN_SEEK_BAR_AND_BELOW_TEXT);
+            mTextHeight += mRect.height() + IndicatorUtils.INSTANCE.dp2px(mContext, 2 * GAP_BETWEEN_SEEK_BAR_AND_BELOW_TEXT);
         }
         lastProgress = p.mProgress;
     }
@@ -296,7 +296,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      boolean noTick() {
-        return p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS || p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS;
+        return p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS();
     }
 
      void initEndTexts() {
@@ -329,7 +329,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
      void initDefaultPadding() {
         if (!p.mClearPadding) {
-            int normalPadding = IndicatorUtils.dp2px(mContext, 16);
+            int normalPadding = IndicatorUtils.INSTANCE.dp2px(mContext, 16);
             if (getPaddingLeft() == 0) {
                 setPadding(normalPadding, getPaddingTop(), getPaddingRight(), getPaddingBottom());
             }
@@ -367,14 +367,14 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      boolean needDrawText() {
-        return p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS_TEXTS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS_TEXTS_ENDS || p.mThumbProgressStay;
+        return p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS_ENDS() || p.mThumbProgressStay;
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int height = Math.round(mCustomDrawableMaxHeight + .5f + getPaddingTop() + getPaddingBottom());
-        setMeasuredDimension(resolveSize(IndicatorUtils.dp2px(mContext, 170), widthMeasureSpec), height + mTextHeight);
+        setMeasuredDimension(resolveSize(IndicatorUtils.INSTANCE.dp2px(mContext, 170), widthMeasureSpec), height + mTextHeight);
         initSeekBarInfo();
         if (p.mShowIndicator && mIndicator == null) {
             mIndicator = new Indicator(mContext, this, p);
@@ -479,11 +479,11 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void drawThumbText(Canvas canvas, float thumbX) {
-        if (p.mSeekBarType != IndicatorSeekBarType.CONTINUOUS && p.mSeekBarType != IndicatorSeekBarType.DISCRETE_TICKS) {
+        if (p.mSeekBarType != IndicatorSeekBarType.Companion.getCONTINUOUS() && p.mSeekBarType != IndicatorSeekBarType.Companion.getDISCRETE_TICKS()) {
             return;
         }
         if (p.mThumbProgressStay) {
-            canvas.drawText(getProgressString(p.mProgress), thumbX + p.mBackgroundTrackSize / 2.0f, mPaddingTop + mThumbTouchHeight + mRect.height() + IndicatorUtils.dp2px(mContext, 2), mTextPaint);
+            canvas.drawText(getProgressString(p.mProgress), thumbX + p.mBackgroundTrackSize / 2.0f, mPaddingTop + mThumbTouchHeight + mRect.height() + IndicatorUtils.INSTANCE.dp2px(mContext, 2), mTextPaint);
         }
     }
 
@@ -505,7 +505,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void drawTicks(Canvas canvas, float thumbX) {
-        if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS || p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS || p.mTickType == TickType.NONE) {
+        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.mTickType == TickType.Companion.getNONE()) {
             return;
         }
         if (mTextLocationList.size() == 0) {
@@ -527,20 +527,20 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
                     continue;
                 }
             }
-            int rectWidth = IndicatorUtils.dp2px(mContext, 1);
+            int rectWidth = IndicatorUtils.INSTANCE.dp2px(mContext, 1);
             if (p.mTickDrawable != null) {
                 if (mTickDraw == null) {
                     mTickDraw = getBitmapDraw(p.mTickDrawable, false);
                 }
-                if (p.mTickType == TickType.REC) {
+                if (p.mTickType == TickType.Companion.getREC()) {
                     canvas.drawBitmap(mTickDraw, locationX - mTickDraw.getWidth() / 2.0f + rectWidth, mTrackY - mTickDraw.getHeight() / 2.0f, mStockPaint);
                 } else {
                     canvas.drawBitmap(mTickDraw, locationX - mTickDraw.getWidth() / 2.0f, mTrackY - mTickDraw.getHeight() / 2.0f, mStockPaint);
                 }
             } else {
-                if (p.mTickType == TickType.OVAL) {
+                if (p.mTickType == TickType.Companion.getOVAL()) {
                     canvas.drawCircle(locationX, mTrackY, mTickRadius, mStockPaint);
-                } else if (p.mTickType == TickType.REC) {
+                } else if (p.mTickType == TickType.Companion.getREC()) {
                     float rectTickHeightRange;
                     if (thumbX >= locationX) {
                         rectTickHeightRange = p.mProgressTrackSize;
@@ -560,7 +560,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
         int width;
         int height;
-        int maxRange = IndicatorUtils.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
+        int maxRange = IndicatorUtils.INSTANCE.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
         int intrinsicWidth = drawable.getIntrinsicWidth();
         if (intrinsicWidth > maxRange) {
             if (isThumb) {
@@ -593,7 +593,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void drawText(Canvas canvas) {
-        if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS) {
+        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS()) {
             return;
         }
         if (mTextList.size() == 0) {
@@ -603,7 +603,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         String allText = getAllText();
         mTextPaint.getTextBounds(allText, 0, allText.length(), mRect);
         int textHeight = Math.round(mRect.height() - mTextPaint.descent());
-        int gap = IndicatorUtils.dp2px(mContext, 3);
+        int gap = IndicatorUtils.INSTANCE.dp2px(mContext, 3);
         for (int i = 0; i < mTextList.size(); i++) {
             String text = getStringText(i);
             mTextPaint.getTextBounds(text, 0, text.length(), mRect);
@@ -612,7 +612,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
             } else if (i == mTextList.size() - 1) {
                 canvas.drawText(text, mTextLocationList.get(i) - mRect.width() / 2.0f, mPaddingTop + mCustomDrawableMaxHeight + textHeight + gap, mTextPaint);
             } else {
-                if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS || p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS_TEXTS_ENDS) {
+                if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS_ENDS()) {
                     continue;
                 }
                 canvas.drawText(text, mTextLocationList.get(i), mPaddingTop + mCustomDrawableMaxHeight + textHeight + gap, mTextPaint);
@@ -648,10 +648,10 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void initLocationListData() {
-        if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS) {
+        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS()) {
             return;
         }
-        if (p.mSeekBarType == IndicatorSeekBarType.CONTINUOUS_TEXTS_ENDS) {
+        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS()) {
             initEndTexts();
             return;
         }
@@ -922,7 +922,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
      boolean isTouchSeekBar(float mX, float mY) {
         if (mFaultTolerance == -1) {
-            mFaultTolerance = IndicatorUtils.dp2px(mContext, 5);
+            mFaultTolerance = IndicatorUtils.INSTANCE.dp2px(mContext, 5);
         }
         boolean inWidthRange = mX >= (mPaddingLeft - 2 * mFaultTolerance) && mX <= (mMeasuredWidth - mPaddingRight + 2 * mFaultTolerance);
         boolean inHeightRange = mY >= mTrackY - mThumbTouchRadius - mFaultTolerance && mY <= mTrackY + mThumbTouchRadius + mFaultTolerance;
@@ -954,7 +954,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
     String getProgressString() {
-        if (p.mSeekBarType == IndicatorSeekBarType.DISCRETE_TICKS_TEXTS) {
+        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS()) {
             int thumbPosOnTick = getThumbPosOnTick();
             if (thumbPosOnTick >= p.mTextArray.length) {
                 return "";
@@ -1342,7 +1342,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setBackgroundTrackSize(int backgroundTrackSize) {
-            p.mBackgroundTrackSize = IndicatorUtils.dp2px(p.mContext, backgroundTrackSize);
+            p.mBackgroundTrackSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, backgroundTrackSize);
             return this;
         }
 
@@ -1353,7 +1353,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTextSize(int textSize) {
-            p.mTextSize = IndicatorUtils.sp2px(p.mContext, textSize);
+            p.mTextSize = IndicatorUtils.INSTANCE.sp2px(p.mContext, textSize);
             return this;
         }
 
@@ -1420,7 +1420,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickSize(int tickSize) {
-            p.mTickSize = IndicatorUtils.dp2px(p.mContext, tickSize);
+            p.mTickSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, tickSize);
             return this;
         }
 
@@ -1504,7 +1504,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setProgressTrackSize(int progressTrackSize) {
-            p.mProgressTrackSize = IndicatorUtils.dp2px(p.mContext, progressTrackSize);
+            p.mProgressTrackSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, progressTrackSize);
             return this;
         }
 
@@ -1538,7 +1538,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setThumbWidth(int thumbWidth) {
-            p.mThumbSize = IndicatorUtils.dp2px(p.mContext, thumbWidth);
+            p.mThumbSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, thumbWidth);
             return this;
         }
 
@@ -1560,7 +1560,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorCustomLayout(@LayoutRes int mIndicatorCustomLayout) {
-            p.mIndicatorType = IndicatorType.CUSTOM;
+            p.mIndicatorType = IndicatorType.Companion.getCUSTOM();
             p.mIndicatorCustomView = View.inflate(p.mContext, mIndicatorCustomLayout, null);
             return this;
         }
@@ -1572,7 +1572,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorCustomView(@NonNull View indicatorCustomView) {
-            p.mIndicatorType = IndicatorType.CUSTOM;
+            p.mIndicatorType = IndicatorType.Companion.getCUSTOM();
             p.mIndicatorCustomView = indicatorCustomView;
             return this;
         }
@@ -1730,7 +1730,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorTextSize(int indicatorTextSize) {
-            p.mIndicatorTextSize = IndicatorUtils.sp2px(p.mContext, indicatorTextSize);
+            p.mIndicatorTextSize = IndicatorUtils.INSTANCE.sp2px(p.mContext, indicatorTextSize);
             return this;
         }
 

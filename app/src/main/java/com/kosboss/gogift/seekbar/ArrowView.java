@@ -27,8 +27,8 @@ public class ArrowView extends View {
 
     public ArrowView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mWidth = IndicatorUtils.dp2px(context, 12);
-        mHeight = IndicatorUtils.dp2px(context, 7);
+        mWidth = IndicatorUtils.INSTANCE.dp2px(context, 12);
+        mHeight = IndicatorUtils.INSTANCE.dp2px(context, 7);
         mPath = new Path();
         mPath.moveTo(0, 0);
         mPath.lineTo(mWidth, 0);

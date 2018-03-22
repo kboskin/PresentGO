@@ -1,6 +1,7 @@
-package com.kosboss.gogift
+package com.kosboss.gogift.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -8,7 +9,16 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.ContextMenu
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
+import com.kosboss.gogift.Constants
+import com.kosboss.gogift.DataBaseHelper
+import com.kosboss.gogift.R
+import com.kosboss.gogift.SimpleGiftModel
+import com.kosboss.gogift.settings.SettingsActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_gift.*
 import kotlinx.android.synthetic.main.content_gift.*
@@ -18,6 +28,8 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class GiftActivity : AppCompatActivity() {
+
+    lateinit var mAdView: AdView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +41,17 @@ class GiftActivity : AppCompatActivity() {
         val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.setting_shape)
         gift_tool_bar.overflowIcon = drawable
         setSupportActionBar(gift_tool_bar)
+
+        // enable back home button
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+
+        // admob
+        MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")
+
+        mAdView = findViewById(R.id.adViewGifts)
+        // add here your device id, you can see it in logs
+        val adRequest = AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build()
+        mAdView.loadAd(adRequest)
 
         // creating helper
         val myDbHelper = DataBaseHelper(this)
@@ -204,16 +227,16 @@ class GiftActivity : AppCompatActivity() {
                 }
             }
             else -> {
-            // random list of budgets
-            val list = arrayOf(constants.BUDGET_MINIMAL, constants.BUDGET_LOW, constants.BUDGET_MIDDLE,
-                    constants.BUDGET_MIDDLE_PLUS, constants.BUDGET_HIGH)
-            if (isFirstTime) {
-                query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
-                isFirstTime = false
-            } else {
-                query += " " + "and" + " " + chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
+                // random list of budgets
+                val list = arrayOf(constants.BUDGET_MINIMAL, constants.BUDGET_LOW, constants.BUDGET_MIDDLE,
+                        constants.BUDGET_MIDDLE_PLUS, constants.BUDGET_HIGH)
+                if (isFirstTime) {
+                    query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
+                    isFirstTime = false
+                } else {
+                    query += " " + "and" + " " + chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
+                }
             }
-        }
         }
         when {
             !prefsHashMap[constants.OCCASION].equals("") -> {
@@ -428,7 +451,7 @@ class GiftActivity : AppCompatActivity() {
 
         // set description and parse string from database in one line
         val descriptionsArray = randomItem.description.split(",") as ArrayList<String>
-        gift_description_0.text = "-" + " " + descriptionsArray[0]
+        gift_description_0.text = "-" + " " + " " + descriptionsArray[0]
         gift_description_1.text = "-" + " " + descriptionsArray[1]
         gift_description_2.text = "-" + " " + descriptionsArray[2]
 
@@ -454,5 +477,24 @@ class GiftActivity : AppCompatActivity() {
 
     private fun chooseRandomly(objectsArrayList: Array<String>): String {
         return objectsArrayList[Random().nextInt(objectsArrayList.size)]
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            R.id.action_setting -> {
+                startActivity(Intent(MainActivity@this, SettingsActivity::class.java));
+                return true
+            }
+            android.R.id.home -> {
+                // close this activity and return to preview activity (if there is any)
+                finish();
+                return true
+            }
+        /*R.id.help -> {
+            showHelp()
+            return true
+        }*/
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -64,7 +64,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/thirty_dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_done_background"
         android:text="@string/done"
         android:textColor="@color/colorWhite" />
 

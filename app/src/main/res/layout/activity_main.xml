@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_lightblue"
-    tools:context="com.kosboss.gogift.MainActivity">
+    tools:context="com.kosboss.gogift.activities.MainActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <android.support.v4.view.ViewPager
+    <com.kosboss.gogift.viewpager.NonSwipeableViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,7 +61,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@color/colorTransparent"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:text="@string/previous"
             android:textColor="@color/mostlyTextColor"
             android:textSize="14sp" />
@@ -73,7 +73,7 @@
             android:layout_centerVertical="true"
             android:background="@color/colorTransparent"
             android:foregroundGravity="center"
-            android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
+            app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
     </RelativeLayout>
 
@@ -91,7 +91,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@color/colorTransparent"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:text="@string/skip_this"
             android:textColor="@color/mostlyTextColor"
             android:textSize="14sp" />
@@ -103,7 +103,7 @@
             android:layout_toEndOf="@+id/next"
             android:background="@color/colorTransparent"
             android:foregroundGravity="center"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
     </RelativeLayout>
 

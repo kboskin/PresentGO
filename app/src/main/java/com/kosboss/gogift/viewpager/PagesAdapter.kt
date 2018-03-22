@@ -1,9 +1,10 @@
-package com.kosboss.gogift
+package com.kosboss.gogift.viewpager
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
+import com.kosboss.gogift.Constants
 import com.kosboss.gogift.fragments.*
 
 /**

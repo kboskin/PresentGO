@@ -1,4 +1,4 @@
-package com.kosboss.gogift
+package com.kosboss.gogift.activities
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,24 +6,28 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.ContextMenu
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.RelativeLayout
 import com.google.android.gms.ads.*
+import com.kosboss.gogift.Constants
+import com.kosboss.gogift.R
 import com.kosboss.gogift.events.PagerPasserEvent
+import com.kosboss.gogift.settings.SettingsActivity
+import com.kosboss.gogift.viewpager.NonSwipeableViewPager
+import com.kosboss.gogift.viewpager.PagesAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
-
-
-
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
 
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView: AdView
-    lateinit var viewPager: ViewPager
+    lateinit var viewPager: NonSwipeableViewPager
     lateinit var mTabLayout: TabLayout
     lateinit var previousButton: RelativeLayout
     lateinit var forwardButton: RelativeLayout
@@ -64,16 +68,15 @@ class MainActivity : AppCompatActivity() {
         }
         mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
 
-
+        // swipe-denied view pager
         viewPager = findViewById(R.id.pager);
-        // deny swipes for view pager
-        viewPager.setOnTouchListener(View.OnTouchListener { view, motionEvent -> return@OnTouchListener true })
+        //viewPager.setOnTouchListener(View.OnTouchListener { view, motionEvent -> return@OnTouchListener true })
 
 
         mTabLayout = findViewById(R.id.tabDots);
         mTabLayout.setupWithViewPager(viewPager, true);
 
-        mTabLayout.setOnTouchListener(View.OnTouchListener { view, motionEvent -> return@OnTouchListener true })
+        mTabLayout.setOnTouchListener(View.OnTouchListener { view, motionEvent -> return@OnTouchListener false })
         val pagesAdapter = PagesAdapter(supportFragmentManager, viewPager);
         viewPager.adapter = pagesAdapter
 
@@ -100,7 +103,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+        setTutorial()
     }
+
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         var inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
@@ -110,6 +115,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            R.id.action_setting -> {
+                startActivity(Intent(MainActivity@this, SettingsActivity::class.java));
+                return true
+            }
+        /*R.id.help -> {
+            showHelp()
+            return true
+        }*/
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setDefaultPrefs() {
@@ -123,5 +142,28 @@ class MainActivity : AppCompatActivity() {
         editor.putString(constants.CATEGORY, "")
         editor.putString(constants.SEX, "")
         editor.apply()
+    }
+
+    private fun setTutorial() {
+        // sequence example
+        val config = ShowcaseConfig()
+        config.delay = 500 // half second between each showcase view
+        config.dismissTextColor = resources.getColor(R.color.colorGreenBackground) // green text
+        config.fadeDuration = 700 // fade anim duration
+
+        val sequence = MaterialShowcaseSequence(this)
+
+        sequence.setConfig(config)
+
+        sequence.addSequenceItem(forwardButton,
+                getString(R.string.button_back), getString(R.string.got_it_text))
+
+        sequence.addSequenceItem(previousButton,
+                getString(R.string.button_skip), getString(R.string.got_it_text))
+
+        sequence.addSequenceItem(main_tool_bar,
+                getString(R.string.title_descr_etc), getString(R.string.got_it_text))
+
+        sequence.start()
     }
 }
