@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.kosboss.gogift.fragments.HowCloseFragment">
+    tools:context=".fragments.HowCloseFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:src="@drawable/how_close"
         android:layout_centerHorizontal="true"/>
 
-    <com.kosboss.gogift.seekbar.howclose.IndicatorSeekBar
+    <com.blacksmithdreamapps.presentgo.seekbar.howclose.IndicatorSeekBar
         android:id="@+id/myOwnSeekBar"
         android:layout_below="@+id/calendarImageView"
         android:layout_width="match_parent"

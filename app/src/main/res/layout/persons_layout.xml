@@ -9,7 +9,7 @@
     android:background="@color/colorTransparent"
     android:columnCount="2"
     android:rowCount="3"
-    tools:context="com.kosboss.gogift.fragments.WhomToGiftFragment">
+    tools:context=".fragments.WhomToGiftFragment">
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

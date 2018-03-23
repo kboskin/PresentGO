@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "1001910857521",
-    "firebase_url": "https://gogift-350f9.firebaseio.com",
-    "project_id": "gogift-350f9",
-    "storage_bucket": "gogift-350f9.appspot.com"
+    "project_number": "724293672820",
+    "firebase_url": "https://presentgo-3b8e5.firebaseio.com",
+    "project_id": "presentgo-3b8e5",
+    "storage_bucket": "presentgo-3b8e5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1001910857521:android:d8c71a2574ec006a",
+        "mobilesdk_app_id": "1:724293672820:android:7ecaffbcfd39849f",
         "android_client_info": {
-          "package_name": "com.kosboss.gogift"
+          "package_name": "com.blacksmithdreamapps.presentgo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1001910857521-citc32hbb6tgskmg6hougarmjhlhcccp.apps.googleusercontent.com",
+          "client_id": "724293672820-av7eo4ldqn5442534j46nmkd687u18h4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.kosboss.gogift",
+            "package_name": "com.blacksmithdreamapps.presentgo",
             "certificate_hash": "a5c6511228dad4422b6ac7fbf5f64b92cabbe207"
           }
         },
         {
-          "client_id": "1001910857521-fp9u3ghvni04suebf3b2pn6o9pvm5ss0.apps.googleusercontent.com",
+          "client_id": "724293672820-niv9hca6ktqjd2680batg9ia7m8hrkse.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYECAjJX0lujcU4Ut863DviS9QbwQoIY8"
+          "current_key": "AIzaSyAPJlYSZwyVv8-T6qJ3TDMccQWDzde2OXo"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1001910857521-fp9u3ghvni04suebf3b2pn6o9pvm5ss0.apps.googleusercontent.com",
+              "client_id": "724293672820-niv9hca6ktqjd2680batg9ia7m8hrkse.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

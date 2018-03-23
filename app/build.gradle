@@ -9,7 +9,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.kosboss.gogift"
+        applicationId "com.blacksmithdreamapps.presentgo"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
