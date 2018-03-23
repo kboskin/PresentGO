@@ -18,19 +18,17 @@ import com.blacksmithdreamapps.presentgo.R;
 import com.blacksmithdreamapps.presentgo.seekbar.ArrowView;
 import com.blacksmithdreamapps.presentgo.seekbar.BuilderParams;
 import com.blacksmithdreamapps.presentgo.seekbar.CircleBubbleView;
-import com.kosboss.gogift.seekbar.HowToChangeTheText;
-import com.kosboss.gogift.seekbar.IndicatorSeekBarType;
-import com.kosboss.gogift.seekbar.IndicatorType;
-import com.kosboss.gogift.seekbar.IndicatorUtils;
+import com.blacksmithdreamapps.presentgo.seekbar.HowToChangeTheText;
+import com.blacksmithdreamapps.presentgo.seekbar.IndicatorSeekBarType;
+import com.blacksmithdreamapps.presentgo.seekbar.IndicatorType;
+import com.blacksmithdreamapps.presentgo.seekbar.IndicatorUtils;
+
 
 /**
- * created by ZhuangGuangquan on 2017/9/9
- * <p>
- * Version : 2.0
- * Date: 2017/12/10
- * New Feature: indicator stay always.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
-
 
 public class Indicator implements HowToChangeTheText {
     private final Context mContext;
@@ -55,9 +53,9 @@ public class Indicator implements HowToChangeTheText {
     }
 
     void initIndicator() {
-        if (p.mIndicatorType == IndicatorType.Companion.getCUSTOM()) {
-            if (p.mIndicatorCustomView != null) {
-                mIndicatorView = p.mIndicatorCustomView;
+        if (p.getMIndicatorType() == IndicatorType.Companion.getCUSTOM()) {
+            if (p.getMIndicatorCustomView() != null) {
+                mIndicatorView = p.getMIndicatorCustomView();
                 //for the custom indicator view, if progress need to show when seeking ,
                 // need a TextView to show progress and this textView 's identify must be progress;
                 int progressTextViewId = mContext.getResources().getIdentifier("isb_progress", "id", mContext.getApplicationContext().getPackageName());
@@ -75,7 +73,7 @@ public class Indicator implements HowToChangeTheText {
                 }
             }
         } else {
-            if (IndicatorType.Companion.getCIRCULAR_BUBBLE() == p.mIndicatorType) {
+            if (IndicatorType.Companion.getCIRCULAR_BUBBLE() == p.getMIndicatorType()) {
                 mIndicatorView = new CircleBubbleView(p, checkHolderText());
                 ((CircleBubbleView) mIndicatorView).setProgress(String.valueOf(mSeekBar.getProgress()));
             } else {
@@ -84,56 +82,56 @@ public class Indicator implements HowToChangeTheText {
                 mTopContentView = (LinearLayout) mIndicatorView.findViewById(R.id.indicator_container);
                 //arrow
                 mIndicatorArrow = (ArrowView) mIndicatorView.findViewById(R.id.indicator_arrow);
-                mIndicatorArrow.setColor(p.mIndicatorColor);
+                mIndicatorArrow.setColor(p.getMIndicatorColor());
                 //progressText
                 mIndicatorText = (TextView) mIndicatorView.findViewById(R.id.isb_progress);
                 String[] array = mContext.getResources().getStringArray(R.array.prices);
                 switch (mSeekBar.getProgress()) {
                     case 15: {
                         mIndicatorText.setText(array[0]);
-                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                        mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                        mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                         break;
                     }
                     case 86: {
                         mIndicatorText.setText(array[1]);
-                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                        mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                        mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                         break;
                     }
 
                     case 158: {
                         mIndicatorText.setText(array[2]);
-                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                        mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                        mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                         break;
                     }
                     case 229: {
                         mIndicatorText.setText(array[3]);
-                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                        mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                        mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                         break;
                     }
                     case 300: {
                         mIndicatorText.setText(array[4]);
-                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                        mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                        mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                        mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                         break;
                     }
                 }
-                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     mTopContentView.setBackground(getGradientDrawable());
                 } else {
                     mTopContentView.setBackgroundDrawable(getGradientDrawable());
                 }
                 //custom top content view
-                if (p.mIndicatorCustomTopContentView != null) {
+                if (p.getMIndicatorCustomTopContentView() != null) {
                     //for the custom indicator top content view, if progress need to show when seeking ,
                     //need a TextView to show progress and this textView 's identify must be progress;
                     int progressTextViewId = mContext.getResources().getIdentifier("isb_progress", "id", mContext.getApplicationContext().getPackageName());
-                    View topContentView = p.mIndicatorCustomTopContentView;
+                    View topContentView = p.getMIndicatorCustomTopContentView();
                     if (progressTextViewId > 0) {
                         View tv = topContentView.findViewById(progressTextViewId);
                         if (tv != null) {
@@ -155,14 +153,14 @@ public class Indicator implements HowToChangeTheText {
     }
 
     String checkHolderText() {
-        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS()) {
-            String maxString = String.valueOf(p.mMax);
-            String minString = String.valueOf(p.mMin);
+        if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS()) {
+            String maxString = String.valueOf(p.getMMax());
+            String minString = String.valueOf(p.getMMin());
             return maxString.getBytes().length > minString.getBytes().length ? maxString : minString;
         } else {
-            if (p.mTextArray != null) {
+            if (p.getMTextArray() != null) {
                 String maxLengthText = "j";
-                for (CharSequence c : p.mTextArray) {
+                for (CharSequence c : p.getMTextArray()) {
                     if (c.length() > maxLengthText.length()) {
                         maxLengthText = c + "";
                     }
@@ -176,12 +174,12 @@ public class Indicator implements HowToChangeTheText {
     @NonNull
     private GradientDrawable getGradientDrawable() {
         GradientDrawable tvDrawable;
-        if (p.mIndicatorType == IndicatorType.Companion.getRECTANGLE_ROUNDED_CORNER()) {
+        if (p.getMIndicatorType() == IndicatorType.Companion.getRECTANGLE_ROUNDED_CORNER()) {
             tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(R.drawable.isb_indicator_square_corners);
         } else {
             tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(R.drawable.isb_indicator_rounded_corners);
         }
-        tvDrawable.setColor(p.mIndicatorColor);
+        tvDrawable.setColor(p.getMIndicatorColor());
         return tvDrawable;
     }
 
@@ -199,7 +197,7 @@ public class Indicator implements HowToChangeTheText {
     }
 
     private void adjustArrow(float touchX) {
-        if (p.mIndicatorType == IndicatorType.Companion.getCUSTOM() || p.mIndicatorType == IndicatorType.Companion.getCIRCULAR_BUBBLE()) {
+        if (p.getMIndicatorType() == IndicatorType.Companion.getCUSTOM() || p.getMIndicatorType() == IndicatorType.Companion.getCIRCULAR_BUBBLE()) {
             return;
         }
         int indicatorScreenX = getIndicatorScreenX();
@@ -299,7 +297,7 @@ public class Indicator implements HowToChangeTheText {
      */
     public void hide() {
         if (mIndicator.isShowing()) {
-            if (!p.mIndicatorStay) {
+            if (!p.getMIndicatorStay()) {
                 mIndicator.dismiss();
             }
         }
@@ -417,33 +415,33 @@ public class Indicator implements HowToChangeTheText {
         switch (mSeekBar.getProgress()) {
             case 15: {
                 mIndicatorText.setText(array[0]);
-                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                 break;
             }
             case 86: {
                 mIndicatorText.setText(array[1]);
-                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                 break;
             }
 
             case 158: {
                 mIndicatorText.setText(array[2]);
-                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                 break;
             }
             case 229: {
                 mIndicatorText.setText(array[3]);
-                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                 break;
             }
             case 300: {
                 mIndicatorText.setText(array[4]);
-                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.mIndicatorTextSize));
-                mIndicatorText.setTextColor(p.mIndicatorTextColor);
+                mIndicatorText.setTextSize(IndicatorUtils.INSTANCE.px2sp(mContext, p.getMIndicatorTextSize()));
+                mIndicatorText.setTextColor(p.getMIndicatorTextColor());
                 break;
             }
         }

@@ -17,6 +17,13 @@ import kotlinx.android.synthetic.main.fragment_how_close.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
+
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
+ */
+
 class HowCloseFragment : Fragment(), View.OnClickListener {
 
 

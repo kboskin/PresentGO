@@ -11,10 +11,13 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 
+
 /**
- * A [android.preference.PreferenceActivity] which implements and proxies the necessary calls
- * to be used with AppCompat.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
+
 abstract class AppCompatPreferenceActivity : PreferenceActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

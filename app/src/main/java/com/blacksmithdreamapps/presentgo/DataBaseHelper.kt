@@ -3,17 +3,13 @@ package com.blacksmithdreamapps.presentgo
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.database.sqlite.SQLiteDatabase
-
-
 /**
- * Created by hp on 014 14.03.2018.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 014 14.03.2018.
  */
 class DataBaseHelper
-/**
- * Constructor
- * Takes and keeps a reference of the passed context in order to access to the application assets and resources.
- * @param context
- */
+
 (private val myContext: Context){
 
     fun  handleDb() : SQLiteDatabase

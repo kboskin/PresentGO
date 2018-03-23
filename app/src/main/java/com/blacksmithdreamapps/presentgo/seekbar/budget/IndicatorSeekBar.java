@@ -28,10 +28,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blacksmithdreamapps.presentgo.seekbar.BuilderParams;
-import com.kosboss.gogift.seekbar.IndicatorSeekBarType;
-import com.kosboss.gogift.seekbar.IndicatorType;
-import com.kosboss.gogift.seekbar.IndicatorUtils;
-import com.kosboss.gogift.seekbar.TickType;
+import com.blacksmithdreamapps.presentgo.seekbar.IndicatorSeekBarType;
+import com.blacksmithdreamapps.presentgo.seekbar.IndicatorType;
+import com.blacksmithdreamapps.presentgo.seekbar.IndicatorUtils;
+import com.blacksmithdreamapps.presentgo.seekbar.TickType;
 import com.blacksmithdreamapps.presentgo.R;
 
 import java.math.BigDecimal;
@@ -39,11 +39,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 /**
- * created by ZhuangGuangquan on 2017/9/1
- * Version : 2.0
- * Date: 2017/12/10
- * New Feature: indicator stay always.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
 
 public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalLayoutListener, ViewTreeObserver.OnScrollChangedListener {
@@ -120,63 +120,63 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         }
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.IndicatorSeekBar);
         //seekBar
-        p.mSeekBarType = ta.getInt(R.styleable.IndicatorSeekBar_isb_seek_bar_type, p.mSeekBarType);
-        p.mMax = ta.getFloat(R.styleable.IndicatorSeekBar_isb_max, p.mMax);
-        p.mMin = ta.getFloat(R.styleable.IndicatorSeekBar_isb_min, p.mMin);
-        p.mProgress = ta.getFloat(R.styleable.IndicatorSeekBar_isb_progress, p.mProgress);
-        p.mClearPadding = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_clear_default_padding, p.mClearPadding);
-        p.mForbidUserSeek = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_forbid_user_seek, p.mForbidUserSeek);
-        p.mIsFloatProgress = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_progress_value_float, p.mIsFloatProgress);
-        p.mTouchToSeek = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_touch_to_seek, p.mTouchToSeek);
+        p.setMSeekBarType(ta.getInt(R.styleable.IndicatorSeekBar_isb_seek_bar_type, p.getMSeekBarType()));
+        p.setMMax(ta.getFloat(R.styleable.IndicatorSeekBar_isb_max, p.getMMax()));
+        p.setMMin(ta.getFloat(R.styleable.IndicatorSeekBar_isb_min, p.getMMin()));
+        p.setMProgress(ta.getFloat(R.styleable.IndicatorSeekBar_isb_progress, p.getMProgress()));
+        p.setMClearPadding(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_clear_default_padding, p.getMClearPadding()));
+        p.setMForbidUserSeek(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_forbid_user_seek, p.getMForbidUserSeek()));
+        p.setMIsFloatProgress(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_progress_value_float, p.getMIsFloatProgress()));
+        p.setMTouchToSeek(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_touch_to_seek, p.getMTouchToSeek()));
         //track
-        p.mBackgroundTrackSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_track_background_bar_size, p.mBackgroundTrackSize);
-        p.mProgressTrackSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_track_progress_bar_size, p.mProgressTrackSize);
-        p.mBackgroundTrackColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_track_background_bar_color, p.mBackgroundTrackColor);
-        p.mProgressTrackColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_track_progress_bar_color, p.mProgressTrackColor);
-        p.mTrackRoundedCorners = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_track_rounded_corners, p.mTrackRoundedCorners);
+        p.setMBackgroundTrackSize(ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_track_background_bar_size, p.getMBackgroundTrackSize()));
+        p.setMProgressTrackSize(ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_track_progress_bar_size, p.getMProgressTrackSize()));
+        p.setMBackgroundTrackColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_track_background_bar_color, p.getMBackgroundTrackColor()));
+        p.setMProgressTrackColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_track_progress_bar_color, p.getMProgressTrackColor()));
+        p.setMTrackRoundedCorners(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_track_rounded_corners, p.getMTrackRoundedCorners()));
         //thumb
-        p.mThumbColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_thumb_color, p.mThumbColor);
-        p.mThumbSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_thumb_width, p.mThumbSize);
-        p.mThumbProgressStay = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_thumb_progress_stay, p.mThumbProgressStay);
-        p.mThumbDrawable = ta.getDrawable(R.styleable.IndicatorSeekBar_isb_thumb_drawable);
+        p.setMThumbColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_thumb_color, p.getMThumbColor()));
+        p.setMThumbSize(ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_thumb_width, p.getMThumbSize()));
+        p.setMThumbProgressStay(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_thumb_progress_stay, p.getMThumbProgressStay()));
+        p.setMThumbDrawable(ta.getDrawable(R.styleable.IndicatorSeekBar_isb_thumb_drawable));
         //indicator
-        p.mIndicatorType = ta.getInt(R.styleable.IndicatorSeekBar_isb_indicator_type, p.mIndicatorType);
-        p.mIndicatorColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_color, p.mIndicatorColor);
-        p.mIndicatorTextColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_text_color, p.mIndicatorTextColor);
-        p.mShowIndicator = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_show_indicator, p.mShowIndicator);
-        p.mIndicatorStay = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_indicator_stay, p.mIndicatorStay);
-        p.mIndicatorTextSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_indicator_text_size, p.mIndicatorTextSize);
+        p.setMIndicatorType(ta.getInt(R.styleable.IndicatorSeekBar_isb_indicator_type, p.getMIndicatorType()));
+        p.setMIndicatorColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_color, p.getMIndicatorColor()));
+        p.setMIndicatorTextColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_text_color, p.getMIndicatorTextColor()));
+        p.setMShowIndicator(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_show_indicator, p.getMShowIndicator()));
+        p.setMIndicatorStay(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_indicator_stay, p.getMIndicatorStay()));
+        p.setMIndicatorTextSize(ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_indicator_text_size, p.getMIndicatorTextSize()));
         int indicatorCustomViewId = ta.getResourceId(R.styleable.IndicatorSeekBar_isb_indicator_custom_layout, 0);
         if (indicatorCustomViewId > 0) {
-            p.mIndicatorCustomView = View.inflate(mContext, indicatorCustomViewId, null);
+            p.setMIndicatorCustomView(View.inflate(mContext, indicatorCustomViewId, null));
         }
         int indicatorCustomTopContentLayoutId = ta.getResourceId(R.styleable.IndicatorSeekBar_isb_indicator_custom_top_content_layout, 0);
         if (indicatorCustomTopContentLayoutId > 0) {
-            p.mIndicatorCustomTopContentView = View.inflate(mContext, indicatorCustomTopContentLayoutId, null);
+            p.setMIndicatorCustomTopContentView(View.inflate(mContext, indicatorCustomTopContentLayoutId, null));
         }
         //tick
-        p.mTickDrawable = ta.getDrawable(R.styleable.IndicatorSeekBar_isb_tick_drawable);
-        p.mTickNum = ta.getInt(R.styleable.IndicatorSeekBar_isb_tick_num, p.mTickNum);
-        p.mTickColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_tick_color, p.mTickColor);
-        p.mTickType = ta.getInt(R.styleable.IndicatorSeekBar_isb_tick_type, p.mTickType);
-        p.mTickHideBothEnds = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_tick_both_end_hide, p.mTickHideBothEnds);
-        p.mTickOnThumbLeftHide = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_tick_on_thumb_left_hide, p.mTickOnThumbLeftHide);
-        p.mTickSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_tick_size, p.mTickSize);
+        p.setMTickDrawable(ta.getDrawable(R.styleable.IndicatorSeekBar_isb_tick_drawable));
+        p.setMTickNum(ta.getInt(R.styleable.IndicatorSeekBar_isb_tick_num, p.getMTickNum()));
+        p.setMTickColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_tick_color, p.getMTickColor()));
+        p.setMTickType(ta.getInt(R.styleable.IndicatorSeekBar_isb_tick_type, p.getMTickType()));
+        p.setMTickHideBothEnds(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_tick_both_end_hide, p.getMTickHideBothEnds()));
+        p.setMTickOnThumbLeftHide(ta.getBoolean(R.styleable.IndicatorSeekBar_isb_tick_on_thumb_left_hide, p.getMTickOnThumbLeftHide()));
+        p.setMTickSize(ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_tick_size, p.getMTickSize()));
         //text
-        p.mTextArray = ta.getTextArray(R.styleable.IndicatorSeekBar_isb_text_array);
-        p.mLeftEndText = ta.getString(R.styleable.IndicatorSeekBar_isb_text_left_end);
-        p.mRightEndText = ta.getString(R.styleable.IndicatorSeekBar_isb_text_right_end);
-        p.mTextSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_text_size, p.mTextSize);
-        p.mTextColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_text_color, p.mTextColor);
+        p.setMTextArray(ta.getTextArray(R.styleable.IndicatorSeekBar_isb_text_array));
+        p.setMLeftEndText(ta.getString(R.styleable.IndicatorSeekBar_isb_text_left_end));
+        p.setMRightEndText(ta.getString(R.styleable.IndicatorSeekBar_isb_text_right_end));
+        p.setMTextSize(ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_text_size, p.getMTextSize()));
+        p.setMTextColor(ta.getColor(R.styleable.IndicatorSeekBar_isb_text_color, p.getMTextColor()));
         int typefaceType = ta.getInt(R.styleable.IndicatorSeekBar_isb_text_typeface, 0);
         if (typefaceType == 1) {
-            p.mTextTypeface = Typeface.MONOSPACE;
+            p.setMTextTypeface(Typeface.MONOSPACE);
         } else if (typefaceType == 2) {
-            p.mTextTypeface = Typeface.SANS_SERIF;
+            p.setMTextTypeface(Typeface.SANS_SERIF);
         } else if (typefaceType == 3) {
-            p.mTextTypeface = Typeface.SERIF;
+            p.setMTextTypeface(Typeface.SERIF);
         } else {
-            p.mTextTypeface = Typeface.DEFAULT;
+            p.setMTextTypeface(Typeface.DEFAULT);
         }
 
         ta.recycle();
@@ -193,64 +193,64 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         } else {
             mTextList.clear();
         }
-        if (p.mMax < p.mMin) {
-            p.mMax = p.mMin;
+        if (p.getMMax() < p.getMMin()) {
+            p.setMMax(p.getMMin());
         }
-        if (p.mProgress < p.mMin) {
-            p.mProgress = p.mMin;
+        if (p.getMProgress() < p.getMMin()) {
+            p.setMProgress(p.getMMin());
         }
-        if (p.mProgress > p.mMax) {
-            p.mProgress = p.mMax;
+        if (p.getMProgress() > p.getMMax()) {
+            p.setMProgress(p.getMMax());
         }
-        if (p.mBackgroundTrackSize > p.mProgressTrackSize) {
-            p.mBackgroundTrackSize = p.mProgressTrackSize;
+        if (p.getMBackgroundTrackSize() > p.getMProgressTrackSize()) {
+            p.setMBackgroundTrackSize(p.getMProgressTrackSize());
         }
-        if (p.mTickNum < 0) {
-            p.mTickNum = 0;
+        if (p.getMTickNum() < 0) {
+            p.setMTickNum(0);
         }
-        if (p.mTickNum > 100) {
-            p.mTickNum = 100;
+        if (p.getMTickNum() > 100) {
+            p.setMTickNum(100);
         }
-        if (p.mLeftEndText == null) {
-            if (p.mIsFloatProgress) {
-                p.mLeftEndText = p.mMin + "";
+        if (p.getMLeftEndText() == null) {
+            if (p.getMIsFloatProgress()) {
+                p.setMLeftEndText(p.getMMin() + "");
             } else {
-                p.mLeftEndText = Math.round(p.mMin) + "";
+                p.setMLeftEndText(Math.round(p.getMMin()) + "");
             }
         }
-        if (p.mRightEndText == null) {
-            if (p.mIsFloatProgress) {
-                p.mRightEndText = p.mMax + "";
+        if (p.getMRightEndText() == null) {
+            if (p.getMIsFloatProgress()) {
+                p.setMRightEndText(p.getMMax() + "");
             } else {
-                p.mRightEndText = Math.round(p.mMax) + "";
+                p.setMRightEndText(Math.round(p.getMMax()) + "");
             }
         }
 
-        if (p.mTickDrawable != null) {
-            p.mTickType = TickType.Companion.getREC();//set a not none type
+        if (p.getMTickDrawable() != null) {
+            p.setMTickType(TickType.Companion.getREC());//set a not none type
         }
-        if (p.mThumbDrawable == null) {
-            mThumbRadius = p.mThumbSize / 2.0f;
+        if (p.getMThumbDrawable() == null) {
+            mThumbRadius = p.getMThumbSize() / 2.0f;
             mThumbTouchRadius = mThumbRadius * 1.2f;
             mThumbTouchHeight = mThumbTouchRadius * 2.0f;
         } else {
             int maxThumbWidth = IndicatorUtils.INSTANCE.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
-            if (p.mThumbSize > maxThumbWidth) {
+            if (p.getMThumbSize() > maxThumbWidth) {
                 mThumbRadius = maxThumbWidth / 2.0f;
             } else {
-                mThumbRadius = p.mThumbSize / 2.0f;
+                mThumbRadius = p.getMThumbSize() / 2.0f;
             }
             mThumbTouchRadius = mThumbRadius;
             mThumbTouchHeight = mThumbTouchRadius * 2.0f;
         }
-        if (p.mTickDrawable == null) {
-            mTickRadius = p.mTickSize / 2.0f;
+        if (p.getMTickDrawable() == null) {
+            mTickRadius = p.getMTickSize() / 2.0f;
         } else {
             int maxTickWidth = IndicatorUtils.INSTANCE.dp2px(mContext, CUSTOM_DRAWABLE_MAX_LIMITED_WIDTH);
-            if (p.mTickSize > maxTickWidth) {
+            if (p.getMTickSize() > maxTickWidth) {
                 mTickRadius = maxTickWidth / 2.0f;
             } else {
-                mTickRadius = p.mTickSize / 2.0f;
+                mTickRadius = p.getMTickSize() / 2.0f;
             }
         }
         if (mThumbTouchRadius >= mTickRadius) {
@@ -263,30 +263,30 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
         initDefaultPadding();
         if (noTick()) {
-            if (p.mMax - p.mMin > 100) {
-                p.mTickNum = Math.round(p.mMax - p.mMin);
+            if (p.getMMax() - p.getMMin() > 100) {
+                p.setMTickNum(Math.round(p.getMMax() - p.getMMin()));
             } else {
-                p.mTickNum = 100;
+                p.setMTickNum(100);
             }
-            if (p.mIsFloatProgress) {
-                p.mTickNum = p.mTickNum * 10;
+            if (p.getMIsFloatProgress()) {
+                p.setMTickNum(p.getMTickNum() * 10);
             }
         } else {
-            p.mTickNum = p.mTickNum < 2 ? 2 : (p.mTickNum - 1);
+            p.setMTickNum(p.getMTickNum() < 2 ? 2 : (p.getMTickNum() - 1));
         }
         if (needDrawText()) {
             initTextPaint();
-            mTextPaint.setTypeface(p.mTextTypeface);
+            mTextPaint.setTypeface(p.getMTextTypeface());
             mTextPaint.getTextBounds("jf1", 0, 3, mRect);
             mTextHeight = 0;
             mTextHeight += mRect.height() + IndicatorUtils.INSTANCE.dp2px(mContext, 2 * GAP_BETWEEN_SEEK_BAR_AND_BELOW_TEXT);
         }
-        lastProgress = p.mProgress;
+        lastProgress = p.getMProgress();
     }
 
      void calculateProgressTouchX() {
         //progress
-        float touchX = (p.mProgress - p.mMin) * mSeekLength / (p.mMax - p.mMin) + mPaddingLeft;
+        float touchX = (p.getMProgress() - p.getMMin()) * mSeekLength / (p.getMMax() - p.getMMin()) + mPaddingLeft;
         calculateTouchX(touchX);
     }
 
@@ -296,39 +296,39 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      boolean noTick() {
-        return p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS();
+        return p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS();
     }
 
      void initEndTexts() {
         if (mTextList.size() == 0) {
-            if (p.mLeftEndText != null) {
-                mTextList.add(p.mLeftEndText);
+            if (p.getMLeftEndText() != null) {
+                mTextList.add(p.getMLeftEndText());
                 mTextLocationList.add((float) mPaddingLeft);
             }
-            if (p.mRightEndText != null) {
-                mTextList.add(p.mRightEndText);
+            if (p.getMRightEndText() != null) {
+                mTextList.add(p.getMRightEndText());
                 mTextLocationList.add((float) (mMeasuredWidth - mPaddingRight));
             }
         } else if (mTextList.size() == 1) {
-            if (p.mLeftEndText != null) {
-                mTextList.set(0, p.mLeftEndText);
+            if (p.getMLeftEndText() != null) {
+                mTextList.set(0, p.getMLeftEndText());
             }
-            if (p.mRightEndText != null) {
-                mTextList.add(p.mRightEndText);
+            if (p.getMRightEndText() != null) {
+                mTextList.add(p.getMRightEndText());
                 mTextLocationList.add((float) (mMeasuredWidth - mPaddingRight));
             }
         } else {
-            if (p.mLeftEndText != null) {
-                mTextList.set(0, p.mLeftEndText);
+            if (p.getMLeftEndText() != null) {
+                mTextList.set(0, p.getMLeftEndText());
             }
-            if (p.mLeftEndText != null) {
-                mTextList.set(mTextList.size() - 1, p.mRightEndText);
+            if (p.getMLeftEndText() != null) {
+                mTextList.set(mTextList.size() - 1, p.getMRightEndText());
             }
         }
     }
 
      void initDefaultPadding() {
-        if (!p.mClearPadding) {
+        if (!p.getMClearPadding()) {
             int normalPadding = IndicatorUtils.INSTANCE.dp2px(mContext, 16);
             if (getPaddingLeft() == 0) {
                 setPadding(normalPadding, getPaddingTop(), getPaddingRight(), getPaddingBottom());
@@ -343,12 +343,12 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         if (mStockPaint == null) {
             mStockPaint = new Paint();
         }
-        if (p.mTrackRoundedCorners) {
+        if (p.getMTrackRoundedCorners()) {
             mStockPaint.setStrokeCap(Paint.Cap.ROUND);
         }
         mStockPaint.setAntiAlias(true);
-        if (p.mBackgroundTrackSize > p.mProgressTrackSize) {
-            p.mProgressTrackSize = p.mBackgroundTrackSize;
+        if (p.getMBackgroundTrackSize() > p.getMProgressTrackSize()) {
+            p.setMProgressTrackSize(p.getMBackgroundTrackSize());
         }
     }
 
@@ -357,8 +357,8 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
             mTextPaint = new TextPaint();
             mTextPaint.setAntiAlias(true);
             mTextPaint.setTextAlign(Paint.Align.CENTER);
-            mTextPaint.setTextSize(p.mTextSize);
-            mTextPaint.setColor(p.mTextColor);
+            mTextPaint.setTextSize(p.getMTextSize());
+            mTextPaint.setColor(p.getMTextColor());
         }
         if (mRect == null) {
             mRect = new Rect();
@@ -367,7 +367,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      boolean needDrawText() {
-        return p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS_ENDS() || p.mThumbProgressStay;
+        return p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS_ENDS() || p.getMThumbProgressStay();
     }
 
     @Override
@@ -376,7 +376,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         int height = Math.round(mCustomDrawableMaxHeight + .5f + getPaddingTop() + getPaddingBottom());
         setMeasuredDimension(resolveSize(IndicatorUtils.INSTANCE.dp2px(mContext, 170), widthMeasureSpec), height + mTextHeight);
         initSeekBarInfo();
-        if (p.mShowIndicator && mIndicator == null) {
+        if (p.getMShowIndicator() && mIndicator == null) {
             mIndicator = new com.blacksmithdreamapps.presentgo.seekbar.budget.Indicator(mContext, this, p);
         }
 
@@ -386,20 +386,20 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     protected synchronized void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //draw 2th track
-        mStockPaint.setColor(p.mProgressTrackColor);
+        mStockPaint.setColor(p.getMProgressTrackColor());
         if (!mDrawAgain) {
             //progress
-            float touchX = (p.mProgress - p.mMin) * mSeekLength / (p.mMax - p.mMin) + mPaddingLeft;
+            float touchX = (p.getMProgress() - p.getMMin()) * mSeekLength / (p.getMMax() - p.getMMin()) + mPaddingLeft;
             calculateTouchX(touchX);
             mDrawAgain = true;
         }
         float thumbX = getThumbX();
         //draw progress track
-        mStockPaint.setStrokeWidth(p.mProgressTrackSize);
+        mStockPaint.setStrokeWidth(p.getMProgressTrackSize());
         canvas.drawLine(mSeekStart, mTrackY, thumbX, mTrackY, mStockPaint);
         //draw BG track
-        mStockPaint.setStrokeWidth(p.mBackgroundTrackSize);
-        mStockPaint.setColor(p.mBackgroundTrackColor);
+        mStockPaint.setStrokeWidth(p.getMBackgroundTrackSize());
+        mStockPaint.setColor(p.getMBackgroundTrackColor());
         canvas.drawLine(thumbX + mThumbRadius, mTrackY, mSeekEnd, mTrackY, mStockPaint);
         //draw tick
         drawTicks(canvas, thumbX);
@@ -410,7 +410,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         //drawThumb
         drawThumb(canvas, thumbX);
 
-        if (p.mShowIndicator && p.mIndicatorStay && !mIndicator.isShowing()) {
+        if (p.getMShowIndicator() && p.getMIndicatorStay() && !mIndicator.isShowing()) {
             if (!isCover()) {
                 calculateProgressTouchX();
                 mIndicator.show(mTouchX);
@@ -422,7 +422,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     @Override
     protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
-        if (!p.mShowIndicator) {
+        if (!p.getMShowIndicator()) {
             return;
         }
         if (View.GONE == visibility || View.INVISIBLE == visibility) {
@@ -467,23 +467,23 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void drawThumb(Canvas canvas, float thumbX) {
-        mStockPaint.setColor(p.mThumbColor);
-        if (p.mThumbDrawable != null) {
+        mStockPaint.setColor(p.getMThumbColor());
+        if (p.getMThumbDrawable() != null) {
             if (mThumbDraw == null) {
-                mThumbDraw = getBitmapDraw(p.mThumbDrawable, true);
+                mThumbDraw = getBitmapDraw(p.getMThumbDrawable(), true);
             }
             canvas.drawBitmap(mThumbDraw, thumbX - mThumbDraw.getWidth() / 2.0f, mTrackY - mThumbDraw.getHeight() / 2.0f, mStockPaint);
         } else {
-            canvas.drawCircle(thumbX + p.mBackgroundTrackSize / 2.0f, mTrackY, mIsTouching ? mThumbTouchRadius : mThumbRadius, mStockPaint);
+            canvas.drawCircle(thumbX + p.getMBackgroundTrackSize() / 2.0f, mTrackY, mIsTouching ? mThumbTouchRadius : mThumbRadius, mStockPaint);
         }
     }
 
      void drawThumbText(Canvas canvas, float thumbX) {
-        if (p.mSeekBarType != IndicatorSeekBarType.Companion.getCONTINUOUS() && p.mSeekBarType != IndicatorSeekBarType.Companion.getDISCRETE_TICKS()) {
+        if (p.getMSeekBarType() != IndicatorSeekBarType.Companion.getCONTINUOUS() && p.getMSeekBarType() != IndicatorSeekBarType.Companion.getDISCRETE_TICKS()) {
             return;
         }
-        if (p.mThumbProgressStay) {
-            canvas.drawText(getProgressString(p.mProgress), thumbX + p.mBackgroundTrackSize / 2.0f, mPaddingTop + mThumbTouchHeight + mRect.height() + IndicatorUtils.INSTANCE.dp2px(mContext, 2), mTextPaint);
+        if (p.getMThumbProgressStay()) {
+            canvas.drawText(getProgressString(p.getMProgress()), thumbX + p.getMBackgroundTrackSize() / 2.0f, mPaddingTop + mThumbTouchHeight + mRect.height() + IndicatorUtils.INSTANCE.dp2px(mContext, 2), mTextPaint);
         }
     }
 
@@ -493,59 +493,59 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         mPaddingRight = getPaddingRight();
         mPaddingTop = getPaddingTop();
         mSeekLength = mMeasuredWidth - mPaddingLeft - mPaddingRight;
-        mSeekBlockLength = mSeekLength / p.mTickNum;
+        mSeekBlockLength = mSeekLength / p.getMTickNum();
         if (mThumbTouchRadius >= mTickRadius) {
             mTrackY = mPaddingTop + mThumbTouchRadius;
         } else {
             mTrackY = mPaddingTop + mTickRadius;
         }
-        mSeekStart = p.mTrackRoundedCorners ? mPaddingLeft + p.mBackgroundTrackSize / 2.0f : mPaddingLeft;
-        mSeekEnd = mMeasuredWidth - mPaddingRight - p.mBackgroundTrackSize / 2.0f;
+        mSeekStart = p.getMTrackRoundedCorners() ? mPaddingLeft + p.getMBackgroundTrackSize() / 2.0f : mPaddingLeft;
+        mSeekEnd = mMeasuredWidth - mPaddingRight - p.getMBackgroundTrackSize() / 2.0f;
         initLocationListData();
     }
 
      void drawTicks(Canvas canvas, float thumbX) {
-        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.mTickType == TickType.Companion.getNONE()) {
+        if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.getMTickType() == TickType.Companion.getNONE()) {
             return;
         }
         if (mTextLocationList.size() == 0) {
             return;
         }
-        mStockPaint.setColor(p.mTickColor);
+        mStockPaint.setColor(p.getMTickColor());
         for (int i = 0; i < mTextLocationList.size(); i++) {
             float locationX = mTextLocationList.get(i);
             if (getThumbPosOnTick() == i) {
                 continue;
             }
-            if (p.mTickOnThumbLeftHide) {
+            if (p.getMTickOnThumbLeftHide()) {
                 if (thumbX >= locationX) {
                     continue;
                 }
             }
-            if (p.mTickHideBothEnds) {
+            if (p.getMTickHideBothEnds()) {
                 if (i == 0 || i == mTextLocationList.size() - 1) {
                     continue;
                 }
             }
             int rectWidth = IndicatorUtils.INSTANCE.dp2px(mContext, 1);
-            if (p.mTickDrawable != null) {
+            if (p.getMTickDrawable() != null) {
                 if (mTickDraw == null) {
-                    mTickDraw = getBitmapDraw(p.mTickDrawable, false);
+                    mTickDraw = getBitmapDraw(p.getMTickDrawable(), false);
                 }
-                if (p.mTickType == TickType.Companion.getREC()) {
+                if (p.getMTickType() == TickType.Companion.getREC()) {
                     canvas.drawBitmap(mTickDraw, locationX - mTickDraw.getWidth() / 2.0f + rectWidth, mTrackY - mTickDraw.getHeight() / 2.0f, mStockPaint);
                 } else {
                     canvas.drawBitmap(mTickDraw, locationX - mTickDraw.getWidth() / 2.0f, mTrackY - mTickDraw.getHeight() / 2.0f, mStockPaint);
                 }
             } else {
-                if (p.mTickType == TickType.Companion.getOVAL()) {
+                if (p.getMTickType() == TickType.Companion.getOVAL()) {
                     canvas.drawCircle(locationX, mTrackY, mTickRadius, mStockPaint);
-                } else if (p.mTickType == TickType.Companion.getREC()) {
+                } else if (p.getMTickType() == TickType.Companion.getREC()) {
                     float rectTickHeightRange;
                     if (thumbX >= locationX) {
-                        rectTickHeightRange = p.mProgressTrackSize;
+                        rectTickHeightRange = p.getMProgressTrackSize();
                     } else {
-                        rectTickHeightRange = p.mBackgroundTrackSize;
+                        rectTickHeightRange = p.getMBackgroundTrackSize();
                     }
                     canvas.drawRect(locationX - rectWidth, mTrackY - rectTickHeightRange / 2.0f - .5f, locationX + rectWidth, mTrackY + rectTickHeightRange / 2.0f + .5f, mStockPaint);
                 }
@@ -564,9 +564,9 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         int intrinsicWidth = drawable.getIntrinsicWidth();
         if (intrinsicWidth > maxRange) {
             if (isThumb) {
-                width = p.mThumbSize;
+                width = p.getMThumbSize();
             } else {
-                width = p.mTickSize;
+                width = p.getMTickSize();
             }
             height = getHeightByRatio(drawable, width);
 
@@ -593,13 +593,13 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void drawText(Canvas canvas) {
-        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS()) {
+        if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getDISCRETE_TICKS()) {
             return;
         }
         if (mTextList.size() == 0) {
             return;
         }
-        mStockPaint.setColor(p.mTickColor);
+        mStockPaint.setColor(p.getMTickColor());
         String allText = getAllText();
         mTextPaint.getTextBounds(allText, 0, allText.length(), mRect);
         int textHeight = Math.round(mRect.height() - mTextPaint.descent());
@@ -612,7 +612,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
             } else if (i == mTextList.size() - 1) {
                 canvas.drawText(text, mTextLocationList.get(i) - mRect.width() / 2.0f, mPaddingTop + mCustomDrawableMaxHeight + textHeight + gap, mTextPaint);
             } else {
-                if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS_ENDS()) {
+                if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS() || p.getMSeekBarType() == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS_ENDS()) {
                     continue;
                 }
                 canvas.drawText(text, mTextLocationList.get(i), mPaddingTop + mCustomDrawableMaxHeight + textHeight + gap, mTextPaint);
@@ -623,9 +623,9 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     @NonNull
      String getStringText(int i) {
         String text;
-        if (p.mTextArray != null) {
-            if (i < p.mTextArray.length) {
-                text = p.mTextArray[i] + "";
+        if (p.getMTextArray() != null) {
+            if (i < p.getMTextArray().length) {
+                text = p.getMTextArray()[i] + "";
             } else {
                 text = " ";
             }
@@ -639,8 +639,8 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      String getAllText() {
         StringBuilder sb = new StringBuilder();
         sb.append("j");
-        if (p.mTextArray != null) {
-            for (CharSequence text : p.mTextArray) {
+        if (p.getMTextArray() != null) {
+            for (CharSequence text : p.getMTextArray()) {
                 sb.append(text);
             }
         }
@@ -648,20 +648,20 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void initLocationListData() {
-        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS()) {
+        if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS()) {
             return;
         }
-        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS()) {
+        if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getCONTINUOUS_TEXTS_ENDS()) {
             initEndTexts();
             return;
         }
-        if (p.mTickNum > 1) {
+        if (p.getMTickNum() > 1) {
             mTextLocationList.clear();
             mTextList.clear();
-            for (int i = 0; i < p.mTickNum + 1; i++) {
+            for (int i = 0; i < p.getMTickNum() + 1; i++) {
                 float tickX = mSeekBlockLength * i;
                 mTextLocationList.add(tickX + mPaddingLeft);
-                float tickProgress = p.mMin + (p.mMax - p.mMin) * tickX / mSeekLength;
+                float tickProgress = p.getMMin() + (p.getMMax() - p.getMMin()) * tickX / mSeekLength;
                 mTextList.add(getProgressString(tickProgress));
             }
             initEndTexts();
@@ -670,28 +670,28 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void initDefaultTextArray(ArrayList<String> mTextList) {
-        if (p.mTextArray != null) {
+        if (p.getMTextArray() != null) {
             return;
         }
         CharSequence[] charSequence = new CharSequence[mTextList.size()];
         for (int i = 0; i < mTextList.size(); i++) {
             charSequence[i] = mTextList.get(i);
         }
-        p.mTextArray = charSequence;
+        p.setMTextArray(charSequence);
     }
 
      float getThumbX() {
-        float mThumbXCache = mTouchX - p.mBackgroundTrackSize / 2.0f;
+        float mThumbXCache = mTouchX - p.getMBackgroundTrackSize() / 2.0f;
         float mThumbX;
         if (mThumbXCache <= mSeekStart) {
             if (mThumbXCache <= mPaddingLeft) {
-                mThumbX = getPaddingLeft() - p.mBackgroundTrackSize / 2.0f;
+                mThumbX = getPaddingLeft() - p.getMBackgroundTrackSize() / 2.0f;
             } else {
-                mThumbX = mThumbXCache + p.mBackgroundTrackSize / 2.0f;
+                mThumbX = mThumbXCache + p.getMBackgroundTrackSize() / 2.0f;
             }
 
-        } else if (mThumbXCache >= mMeasuredWidth - mPaddingRight - p.mBackgroundTrackSize / 2.0f) {
-            mThumbX = mMeasuredWidth - mPaddingRight - p.mBackgroundTrackSize / 2.0f;
+        } else if (mThumbXCache >= mMeasuredWidth - mPaddingRight - p.getMBackgroundTrackSize() / 2.0f) {
+            mThumbX = mMeasuredWidth - mPaddingRight - p.getMBackgroundTrackSize() / 2.0f;
         } else {
             mThumbX = mThumbXCache;
         }
@@ -699,7 +699,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
     public int getThumbPosOnTick() {
-        if (p.mSeekBarType > 1) {
+        if (p.getMSeekBarType() > 1) {
             return Math.round((mTouchX - mPaddingLeft) / mSeekBlockLength);
         } else {
             return -1;
@@ -713,8 +713,8 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
                 performClick();
                 float mX = event.getX();
                 float mY = event.getY();
-                if (isTouchSeekBar(mX, mY) && !p.mForbidUserSeek && isEnabled()) {
-                    if (p.mTouchToSeek || isTouchThumb(mX)) {
+                if (isTouchSeekBar(mX, mY) && !p.getMForbidUserSeek() && isEnabled()) {
+                    if (p.getMTouchToSeek() || isTouchThumb(mX)) {
                         if (mListener != null) {
                             mListener.onStartTrackingTouch(this, getThumbPosOnTick());
                         }
@@ -733,7 +733,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
                 }
                 mIsTouching = false;
                 invalidate();
-                if (p.mShowIndicator) {
+                if (p.getMShowIndicator()) {
                     mIndicator.hide();
                 }
                 break;
@@ -749,10 +749,10 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      void setListener(boolean formUserTouch) {
         if (mListener != null) {
             mListener.onProgressChanged(this, getProgress(), getProgressFloat(), formUserTouch);
-            if (p.mSeekBarType > 1) {
+            if (p.getMSeekBarType() > 1) {
                 int thumbPosOnTick = getThumbPosOnTick();
-                if (p.mTextArray != null && thumbPosOnTick < (p.mTextArray.length)) {
-                    mListener.onSectionChanged(this, thumbPosOnTick, String.valueOf(p.mTextArray[thumbPosOnTick]), formUserTouch);
+                if (p.getMTextArray() != null && thumbPosOnTick < (p.getMTextArray().length)) {
+                    mListener.onSectionChanged(this, thumbPosOnTick, String.valueOf(p.getMTextArray()[thumbPosOnTick]), formUserTouch);
                 } else {
                     mListener.onSectionChanged(this, thumbPosOnTick, "", formUserTouch);
                 }
@@ -778,7 +778,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable(INSTANCE_STATE_KEY, super.onSaveInstanceState());
-        bundle.putFloat("isb_progress", p.mProgress);
+        bundle.putFloat("isb_progress", p.getMProgress());
         return bundle;
     }
 
@@ -786,7 +786,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     protected void onRestoreInstanceState(Parcelable state) {
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
-            p.mProgress = bundle.getFloat("isb_progress");
+            p.setMProgress(bundle.getFloat("isb_progress"));
             super.onRestoreInstanceState(bundle.getParcelable(INSTANCE_STATE_KEY));
             return;
         }
@@ -804,7 +804,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         } else {
             setAlpha(0.3f);
         }
-        if (p.mIndicatorStay && getIndicator() != null) {
+        if (p.getMIndicatorStay() && getIndicator() != null) {
             getIndicator().forceHide();
         }
     }
@@ -827,7 +827,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         if (mIndicator != null) {
             mIndicator.forceHide();
         }
-        if (p.mIndicatorStay && p.mShowIndicator) {
+        if (p.getMIndicatorStay() && p.getMShowIndicator()) {
             if (Build.VERSION.SDK_INT < 16) {
                 this.getViewTreeObserver().removeGlobalOnLayoutListener(this);
             } else {
@@ -840,7 +840,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (p.mIndicatorStay && p.mShowIndicator) {
+        if (p.getMIndicatorStay() && p.getMShowIndicator()) {
             this.getViewTreeObserver().addOnGlobalLayoutListener(this);
             this.getViewTreeObserver().addOnScrollChangedListener(this);
         }
@@ -857,10 +857,10 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void checkIndicatorLoc() {
-        if (mIndicator == null || !p.mShowIndicator) {
+        if (mIndicator == null || !p.getMShowIndicator()) {
             return;
         }
-        if (p.mIndicatorStay) {
+        if (p.getMIndicatorStay()) {
             if (mIndicator.isShowing()) {
                 mIndicator.update();
             } else {
@@ -876,11 +876,11 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         calculateProgress();
         mIsTouching = true;
         if (isDownTouch) {
-            if (lastProgress != p.mProgress) {
+            if (lastProgress != p.getMProgress()) {
                 setListener(true);
             }
             invalidate();
-            if (p.mShowIndicator) {
+            if (p.getMShowIndicator()) {
                 if (mIndicator.isShowing()) {
                     mIndicator.update(mTouchX);
                 } else {
@@ -888,10 +888,10 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
                 }
             }
         } else {
-            if (lastProgress != p.mProgress) {
+            if (lastProgress != p.getMProgress()) {
                 setListener(true);
                 invalidate();
-                if (p.mShowIndicator) {
+                if (p.getMShowIndicator()) {
                     mIndicator.update(mTouchX);
                 }
             }
@@ -911,8 +911,8 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      void calculateProgress() {
-        lastProgress = p.mProgress;
-        p.mProgress = p.mMin + (p.mMax - p.mMin) * (mTouchX - mPaddingLeft) / mSeekLength;
+        lastProgress = p.getMProgress();
+        p.setMProgress(p.getMMin() + (p.getMMax() - p.getMMin()) * (mTouchX - mPaddingLeft) / mSeekLength);
     }
 
      void calculateTouchX(float touchX) {
@@ -930,7 +930,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
      float getProgressFloat(int newScale) {
-        BigDecimal bigDecimal = BigDecimal.valueOf(p.mProgress);
+        BigDecimal bigDecimal = BigDecimal.valueOf(p.getMProgress());
         return bigDecimal.setScale(newScale, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
@@ -945,7 +945,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
      String getProgressString(float progress) {
         String progressString;
-        if (p.mIsFloatProgress) {
+        if (p.getMIsFloatProgress()) {
             progressString = String.valueOf(getProgressFloat(1, progress));
         } else {
             progressString = String.valueOf(getProgress(progress));
@@ -954,15 +954,15 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
     }
 
     String getProgressString() {
-        if (p.mSeekBarType == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS()) {
+        if (p.getMSeekBarType() == IndicatorSeekBarType.Companion.getDISCRETE_TICKS_TEXTS()) {
             int thumbPosOnTick = getThumbPosOnTick();
-            if (thumbPosOnTick >= p.mTextArray.length) {
+            if (thumbPosOnTick >= p.getMTextArray().length) {
                 return "";
             } else {
-                return String.valueOf(p.mTextArray[thumbPosOnTick]);
+                return String.valueOf(p.getMTextArray()[thumbPosOnTick]);
             }
         } else {
-            return getProgressString(p.mProgress);
+            return getProgressString(p.getMProgress());
         }
     }
 
@@ -972,7 +972,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @return progress in int type.
      */
     public int getProgress() {
-        return Math.round(p.mProgress);
+        return Math.round(p.getMProgress());
     }
 
     /**
@@ -981,15 +981,15 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @param max the max value , if is less than min, will set to min.
      */
     public synchronized void setMax(float max) {
-        if (max < mRawParams.mMin) {
-            max = mRawParams.mMin;
+        if (max < mRawParams.getMMin()) {
+            max = mRawParams.getMMin();
         }
-        this.mRawParams.mMax = max;
+        this.mRawParams.setMMax(max);
         this.p.copy(mRawParams);
         initData();
         requestLayout();
         initLocationListData();
-        if (p.mIndicatorStay && mIndicator != null && mIndicator.isShowing()) {
+        if (p.getMIndicatorStay() && mIndicator != null && mIndicator.isShowing()) {
             mIndicator.update();
         }
     }
@@ -1000,15 +1000,15 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @param min the min value , if is larger than max, will set to max.
      */
     public synchronized void setMin(float min) {
-        if (min > mRawParams.mMax) {
-            min = mRawParams.mMax;
+        if (min > mRawParams.getMMax()) {
+            min = mRawParams.getMMax();
         }
-        this.mRawParams.mMin = min;
+        this.mRawParams.setMMin(min);
         this.p.copy(mRawParams);
         initData();
         requestLayout();
         initLocationListData();
-        if (p.mIndicatorStay && mIndicator != null && mIndicator.isShowing()) {
+        if (p.getMIndicatorStay() && mIndicator != null && mIndicator.isShowing()) {
             mIndicator.update();
         }
     }
@@ -1019,19 +1019,19 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @param progress a new progress value , if the new progress is less than min , it will set to min ,if over max ,will be max.
      */
     public synchronized void setProgress(float progress) {
-        if (progress < p.mMin) {
-            p.mProgress = p.mMin;
-        } else if (progress > p.mMax) {
-            p.mProgress = p.mMax;
+        if (progress < p.getMMin()) {
+            p.setMProgress(p.getMMin());
+        } else if (progress > p.getMMax()) {
+            p.setMProgress(p.getMMax());
         } else {
-            p.mProgress = progress;
+            p.setMProgress(progress);
         }
         setListener(false);
-        float touchX = (p.mProgress - p.mMin) * mSeekLength / (p.mMax - p.mMin) + mPaddingLeft;
+        float touchX = (p.getMProgress() - p.getMMin()) * mSeekLength / (p.getMMax() - p.getMMin()) + mPaddingLeft;
         calculateTouchX(touchX);
         initSeekBarInfo();
         postInvalidate();
-        if (p.mIndicatorStay && mIndicator != null && mIndicator.isShowing()) {
+        if (p.getMIndicatorStay() && mIndicator != null && mIndicator.isShowing()) {
             mIndicator.update();
         }
     }
@@ -1042,7 +1042,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @param forbidding
      */
     public void forbidUserToSeek(boolean forbidding) {
-        p.mForbidUserSeek = forbidding;
+        p.setMForbidUserSeek(forbidding);
     }
 
     /**
@@ -1054,7 +1054,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         if (mBuilder == null) {
             mBuilder = new Builder(mContext);
         }
-        mRawParams.mProgress = p.mProgress;
+        mRawParams.setMProgress(p.getMProgress());
         return mBuilder.setParams(mRawParams).setSeekBar(this);
     }
 
@@ -1071,7 +1071,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @return the upper limit of this seek bar's range.
      */
     public float getMax() {
-        return p.mMax;
+        return p.getMMax();
     }
 
     /**
@@ -1080,7 +1080,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @return the seek bar min value
      */
     public float getMin() {
-        return p.mMin;
+        return p.getMMin();
     }
 
     /**
@@ -1141,14 +1141,14 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
         this.p.copy(p);
         initData();
         initSeekBarInfo();
-        setProgress(p.mProgress);
+        setProgress(p.getMProgress());
         requestLayout();
         if (mIndicator != null) {
             if (mIndicator.isShowing()) {
                 mIndicator.forceHide();
             }
             mIndicator.initIndicator();
-            if (p.mIndicatorStay) {
+            if (p.getMIndicatorStay()) {
                 if (mIndicator.isShowing()) {
                     mIndicator.update();
                 } else {
@@ -1165,7 +1165,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @return the array of texts below tick
      */
     public CharSequence[] getTextArray() {
-        return p.mTextArray;
+        return p.getMTextArray();
     }
 
     /**
@@ -1174,7 +1174,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @param textArray the array of texts below tick
      */
     public void setTextArray(@NonNull CharSequence[] textArray) {
-        this.p.mTextArray = textArray;
+        this.p.setMTextArray(textArray);
         invalidate();
     }
 
@@ -1184,7 +1184,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
      * @param textArray the array of texts below tick
      */
     public void setTextArray(@ArrayRes int textArray) {
-        this.p.mTextArray = mContext.getResources().getStringArray(textArray);
+        this.p.setMTextArray(mContext.getResources().getStringArray(textArray));
         invalidate();
     }
 
@@ -1199,7 +1199,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
 
     public boolean isTouchThumb(float mX) {
         float rawTouchX = getTouchX();
-        return rawTouchX - p.mThumbSize / 2f <= mX && mX <= rawTouchX + p.mThumbSize / 2f;
+        return rawTouchX - p.getMThumbSize() / 2f <= mX && mX <= rawTouchX + p.getMThumbSize() / 2f;
     }
 
     public interface OnSeekBarChangeListener {
@@ -1283,7 +1283,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setProgress(float progress) {
-            p.mProgress = progress;
+            p.setMProgress(progress);
             return this;
         }
 
@@ -1294,7 +1294,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setMax(float max) {
-            p.mMax = max;
+            p.setMMax(max);
             return this;
         }
 
@@ -1305,12 +1305,12 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setMin(float min) {
-            p.mMin = min;
+            p.setMMin(min);
             return this;
         }
 
         public Context getContext() {
-            return p.mContext;
+            return p.getMContext();
         }
 
         /**
@@ -1320,7 +1320,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder clearPadding(boolean clearPadding) {
-            p.mClearPadding = clearPadding;
+            p.setMClearPadding(clearPadding);
             return this;
         }
 
@@ -1331,7 +1331,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder showIndicator(boolean showIndicator) {
-            p.mShowIndicator = showIndicator;
+            p.setMShowIndicator(showIndicator);
             return this;
         }
 
@@ -1342,7 +1342,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setBackgroundTrackSize(int backgroundTrackSize) {
-            p.mBackgroundTrackSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, backgroundTrackSize);
+            p.setMBackgroundTrackSize(IndicatorUtils.INSTANCE.dp2px(p.getMContext(), backgroundTrackSize));
             return this;
         }
 
@@ -1353,7 +1353,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTextSize(int textSize) {
-            p.mTextSize = IndicatorUtils.INSTANCE.sp2px(p.mContext, textSize);
+            p.setMTextSize(IndicatorUtils.INSTANCE.sp2px(p.getMContext(), textSize));
             return this;
         }
 
@@ -1364,7 +1364,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTextTypeface(Typeface textTypeface) {
-            p.mTextTypeface = textTypeface;
+            p.setMTextTypeface(textTypeface);
             return this;
         }
 
@@ -1376,7 +1376,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setBackgroundTrackColor(@ColorInt int backgroundTrackColor) {
-            p.mBackgroundTrackColor = backgroundTrackColor;
+            p.setMBackgroundTrackColor(backgroundTrackColor);
             return this;
         }
 
@@ -1387,7 +1387,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setProgressTrackColor(@ColorInt int progressTrackColor) {
-            p.mProgressTrackColor = progressTrackColor;
+            p.setMProgressTrackColor(progressTrackColor);
             return this;
         }
 
@@ -1398,7 +1398,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setThumbColor(@ColorInt int thumbColor) {
-            p.mThumbColor = thumbColor;
+            p.setMThumbColor(thumbColor);
             return this;
         }
 
@@ -1409,7 +1409,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickNum(int tickNum) {
-            p.mTickNum = tickNum;
+            p.setMTickNum(tickNum);
             return this;
         }
 
@@ -1420,7 +1420,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickSize(int tickSize) {
-            p.mTickSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, tickSize);
+            p.setMTickSize(IndicatorUtils.INSTANCE.dp2px(p.getMContext(), tickSize));
             return this;
         }
 
@@ -1433,7 +1433,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickType(int tickType) {
-            p.mTickType = tickType;
+            p.setMTickType(tickType);
             return this;
         }
 
@@ -1444,7 +1444,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickColor(@ColorInt int tickColor) {
-            p.mTickColor = tickColor;
+            p.setMTickColor(tickColor);
             return this;
         }
 
@@ -1460,7 +1460,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setSeekBarType(int seekBarType) {
-            p.mSeekBarType = seekBarType;
+            p.setMSeekBarType(seekBarType);
             return this;
         }
 
@@ -1471,7 +1471,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder hideBothEndsTicks(boolean tickHideBothEnds) {
-            p.mTickHideBothEnds = tickHideBothEnds;
+            p.setMTickHideBothEnds(tickHideBothEnds);
             return this;
         }
 
@@ -1482,7 +1482,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder hideTickOnThumbLeft(boolean tickOnThumbLeftHide) {
-            p.mTickOnThumbLeftHide = tickOnThumbLeftHide;
+            p.setMTickOnThumbLeftHide(tickOnThumbLeftHide);
             return this;
         }
 
@@ -1493,7 +1493,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder isRoundedTrackCorner(boolean trackCornersIsRounded) {
-            p.mTrackRoundedCorners = trackCornersIsRounded;
+            p.setMTrackRoundedCorners(trackCornersIsRounded);
             return this;
         }
 
@@ -1504,7 +1504,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setProgressTrackSize(int progressTrackSize) {
-            p.mProgressTrackSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, progressTrackSize);
+            p.setMProgressTrackSize(IndicatorUtils.INSTANCE.dp2px(p.getMContext(), progressTrackSize));
             return this;
         }
 
@@ -1515,7 +1515,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTextArray(CharSequence[] textArray) {
-            p.mTextArray = textArray;
+            p.setMTextArray(textArray);
             return this;
         }
 
@@ -1526,7 +1526,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTextArray(@ArrayRes int textArray) {
-            p.mTextArray = p.mContext.getResources().getStringArray(textArray);
+            p.setMTextArray(p.getMContext().getResources().getStringArray(textArray));
             return this;
         }
 
@@ -1538,7 +1538,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setThumbWidth(int thumbWidth) {
-            p.mThumbSize = IndicatorUtils.INSTANCE.dp2px(p.mContext, thumbWidth);
+            p.setMThumbSize(IndicatorUtils.INSTANCE.dp2px(p.getMContext(), thumbWidth));
             return this;
         }
 
@@ -1549,7 +1549,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorColor(@ColorInt int indicatorColor) {
-            p.mIndicatorColor = indicatorColor;
+            p.setMIndicatorColor(indicatorColor);
             return this;
         }
 
@@ -1560,8 +1560,8 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorCustomLayout(@LayoutRes int mIndicatorCustomLayout) {
-            p.mIndicatorType = IndicatorType.Companion.getCUSTOM();
-            p.mIndicatorCustomView = View.inflate(p.mContext, mIndicatorCustomLayout, null);
+            p.setMIndicatorType(IndicatorType.Companion.getCUSTOM());
+            p.setMIndicatorCustomView(View.inflate(p.getMContext(), mIndicatorCustomLayout, null));
             return this;
         }
 
@@ -1572,8 +1572,8 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorCustomView(@NonNull View indicatorCustomView) {
-            p.mIndicatorType = IndicatorType.Companion.getCUSTOM();
-            p.mIndicatorCustomView = indicatorCustomView;
+            p.setMIndicatorType(IndicatorType.Companion.getCUSTOM());
+            p.setMIndicatorCustomView(indicatorCustomView);
             return this;
         }
 
@@ -1584,7 +1584,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorCustomTopContentLayout(@LayoutRes int mIndicatorCustomTopContentLayout) {
-            p.mIndicatorCustomTopContentView = View.inflate(p.mContext, mIndicatorCustomTopContentLayout, null);
+            p.setMIndicatorCustomTopContentView(View.inflate(p.getMContext(), mIndicatorCustomTopContentLayout, null));
             return this;
         }
 
@@ -1595,7 +1595,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorCustomTopContentView(@NonNull View topContentView) {
-            p.mIndicatorCustomTopContentView = topContentView;
+            p.setMIndicatorCustomTopContentView(topContentView);
             return this;
         }
 
@@ -1608,7 +1608,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorType(int indicatorType) {
-            p.mIndicatorType = indicatorType;
+            p.setMIndicatorType(indicatorType);
             return this;
         }
 
@@ -1619,7 +1619,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder thumbProgressStay(boolean thumbProgressStay) {
-            p.mThumbProgressStay = thumbProgressStay;
+            p.setMThumbProgressStay(thumbProgressStay);
             return this;
         }
 
@@ -1630,7 +1630,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder isFloatProgress(boolean floatProgress) {
-            p.mIsFloatProgress = floatProgress;
+            p.setMIsFloatProgress(floatProgress);
             return this;
         }
 
@@ -1642,7 +1642,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setLeftEndText(String leftEndText) {
-            p.mLeftEndText = leftEndText;
+            p.setMLeftEndText(leftEndText);
             return this;
         }
 
@@ -1653,7 +1653,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setRightEndText(String rightEndText) {
-            p.mRightEndText = rightEndText;
+            p.setMRightEndText(rightEndText);
             return this;
         }
 
@@ -1664,7 +1664,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickDrawableId(@DrawableRes int tickDrawableId) {
-            p.mTickDrawable = p.mContext.getResources().getDrawable(tickDrawableId);
+            p.setMTickDrawable(p.getMContext().getResources().getDrawable(tickDrawableId));
             return this;
         }
 
@@ -1675,7 +1675,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTickDrawable(@NonNull Drawable tickDrawable) {
-            p.mTickDrawable = tickDrawable;
+            p.setMTickDrawable(tickDrawable);
             return this;
         }
 
@@ -1686,7 +1686,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setThumbDrawable(@DrawableRes int thumbDrawableId) {
-            p.mThumbDrawable = p.mContext.getResources().getDrawable(thumbDrawableId);
+            p.setMThumbDrawable(p.getMContext().getResources().getDrawable(thumbDrawableId));
             return this;
         }
 
@@ -1697,7 +1697,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setThumbDrawable(Drawable thumbDrawable) {
-            p.mThumbDrawable = thumbDrawable;
+            p.setMThumbDrawable(thumbDrawable);
             return this;
         }
 
@@ -1708,7 +1708,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setTextColor(@ColorInt int textColor) {
-            p.mTextColor = textColor;
+            p.setMTextColor(textColor);
             return this;
         }
 
@@ -1719,7 +1719,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorTextColor(@ColorInt int indicatorTextColor) {
-            p.mIndicatorTextColor = indicatorTextColor;
+            p.setMIndicatorTextColor(indicatorTextColor);
             return this;
         }
 
@@ -1730,7 +1730,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return Builder
          */
         public Builder setIndicatorTextSize(int indicatorTextSize) {
-            p.mIndicatorTextSize = IndicatorUtils.INSTANCE.sp2px(p.mContext, indicatorTextSize);
+            p.setMIndicatorTextSize(IndicatorUtils.INSTANCE.sp2px(p.getMContext(), indicatorTextSize));
             return this;
         }
 
@@ -1741,7 +1741,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return
          */
         public Builder setIndicatorStay(boolean stay) {
-            p.mIndicatorStay = stay;
+            p.setMIndicatorStay(stay);
             return this;
         }
 
@@ -1752,7 +1752,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return
          */
         public Builder forbidUserToSeek(boolean forbidding) {
-            p.mForbidUserSeek = forbidding;
+            p.setMForbidUserSeek(forbidding);
             return this;
         }
 
@@ -1764,7 +1764,7 @@ public class IndicatorSeekBar extends View implements ViewTreeObserver.OnGlobalL
          * @return
          */
         public Builder touchToSeek(boolean touchToSeek) {
-            p.mTouchToSeek = touchToSeek;
+            p.setMTouchToSeek(touchToSeek);
             return this;
         }
 

@@ -1,9 +1,11 @@
-package com.kosboss.gogift.seekbar
+package com.blacksmithdreamapps.presentgo.seekbar
+
 
 /**
- * created by ZhuangGuangquan on  2017/9/9
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
-
 interface IndicatorType {
     companion object {
         /**

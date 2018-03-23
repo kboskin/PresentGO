@@ -1,7 +1,9 @@
 package com.blacksmithdreamapps.presentgo.events
 
 /**
- * Created by hp on 005 05.03.2018.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 005 05.03.2018.
  */
 
 open class ImageChangeEvent(var imageType: Int)

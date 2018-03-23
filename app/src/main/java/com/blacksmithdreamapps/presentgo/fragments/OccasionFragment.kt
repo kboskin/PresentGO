@@ -8,12 +8,19 @@ import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
 import com.blacksmithdreamapps.presentgo.events.PagerPasserEvent
-import com.blacksmithdreamapps.presentgo.Constants
 import kotlinx.android.synthetic.main.fragment_occasion.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+
+
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
+ */
 
 class OccasionFragment : Fragment(), View.OnClickListener {
 

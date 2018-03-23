@@ -1,4 +1,4 @@
-package com.kosboss.gogift.seekbar
+package com.blacksmithdreamapps.presentgo.seekbar
 
 import android.content.Context
 import android.graphics.Rect
@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 
 /**
- * created by ZhuangGuangquan on  2017/9/9
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
 
 object IndicatorUtils {

@@ -17,6 +17,12 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
 
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
+ */
+
 class GenderFragment : Fragment(), View.OnClickListener {
 
     lateinit var viewPager: ViewPager
@@ -27,9 +33,9 @@ class GenderFragment : Fragment(), View.OnClickListener {
 
     // handling passing here viewPager via eventbus
     var bus = EventBus.getDefault()
+
     @Subscribe
-    public fun setUpViewPager(event : PagerPasserEvent)
-    {
+    public fun setUpViewPager(event: PagerPasserEvent) {
         viewPager = event.viewPager
     }
 
@@ -49,7 +55,7 @@ class GenderFragment : Fragment(), View.OnClickListener {
                     editor.commit()
                     // event bus to track changes
                     val bus = EventBus.getDefault()
-                    bus.post(object : ImageChangeEvent(1){})
+                    bus.post(object : ImageChangeEvent(1) {})
 
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
@@ -59,7 +65,7 @@ class GenderFragment : Fragment(), View.OnClickListener {
                     editor.putString(constants.SEX, constants.SEX_FEMALE)
                     // event bus to track changes
                     val bus = EventBus.getDefault()
-                    bus.post(object : ImageChangeEvent(0){})
+                    bus.post(object : ImageChangeEvent(0) {})
 
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1

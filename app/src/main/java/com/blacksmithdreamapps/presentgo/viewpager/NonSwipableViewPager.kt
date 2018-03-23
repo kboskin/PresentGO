@@ -7,6 +7,13 @@ import android.view.MotionEvent
 import android.view.animation.DecelerateInterpolator
 import android.widget.Scroller
 
+
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
+ */
+
 class NonSwipableViewPager : ViewPager {
 
     constructor(context: Context) : super(context) {

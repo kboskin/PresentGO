@@ -25,6 +25,13 @@ import org.greenrobot.eventbus.EventBus
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
 
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 025 25.02.2018
+ */
+
+
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView: AdView
     lateinit var viewPager: NonSwipableViewPager
@@ -124,7 +131,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_setting -> {
-                startActivity(Intent(MainActivity@this, SettingsActivity::class.java));
+                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
                 return true
             }
         /*R.id.help -> {

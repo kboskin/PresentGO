@@ -1,7 +1,10 @@
-package com.kosboss.gogift.seekbar
+package com.blacksmithdreamapps.presentgo.seekbar
+
 
 /**
- * Created by hp on 001 01.03.2018.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
 
 interface HowToChangeTheText {

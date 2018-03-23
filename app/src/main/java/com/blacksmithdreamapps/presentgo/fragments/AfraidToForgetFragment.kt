@@ -19,6 +19,12 @@ import org.greenrobot.eventbus.Subscribe
 import org.joda.time.DateTime
 import java.util.*
 
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 27 27.02.2018.
+ */
+
 class AfraidToForgetFragment : Fragment(), View.OnClickListener {
 
     // handling passing here viewPager via eventbus

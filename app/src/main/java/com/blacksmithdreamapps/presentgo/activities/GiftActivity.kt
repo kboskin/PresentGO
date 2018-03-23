@@ -11,14 +11,14 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.blacksmithdreamapps.presentgo.Constants
+import com.blacksmithdreamapps.presentgo.DataBaseHelper
 import com.blacksmithdreamapps.presentgo.R
+import com.blacksmithdreamapps.presentgo.SimpleGiftModel
+import com.blacksmithdreamapps.presentgo.settings.SettingsActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.blacksmithdreamapps.presentgo.Constants
-import com.blacksmithdreamapps.presentgo.DataBaseHelper
-import com.blacksmithdreamapps.presentgo.SimpleGiftModel
-import com.blacksmithdreamapps.presentgo.settings.SettingsActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_gift.*
 import kotlinx.android.synthetic.main.content_gift.*
@@ -26,6 +26,12 @@ import java.sql.SQLException
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+
+/**
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 007 7.03.2018
+ */
 
 class GiftActivity : AppCompatActivity() {
 
@@ -482,7 +488,7 @@ class GiftActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_setting -> {
-                startActivity(Intent(MainActivity@this, SettingsActivity::class.java));
+                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
                 return true
             }
             android.R.id.home -> {

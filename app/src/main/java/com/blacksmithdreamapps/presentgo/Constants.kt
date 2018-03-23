@@ -1,8 +1,12 @@
 package com.blacksmithdreamapps.presentgo
 
+
 /**
- * Created by hp on 004 04.03.2018.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
+
 class Constants {
 
     var SHARED_PREFS = "MyPrefs"

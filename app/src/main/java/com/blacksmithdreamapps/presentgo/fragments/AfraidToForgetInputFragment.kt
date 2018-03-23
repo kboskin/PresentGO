@@ -20,13 +20,11 @@ import java.util.*
 
 
 /**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [AfraidToForgetInputFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [AfraidToForgetInputFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
+
 class AfraidToForgetInputFragment : Fragment() {
 
     // handling passing here viewPager via eventbus
@@ -56,7 +54,7 @@ class AfraidToForgetInputFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_fragment_afraid_to_forget_input, container, false)
         // skip calendar integration and show fragment
-        view.show_me_gift.setOnClickListener{
+        view.show_me_gift.setOnClickListener {
             startActivity(Intent(context, GiftActivity::class.java))
         }
         view.button_done_finally.setOnClickListener {

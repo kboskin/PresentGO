@@ -8,21 +8,20 @@ import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
 import com.blacksmithdreamapps.presentgo.events.PagerPasserEvent
-import com.blacksmithdreamapps.presentgo.Constants
 import kotlinx.android.synthetic.main.persons_layout.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
+
 /**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [WhomToGiftFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [WhomToGiftFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
+
 class WhomToGiftFragment : Fragment(), View.OnClickListener {
     lateinit var viewPager: ViewPager
     lateinit var preferences: SharedPreferences
@@ -32,8 +31,7 @@ class WhomToGiftFragment : Fragment(), View.OnClickListener {
 
     // all nulls to manage values
     @Subscribe
-    public fun setUpViewPager(event : PagerPasserEvent)
-    {
+    public fun setUpViewPager(event: PagerPasserEvent) {
         viewPager = event.viewPager
     }
 

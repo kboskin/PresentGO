@@ -4,13 +4,16 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import com.blacksmithdreamapps.presentgo.fragments.*
 import com.blacksmithdreamapps.presentgo.Constants
-import com.kosboss.gogift.fragments.*
+import com.blacksmithdreamapps.presentgo.fragments.*
+
 
 /**
- * Created by hp on 025 25.02.2018.
+ * Developed and designed by Dream Apps Blacksmith
+ * Code author is Boskin Kostya
+ * On 027 27.02.2018.
  */
+
 class PagesAdapter(fm: FragmentManager?, private val viewPager: ViewPager) : FragmentPagerAdapter(fm) {
     private val NUM_ITEMS = 8
 
