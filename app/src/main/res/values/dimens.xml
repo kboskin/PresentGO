@@ -29,4 +29,6 @@
     <dimen name="twelve_dp">12dp</dimen>
     <dimen name="two_hundred_fifty_dp">250dp</dimen>
     <dimen name="forty_dp">40dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

@@ -129,8 +129,8 @@
     <string name="animation_duration">Animation_duration</string>
     <string name="skip_animation">Skip animation between swipes</string>
     <string name="animation">Animation</string>
-    <string name="aaps_settings">Application\'s settings</string>
+    <string name="apps_settings">Application\'s settings</string>
     <string name="add_event">Add event</string>
     <string name="show_gift">Show Gift</string>
-
+    <string name="licence">Licence</string>
 </resources>

@@ -15,8 +15,8 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
+import com.blacksmithdreamapps.presentgo.activities.settings.SettingsActivity
 import com.blacksmithdreamapps.presentgo.events.PagerPasserEvent
-import com.blacksmithdreamapps.presentgo.settings.SettingsActivity
 import com.blacksmithdreamapps.presentgo.viewpager.NonSwipableViewPager
 import com.google.android.gms.ads.*
 import com.kosboss.gogift.viewpager.PagesAdapter
@@ -134,6 +134,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
                 return true
             }
+            R.id.action_credits ->{
+                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java))
+                return true
+            }
         /*R.id.help -> {
             showHelp()
             return true
@@ -166,10 +170,10 @@ class MainActivity : AppCompatActivity() {
 
         sequence.setConfig(config)
 
-        sequence.addSequenceItem(forwardButton,
+        sequence.addSequenceItem(previousButton,
                 getString(R.string.button_back), getString(R.string.got_it_text))
 
-        sequence.addSequenceItem(previousButton,
+        sequence.addSequenceItem(forwardButton,
                 getString(R.string.button_skip), getString(R.string.got_it_text))
 
         sequence.addSequenceItem(main_tool_bar,

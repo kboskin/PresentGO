@@ -15,7 +15,7 @@ import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.DataBaseHelper
 import com.blacksmithdreamapps.presentgo.R
 import com.blacksmithdreamapps.presentgo.SimpleGiftModel
-import com.blacksmithdreamapps.presentgo.settings.SettingsActivity
+import com.blacksmithdreamapps.presentgo.activities.settings.SettingsActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds

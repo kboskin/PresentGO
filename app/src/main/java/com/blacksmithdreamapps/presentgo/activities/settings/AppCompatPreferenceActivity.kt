@@ -1,4 +1,4 @@
-package com.blacksmithdreamapps.presentgo.settings
+package com.blacksmithdreamapps.presentgo.activities.settings
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -7,9 +7,11 @@ import android.support.annotation.LayoutRes
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatDelegate
 import android.support.v7.widget.Toolbar
+import android.util.TypedValue
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import com.blacksmithdreamapps.presentgo.R
 
 
 /**
@@ -23,6 +25,13 @@ abstract class AppCompatPreferenceActivity : PreferenceActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         delegate.installViewFactory()
         delegate.onCreate(savedInstanceState)
+
+
+        // it's lol:)
+        val horizontalMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2f, resources.displayMetrics).toInt()
+        val verticalMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2f, resources.displayMetrics).toInt()
+        val topMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (resources.getDimension(R.dimen.activity_vertical_margin).toInt() + 30).toFloat(), resources.displayMetrics).toInt()
+        listView.setPadding(horizontalMargin, topMargin, horizontalMargin, verticalMargin)
         super.onCreate(savedInstanceState)
     }
 
