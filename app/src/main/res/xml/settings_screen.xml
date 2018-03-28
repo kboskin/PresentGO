@@ -4,12 +4,13 @@
     <PreferenceCategory
         android:title="@string/apps_settings" >
         <SwitchPreference
-            android:key="@string/tutorial"
+            android:key="Tutorial"
             android:summary="@string/show_tutorial"
-            android:title="@string/tutorial" />
+            android:title="@string/tutorial"
+            android:defaultValue="false"/>
 
         <SwitchPreference
-            android:key="@string/animation_duration"
+            android:key="Animation"
             android:summary="@string/skip_animation"
             android:title="@string/animation"/>
     </PreferenceCategory>

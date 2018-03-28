@@ -125,12 +125,12 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="tutorial">Tutorial</string>
-    <string name="show_tutorial">Show tutorial each time application is running</string>
+    <string name="show_tutorial">Show tutorial one more time on the next time application is running</string>
     <string name="animation_duration">Animation_duration</string>
     <string name="skip_animation">Skip animation between swipes</string>
     <string name="animation">Animation</string>
     <string name="apps_settings">Application\'s settings</string>
-    <string name="add_event">Add event</string>
+    <string name="add_event">Add a reminder</string>
     <string name="show_gift">Show Gift</string>
     <string name="licence">Licence</string>
 </resources>

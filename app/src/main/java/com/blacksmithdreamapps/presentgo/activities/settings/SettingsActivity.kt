@@ -1,16 +1,16 @@
 package com.blacksmithdreamapps.presentgo.activities.settings
 
+import android.content.Context
 import android.os.Bundle
+import android.preference.Preference
+import android.preference.SwitchPreference
 import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
 import kotlinx.android.synthetic.main.settings_toolbar.*
-
-
-
-
 
 
 /**
@@ -45,7 +45,41 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         // enable back home button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true);
 
+        val constants = Constants()
+
+
+        val tutorial = findPreference("Tutorial") as SwitchPreference
+        tutorial.isChecked = false
+        // trick to set value to back
+        // tutorial.isEnabled = !tutorial.isEnabled
+        tutorial.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
+            if (newValue as Boolean == true) {
+                setInPrefs(true, constants.PREFS_TUTORIAL, constants)
+                setInPrefs(true, constants.PREFS_TUTORIAL_IS_SHOWN, constants)
+                tutorial.setDefaultValue(false)
+                true
+            } else {
+                setInPrefs(false, constants.PREFS_TUTORIAL, constants)
+                setInPrefs(false, constants.PREFS_TUTORIAL_IS_SHOWN, constants)
+                true
+            }
+        }
+
+        // setting animation showing in preferences
+        val animation = findPreference("Animation") as SwitchPreference
+        animation.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
+
+            if (newValue.toString() == "true") {
+                setInPrefs(true, constants.PREFS_ANIMATION, constants)
+                true
+            } else {
+                setInPrefs(false, constants.PREFS_ANIMATION, constants)
+                true
+            }
+        }
+
     }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item!!.itemId) {
             android.R.id.home -> {
@@ -59,5 +93,12 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         }*/
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun setInPrefs(b: Boolean?, nameOfPrefs: String, constants: Constants) {
+        val preferences = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putBoolean(nameOfPrefs, b!!)
+        editor.apply()
     }
 }

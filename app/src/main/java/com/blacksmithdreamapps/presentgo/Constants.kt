@@ -51,4 +51,8 @@ class Constants {
     var CLOSE_ACQUAINTANCE = "Acquaintance"
     var CLOSE_COMRADE = "Comrade"
     var CLOSE_CLOSE_PERSON = "Close"
+
+    var PREFS_ANIMATION = "Animation"
+    var PREFS_TUTORIAL = "Tutorial"
+    var PREFS_TUTORIAL_IS_SHOWN = "false"
 }

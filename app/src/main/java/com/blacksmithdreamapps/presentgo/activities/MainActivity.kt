@@ -114,7 +114,27 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        setTutorial()
+
+        val constants = Constants()
+        val prefs = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        // check if tutorial must be shown by settings of app
+
+        val preferences = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val allEntries = preferences.getAll()
+        for (entry in allEntries.entries) {
+            Log.d("PrefsValuesActivity", entry.key + ": " + entry.value.toString())
+        }
+
+        if (prefs.getBoolean(constants.PREFS_TUTORIAL, true)) {
+            showTutorial()
+            Log.d("Prefs", (prefs.getBoolean(constants.PREFS_TUTORIAL, false)).toString())
+            val editor = prefs.edit();
+            editor.putBoolean(constants.PREFS_TUTORIAL, false)
+            editor.apply()
+        }
+
+        Log.d("Prefs", (prefs.getBoolean(constants.PREFS_TUTORIAL, false)).toString())
+        // if it not must be shown process
     }
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
@@ -134,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
                 return true
             }
-            R.id.action_credits ->{
+            R.id.action_credits -> {
                 startActivity(Intent(MainActivity@ this, CreditsActivity::class.java))
                 return true
             }
@@ -159,13 +179,12 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private fun setTutorial() {
+    private fun showTutorial() {
         // sequence example
         val config = ShowcaseConfig()
         config.delay = 500 // half second between each showcase view
         config.dismissTextColor = resources.getColor(R.color.colorGreenBackground) // green text
         config.fadeDuration = 700 // fade anim duration
-
         val sequence = MaterialShowcaseSequence(this)
 
         sequence.setConfig(config)
