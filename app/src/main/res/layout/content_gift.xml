@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_lightblue"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.kosboss.gogift.activities.GiftActivity"
+    tools:context=".activities.GiftActivity"
     tools:showIn="@layout/activity_gift">
 
 
@@ -30,7 +30,7 @@
         android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="@dimen/thirty_five_dp"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="18sp"
+        android:textSize="@dimen/eighteen_sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gift_title" />
 
@@ -39,9 +39,9 @@
         android:layout_width="@dimen/two_hundred_dp"
         android:layout_height="@dimen/twenty_five_dp"
         android:layout_marginStart="@dimen/one_hundred_dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/eight_dp"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="18sp"
+        android:textSize="@dimen/eighteen_sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gift_description_0" />
 
@@ -52,7 +52,7 @@
         android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="@dimen/eight_dp"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="18sp"
+        android:textSize="@dimen/eighteen_sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gift_description_1" />
 

@@ -13,7 +13,7 @@
         android:layout_marginTop="@dimen/fifty_dp"
         android:text="@string/afraid_to_forget"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="30sp"
+        android:textSize="@dimen/thirty_sp"
         android:textStyle="bold" />
 
 
@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/afraid_to_forget"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginTop="@dimen/five_dp"
         android:text="@string/choose_the_date_and_we_will_remind_you"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="14sp"
+        android:textSize="@dimen/sixteen_sp"
         android:textStyle="italic" />
 
 
@@ -37,7 +37,7 @@
         android:layout_below="@id/afraid_to_forget_hint"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/five_dp"
         android:layout_marginTop="@dimen/seventy_five_dp"
         android:src="@drawable/calendar" />
 
@@ -53,7 +53,7 @@
         app:mnpMinValue="1"
         app:mnpSeparatorColor="@color/colorAccent"
         app:mnpTextColor="@color/mostlyTextColor"
-        app:mnpTextSize="14sp"
+        app:mnpTextSize="@dimen/sixteen_sp"
         app:mnpTextStyle="bold"
         app:mnpValue="10"
         app:mnpWrapped="false" />
@@ -70,7 +70,7 @@
         app:mnpMinValue="1"
         app:mnpSeparatorColor="@color/colorAccent"
         app:mnpTextColor="@color/mostlyTextColor"
-        app:mnpTextSize="14sp"
+        app:mnpTextSize="@dimen/sixteen_sp"
         app:mnpTextStyle="bold"
         app:mnpValue="10"
         app:mnpWrapped="false" />
@@ -84,5 +84,5 @@
         android:textColor="@color/colorWhite"
         android:background="@drawable/button_done_background"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="@dimen/thirty_dp"/>
 </RelativeLayout>

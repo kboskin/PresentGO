@@ -86,7 +86,6 @@ class WhatBudgetFragment : Fragment(), View.OnClickListener {
 
             @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: IndicatorSeekBar?, progress: Int, progressFloat: Float, fromUserTouch: Boolean) {
-                val prices: Array<out String>? = resources.getStringArray(R.array.prices)
 
                 when (progress) {
                     15 -> budget = constants.BUDGET_MINIMAL

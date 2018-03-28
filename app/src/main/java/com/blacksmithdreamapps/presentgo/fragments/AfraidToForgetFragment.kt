@@ -117,7 +117,6 @@ class AfraidToForgetFragment : Fragment(), View.OnClickListener {
     companion object {
         fun newInstance(viewPager: ViewPager, constants: Constants): AfraidToForgetFragment {
             val fragment = AfraidToForgetFragment()
-            val args = Bundle()
             fragment.constants = constants
             fragment.viewPager = viewPager
             return fragment

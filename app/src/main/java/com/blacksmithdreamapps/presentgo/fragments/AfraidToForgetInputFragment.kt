@@ -119,7 +119,6 @@ class AfraidToForgetInputFragment : Fragment() {
     companion object {
         fun newInstance(viewPager: ViewPager): AfraidToForgetInputFragment {
             val fragment = AfraidToForgetInputFragment()
-            val args = Bundle()
             fragment.viewPager = viewPager
             return fragment
         }

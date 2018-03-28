@@ -22,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginTop="@dimen/five_dp"
         android:text="@string/choose_person_status_in_your_life"
         android:textStyle="italic"
         android:textColor="@color/mostlyTextColor"
         android:layout_below="@+id/how_close_are_you"
-        android:textSize="14sp" />
+        android:textSize="@dimen/sixteen_sp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/calendarImageView"

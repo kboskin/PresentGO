@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/fifty_dp"
         android:text="@string/what_budget"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="30sp"
+        android:textSize="@dimen/thirty_sp"
         android:textStyle="bold" />
 
     <TextView
@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/budget"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginTop="@dimen/five_dp"
         android:text="@string/choose_the_amount_you_want_to_spend"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="14sp"
+        android:textSize="@dimen/sixteen_sp"
         android:textStyle="italic" />
 
     <ImageView
