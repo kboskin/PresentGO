@@ -1,9 +1,9 @@
 <resources>
     <string-array name="prices">
-        <item>0…15</item>
-        <item>15…86</item>
-        <item>86…158</item>
-        <item>158…229</item>
-        <item>229…300 and more</item>
+        <item>0…15$</item>
+        <item>15…86$</item>
+        <item>86…158$</item>
+        <item>158…229$</item>
+        <item>229…300$ и более</item>
     </string-array>
 </resources>

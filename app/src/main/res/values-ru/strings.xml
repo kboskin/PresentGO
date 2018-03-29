@@ -39,7 +39,7 @@
     <string name="afraid_to_forget"> Боитесь забыть? </string>
     <string name="previous"> Назад </string>
     <string name="next"> Далее </string>
-    <string name="skip_this">Далее</string>
+    <string name="skip_this">Пропуск</string>
     <string name="title_and_message_of_event_in_calendar">Название и описание события в календаре</string>
     <string name="message_title">название сообщения</string>
     <string name="done">Готово</string>
