@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_lightblue"
+    tools:context="com.blacksmithdreamapps.presentgo.activities.ChooseLangActivity">
+
+    <TextView
+        android:id="@+id/title_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fifty_dp"
+        android:text="@string/choose_your_language"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/thirty_sp" />
+
+    <TextView
+        android:id="@+id/afraid_to_forget_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_lang"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/five_dp"
+        android:text="@string/tap_icon_to_choose_language"
+        android:textColor="@color/mostlyTextColor"
+        android:textSize="@dimen/sixteen_sp"
+        android:textStyle="italic" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/en_lang_image_view"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_alignStart="@+id/title_lang"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/ten_dp"
+        android:src="@drawable/britain_ico"
+        app:civ_border_color="@color/mostlyTextColor"
+        app:civ_border_width="@dimen/one_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ru_lang_image_view"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_alignEnd="@+id/title_lang"
+        android:layout_alignTop="@+id/en_lang_image_view"
+        android:layout_marginStart="@dimen/ten_dp"
+        android:src="@drawable/russian_ico"
+        app:civ_border_color="@color/mostlyTextColor"
+        app:civ_border_width="@dimen/one_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</RelativeLayout>

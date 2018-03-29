@@ -453,7 +453,7 @@ class GiftActivity : AppCompatActivity() {
         val randomItem = objectsArrayList[Random().nextInt(objectsArrayList.size)]
 
         // set title
-        gift_title.text = "Suggested gift is " + randomItem.name.toUpperCase()
+        gift_title.text = getString(R.string.suggested_gift) + " " + randomItem.name.toUpperCase()
 
         // set description and parse string from database in one line
         val descriptionsArray = randomItem.description.split(",") as ArrayList<String>

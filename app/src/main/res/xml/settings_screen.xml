@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="@string/apps_settings" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/apps_settings">
         <SwitchPreference
+            android:defaultValue="false"
             android:key="Tutorial"
             android:summary="@string/show_tutorial"
-            android:title="@string/tutorial"
-            android:defaultValue="false"/>
+            android:title="@string/tutorial" />
 
         <SwitchPreference
             android:key="Animation"
             android:summary="@string/skip_animation"
-            android:title="@string/animation"/>
+            android:title="@string/animation" />
+        <ListPreference
+            android:dialogTitle="@string/choose_your_language"
+            android:entries="@array/languages"
+            android:entryValues="@array/languages"
+            android:key="Languages"
+            android:summary="@string/change_lang_of_app"
+            android:title="@string/change_language" />
     </PreferenceCategory>
 </PreferenceScreen>

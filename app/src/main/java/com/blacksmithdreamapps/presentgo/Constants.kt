@@ -55,4 +55,6 @@ class Constants {
     var PREFS_ANIMATION = "Animation"
     var PREFS_TUTORIAL = "Tutorial"
     var PREFS_TUTORIAL_IS_SHOWN = "false"
+    var PREFS_LANGUAGE = "Language"
+    var PREFS_LANGUAGE_WAS_SET = "Language_set"
 }

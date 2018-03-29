@@ -4,9 +4,13 @@
         android:id="@+id/action_setting"
         android:title="@string/settings" />
     <item
-        android:id="@+id/action_credits"
-        android:title="@string/about_application" />
+        android:id="@+id/action_language"
+        android:title="@string/change_language" />
     <item
         android:id="@+id/action_contact"
         android:title="@string/contact_me" />
+
+    <item
+        android:id="@+id/action_credits"
+        android:title="@string/about_application" />
 </menu>

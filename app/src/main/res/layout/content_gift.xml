@@ -18,7 +18,7 @@
         android:layout_marginTop="@dimen/fifty_dp"
         android:minHeight="@dimen/one_hundred_dp"
         android:textColor="@color/mostlyTextColor"
-        android:textSize="30sp"
+        android:textSize="@dimen/thirty_sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

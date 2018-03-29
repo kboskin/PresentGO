@@ -158,6 +158,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(MainActivity@ this, CreditsActivity::class.java))
                 return true
             }
+            R.id.action_language -> {
+                startActivity(Intent(MainActivity@ this, ChooseLangActivity::class.java))
+                return true
+            }
         /*R.id.help -> {
             showHelp()
             return true

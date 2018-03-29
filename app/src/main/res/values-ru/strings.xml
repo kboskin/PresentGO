@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GoGift</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="family">Семья</string>
+    <string name="friends">Друзья</string>
+    <string name="colleagues">Коллеги</string>  
+    <string name="beloved">Любимые</string>
+    <string name="superiors">Начальство</string>
+    <string name="the_man_i_hate">Несносные</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="to_whom_is_the_gift">Кому подарок?</string>
+    <string name="choose_gender">Выберите пол</string>
+    <string name="what_budget">Какой бюджет?</string>
+    <string name="choose_the_amount_you_want_to_spend">Выберите сумму, которую хотите потратить</string>
+    <string name="infinity">∞</string>
+    <string name="child">Ребенок</string>
+    <string name="teenager">Подросток</string>
+    <string name="adult">Взрослый</string>
+    <string name="elderly">Пожилой</string>
+    <string name="what_is_the_age">Какой возраст?</string>
+    <string name="birthday">День рождения</string>
+    <string name="anniversary">Годовщина</string>
+    <string name="graduation">Выпускной</string>
+    <string name="holiday">Праздники</string>
+    <string name="wedding">Свадьба</string>
+    <string name="just_because">Просто потому что</string>
+    <string name="what_occasion"> Какой повод?</string>
+    <string name="choose_the_occasion_for_gift_giving">Выберите событие для подарка</string>
+    <string name="tap_icon_to_choose_category">Нажмите на иконку, чтобы выбрать категорию</string>
+       
+    <string name="simply_decide_what_sex_of_person">Нужно выбрать пол человека</string>
+    <string name="lucky_guy_has_an_age_for_sure"> У счастливчика наверняка есть возраст!</string>
+    <string name="how_close_are_you">Насколько вы близки?</string>
+    <string name="choose_person_status_in_your_life">Выберите статус человека в вашей жизни</string>
+    <string name="short_description"> краткое описание </string>
+    <string name="choose_the_date_and_we_will_remind_you">Выберите дату, и мы напомним</string>
+    <string name="afraid_to_forget"> Боитесь забыть? </string>
+    <string name="previous"> Назад </string>
+    <string name="next"> Далее </string>
+    <string name="skip_this">Далее</string>
+    <string name="title_and_message_of_event_in_calendar">Название и описание события в календаре</string>
+    <string name="message_title">Название сообщения</string>
+    <string name="done">Готово</string>
+    <string name="title_activity_gift"> GiftActivity </string>
+    <string name="settings">Настройки</string>
+    <string name="about_application">О приложении</string>
+    <string name="contact_me">Оставить отзыв</string>
+    <string name="button_back">Используйте эту кнопку для возврата</string>
+    <string name="button_skip">Используйте эту кнопку, чтобы пропустить текущий шаг и перейти к слудующему</string>
+    <string name="got_it_text">Понятно</string>
+    <string name="title_descr_etc">Заголовок, подсказка и настройки</string>
+    <string name="view_pager_hint"> Просто нажмите значок, который больше всего подходит </string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="pref_header_general">Общие</string>
+    <string name="pref_title_social_recommendations"> Включить социальные рекомендации </string>
+    <string name="pref_description_social_recommendations"> Рекомендации для общения с людьми на основе истории сообщений</string>
+    <string name="pref_title_display_name"> Отображаемое имя </string>
+    <string name="pref_default_display_name"> John Smith </string>
+    <string name="pref_title_add_friends_to_messages"> Добавить друзей в сообщения </string>
+    <string-array name="pref_example_list_titles">
+                
+        <item> Всегда </item>
+                
+        <item> Когда возможно </item>
+                
+        <item> Никогда </item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+                
+        <item> 1 </item>
+                
+        <item> 0 </item>
+                
+        <item> 1 </item>
+    </string-array>
+
+    <string name="pref_header_data_sync"> Cинхронизация </string>
+
+    <string name="pref_title_sync_frequency"> Частота синхронизации </string>
+    <string-array name="pref_sync_frequency_titles">
+                
+        <item> 15 минут </item>
+                
+        <item> 30 минут </item>
+                
+        <item> 1 час </item>
+                
+        <item> 3 часа </item>
+                
+        <item> 6 часов </item>
+                
+        <item> Никогда </item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+                
+        <item> 15 </item>
+                
+        <item> 30 </item>
+                
+        <item> 60 </item>
+                
+        <item> 180 </item>
+                
+        <item> 360 </item>
+                
+        <item> 1 </item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+                
+        <item> Запись 1 </item>
+                
+        <item> Вступление 2 </item>
+                
+        <item> Вступление 3 </item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+                
+        <item> 1 </item>
+                
+        <item> 2 </item>
+                
+        <item> 3 </item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings"> Настройки синхронизации системы </string>
+
+    <string name="pref_header_notifications"> Уведомления </string>
+
+    <string name="pref_title_new_message_notifications"> Уведомления о новых сообщениях </string>
+
+    <string name="pref_title_ringtone"> Ringtone </string>
+    <string name="pref_ringtone_silent"> Silent </string>
+
+    <string name="pref_title_vibrate"> Vibrate </string>
+    <string name="tutorial">Обучение по приложению</string>
+    <string name="show_tutorial">Показать туториал еще раз при следующем запуске приложения</string>
+    <string name="animation_duration">Animation_duration</string>
+    <string name="skip_animation"> Пропустить анимацию при переходе между страницами</string>
+    <string name="animation">Анимация</string>
+    <string name="apps_settings">Настройки приложения</string>
+    <string name="add_event">Добавить заметку</string>
+    <string name="show_gift">Показать подарок</string>
+    <string name="license"> Лицензия </string>
+    <string name="choose_your_language">Выберите Ваш язык</string>
+    <string name="change_language">Изменить язык</string>
+    <string name="tap_icon_to_choose_language">Нажмите значок, чтобы выбрать язык</string>
+    <string name="change_lang_of_app">Изменить язык приложения</string>
+    <string name="suggested_gift">Предлагаем подарок </string>
+</resources>

@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,8 +13,6 @@
         android:textColor="@color/mostlyTextColor"
         android:textSize="@dimen/thirty_sp"
         android:textStyle="bold" />
-
-
 <TextView
         android:id="@+id/afraid_to_forget_hint"
         android:layout_width="wrap_content"
@@ -82,7 +79,7 @@
         android:layout_width="@dimen/one_hundred_dp"
         android:layout_height="@dimen/fifty_dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/afraid_to_forget_hint"
+        android:layout_alignStart="@+id/afraid_to_forget"
         android:layout_marginBottom="@dimen/thirty_dp"
         android:background="@drawable/button_done_background"
         android:text="@string/add_event"
@@ -92,9 +89,8 @@
         android:id="@+id/show_me_gift"
         android:layout_width="@dimen/one_hundred_dp"
         android:layout_height="@dimen/fifty_dp"
-        android:layout_alignBaseline="@+id/button_done_finally"
-        android:layout_alignBottom="@+id/button_done_finally"
         android:layout_alignEnd="@+id/afraid_to_forget"
+        android:layout_alignTop="@+id/button_done_finally"
         android:background="@drawable/button_show_me_background"
         android:text="@string/show_gift"
         android:textColor="@color/colorWhite" />

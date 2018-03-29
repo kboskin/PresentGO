@@ -1,7 +1,9 @@
 package com.blacksmithdreamapps.presentgo.activities.settings
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.preference.ListPreference
 import android.preference.Preference
 import android.preference.SwitchPreference
 import android.util.TypedValue
@@ -10,7 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
+import com.blacksmithdreamapps.presentgo.activities.MainActivity
 import kotlinx.android.synthetic.main.settings_toolbar.*
+
+
 
 
 /**
@@ -48,6 +53,9 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         val constants = Constants()
 
 
+        val language = findPreference("Languages") as ListPreference
+        language.value = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(constants.PREFS_LANGUAGE, "")
+
         val tutorial = findPreference("Tutorial") as SwitchPreference
         tutorial.isChecked = false
         // trick to set value to back
@@ -56,11 +64,12 @@ class SettingsActivity : AppCompatPreferenceActivity() {
             if (newValue as Boolean == true) {
                 setInPrefs(true, constants.PREFS_TUTORIAL, constants)
                 setInPrefs(true, constants.PREFS_TUTORIAL_IS_SHOWN, constants)
-                tutorial.setDefaultValue(false)
+                startMainActivity()
                 true
             } else {
                 setInPrefs(false, constants.PREFS_TUTORIAL, constants)
                 setInPrefs(false, constants.PREFS_TUTORIAL_IS_SHOWN, constants)
+                startMainActivity()
                 true
             }
         }
@@ -71,9 +80,11 @@ class SettingsActivity : AppCompatPreferenceActivity() {
 
             if (newValue.toString() == "true") {
                 setInPrefs(true, constants.PREFS_ANIMATION, constants)
+                startMainActivity()
                 true
             } else {
                 setInPrefs(false, constants.PREFS_ANIMATION, constants)
+                startMainActivity()
                 true
             }
         }
@@ -84,6 +95,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         return when (item!!.itemId) {
             android.R.id.home -> {
                 // close this activity and return to preview activity (if there is any)
+                startMainActivity()
                 finish();
                 true
             }
@@ -100,5 +112,9 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         val editor = preferences.edit()
         editor.putBoolean(nameOfPrefs, b!!)
         editor.apply()
+    }
+    private fun startMainActivity() {
+        startActivity(Intent(this@SettingsActivity, MainActivity::class.java))
+        finish()
     }
 }
