@@ -18,8 +18,8 @@ import com.blacksmithdreamapps.presentgo.R
 import com.blacksmithdreamapps.presentgo.activities.settings.SettingsActivity
 import com.blacksmithdreamapps.presentgo.events.PagerPasserEvent
 import com.blacksmithdreamapps.presentgo.viewpager.NonSwipableViewPager
+import com.blacksmithdreamapps.presentgo.viewpager.PagesAdapter
 import com.google.android.gms.ads.*
-import com.kosboss.gogift.viewpager.PagesAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
@@ -115,25 +115,24 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        val constants = Constants()
-        val prefs = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val prefs = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         // check if tutorial must be shown by settings of app
 
-        val preferences = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val preferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         val allEntries = preferences.getAll()
         for (entry in allEntries.entries) {
             Log.d("PrefsValuesActivity", entry.key + ": " + entry.value.toString())
         }
 
-        if (prefs.getBoolean(constants.PREFS_TUTORIAL, true)) {
+        if (prefs.getBoolean(Constants.PREFS_TUTORIAL, true)) {
             showTutorial()
-            Log.d("Prefs", (prefs.getBoolean(constants.PREFS_TUTORIAL, false)).toString())
+            Log.d("Prefs", (prefs.getBoolean(Constants.PREFS_TUTORIAL, false)).toString())
             val editor = prefs.edit();
-            editor.putBoolean(constants.PREFS_TUTORIAL, false)
+            editor.putBoolean(Constants.PREFS_TUTORIAL, false)
             editor.apply()
         }
 
-        Log.d("Prefs", (prefs.getBoolean(constants.PREFS_TUTORIAL, false)).toString())
+        Log.d("Prefs", (prefs.getBoolean(Constants.PREFS_TUTORIAL, false)).toString())
         // if it not must be shown process
     }
 
@@ -171,15 +170,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setDefaultPrefs() {
-        var constants = Constants()
-        val prefs = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val prefs = getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         val editor = prefs.edit();
-        editor.putString(constants.CLOSE, "")
-        editor.putString(constants.OCCASION, "")
-        editor.putString(constants.BUDGET, "")
-        editor.putString(constants.AGE, "")
-        editor.putString(constants.CATEGORY, "")
-        editor.putString(constants.SEX, "")
+        editor.putString(com.blacksmithdreamapps.presentgo.Constants.CLOSE, "")
+        editor.putString(com.blacksmithdreamapps.presentgo.Constants.OCCASION, "")
+        editor.putString(com.blacksmithdreamapps.presentgo.Constants.BUDGET, "")
+        editor.putString(com.blacksmithdreamapps.presentgo.Constants.AGE, "")
+        editor.putString(com.blacksmithdreamapps.presentgo.Constants.CATEGORY, "")
+        editor.putString(com.blacksmithdreamapps.presentgo.Constants.SEX, "")
         editor.apply()
     }
 

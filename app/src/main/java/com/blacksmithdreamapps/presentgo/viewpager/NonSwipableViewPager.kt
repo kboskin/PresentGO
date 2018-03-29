@@ -53,14 +53,13 @@ class NonSwipableViewPager : ViewPager {
     inner class MyScroller(context: Context) : Scroller(context, DecelerateInterpolator()) {
 
         override fun startScroll(startX: Int, startY: Int, dx: Int, dy: Int, duration: Int) {
-            val constants = Constants()
 
-            val preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+            val preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
             val allEntries = preferences.getAll()
             for (entry in allEntries.entries) {
                 Log.d("PrefsValuesPager", entry.key + ": " + entry.value.toString())
             }
-            val skipAnim = preferences.getBoolean(constants.PREFS_ANIMATION, false)
+            val skipAnim = preferences.getBoolean(Constants.PREFS_ANIMATION, false)
             Log.d("SomeTag", "skip_anim" + skipAnim.toString())
             if (skipAnim) {
                 super.startScroll(startX, startY, dx, dy, 0 /*1 secs*/)

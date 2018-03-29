@@ -24,11 +24,10 @@ class SplashActivity : AppCompatActivity() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        val constants = Constants()
-        if (isLangSet(constants)) {
+        if (isLangSet()) {
 
             when {
-                prefs!!.getString(constants.PREFS_LANGUAGE, "") == "en" -> {
+                prefs!!.getString(Constants.PREFS_LANGUAGE, "") == "en" -> {
                     val locale = Locale("en")
                     Locale.setDefault(locale)
                     val config = Configuration()
@@ -36,10 +35,8 @@ class SplashActivity : AppCompatActivity() {
                     baseContext.resources.updateConfiguration(config,
                             baseContext.resources.displayMetrics)
 
-                    Log.d("isHere", "inEN")
-
                 }
-                prefs!!.getString(constants.PREFS_LANGUAGE, "") == "ru" -> {
+                prefs!!.getString(Constants.PREFS_LANGUAGE, "") == "ru" -> {
                     // Create a new Locale object
                     val locale = Locale("ru")
                     Locale.setDefault(locale)
@@ -52,9 +49,8 @@ class SplashActivity : AppCompatActivity() {
                             config,
                             resources.displayMetrics
                     )
-                    Log.d("isHere", "inRU")
                 }
-                else -> Log.d("isHere", "inElse")
+                else -> {}
             }
             startIntent = Intent(this, MainActivity::class.java)
             startActivity(startIntent)
@@ -68,9 +64,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
 
-    private fun isLangSet(constants: Constants): Boolean {
-        prefs = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+    private fun isLangSet(): Boolean {
+        prefs = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         Log.d("Lang is", Locale.getDefault().language)
-        return prefs!!.getBoolean(constants.PREFS_LANGUAGE_WAS_SET, false)
+        return prefs!!.getBoolean(Constants.PREFS_LANGUAGE_WAS_SET, false)
     }
 }

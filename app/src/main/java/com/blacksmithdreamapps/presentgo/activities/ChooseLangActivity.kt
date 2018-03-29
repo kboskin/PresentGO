@@ -22,12 +22,12 @@ class ChooseLangActivity : AppCompatActivity(), View.OnClickListener {
         en_lang_image_view.setOnClickListener(this)
     }
 
-    private fun setLocalization(langId: String, constants: Constants) {
+    private fun setLocalization(langId: String) {
         // set localization into shared prefs
-        val preferences = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val preferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         val editor = preferences.edit();
-        editor.putString(constants.PREFS_LANGUAGE, langId)
-        editor.putBoolean(constants.PREFS_LANGUAGE_WAS_SET, true)
+        editor.putString(Constants.PREFS_LANGUAGE, langId)
+        editor.putBoolean(Constants.PREFS_LANGUAGE_WAS_SET, true)
         editor.apply()
 
         val locale = Locale(langId)
@@ -45,16 +45,15 @@ class ChooseLangActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         if (p0 != null) {
-            val constants = Constants()
             when {
                 p0.id == en_lang_image_view.id -> {
                     Log.d("LangTag", "En")
-                    setLocalization("en", constants)
+                    setLocalization("en")
                     startMainActivity()
                 }
                 p0.id == ru_lang_image_view.id -> {
                     Log.d("LangTag", "RU")
-                    setLocalization("ru", constants)
+                    setLocalization("ru")
                     startMainActivity()
                 }
                 else -> {

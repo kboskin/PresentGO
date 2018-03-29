@@ -64,13 +64,11 @@ class GiftActivity : AppCompatActivity() {
         // db creation
         val db = myDbHelper.handleDb()
 
-
-        val constants = Constants()
         // hashMap to store all the prefs values
         val prefsHashMap = HashMap<String, String>()
 
         // writing values to hm
-        for (entry in getSharedPreferences(constants.SHARED_PREFS, MODE_PRIVATE).all.entries) {
+        for (entry in getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).all.entries) {
             prefsHashMap.put(entry.key.toString(), entry.value.toString())
             Log.d("HashMapValues", entry.key + ": " + entry.value.toString())
         }
@@ -81,54 +79,54 @@ class GiftActivity : AppCompatActivity() {
         // set of variables to trigger state, what the hell am i doing....
         var isFirstTime = true
         when {
-            !prefsHashMap[constants.CATEGORY].equals("") -> {
+            !prefsHashMap[Constants.CATEGORY].equals("") -> {
                 when {
-                    prefsHashMap[constants.CATEGORY].equals(constants.CATEGORY_FAMILY) -> {
+                    prefsHashMap[Constants.CATEGORY].equals(Constants.CATEGORY_FAMILY) -> {
                         if (isFirstTime) {
-                            query += constants.CATEGORY_FAMILY + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CATEGORY_FAMILY + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CATEGORY_FAMILY + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CATEGORY_FAMILY + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CATEGORY].equals(constants.CATEGORY_FRIENDS) -> {
+                    prefsHashMap[Constants.CATEGORY].equals(Constants.CATEGORY_FRIENDS) -> {
                         if (isFirstTime) {
-                            query += constants.CATEGORY_FRIENDS + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CATEGORY_FRIENDS + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CATEGORY_FRIENDS + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CATEGORY_FRIENDS + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CATEGORY].equals(constants.CATEGORY_COLLEAGUES) -> {
+                    prefsHashMap[Constants.CATEGORY].equals(Constants.CATEGORY_COLLEAGUES) -> {
                         if (isFirstTime) {
-                            query += constants.CATEGORY_COLLEAGUES + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CATEGORY_COLLEAGUES + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CATEGORY_COLLEAGUES + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CATEGORY_COLLEAGUES + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CATEGORY].equals(constants.CATEGORY_BELOVED) -> {
+                    prefsHashMap[Constants.CATEGORY].equals(Constants.CATEGORY_BELOVED) -> {
                         if (isFirstTime) {
-                            query += constants.CATEGORY_BELOVED + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CATEGORY_BELOVED + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CATEGORY_BELOVED + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CATEGORY_BELOVED + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CATEGORY].equals(constants.CATEGORY_SUPERIORS) -> {
+                    prefsHashMap[Constants.CATEGORY].equals(Constants.CATEGORY_SUPERIORS) -> {
                         if (isFirstTime) {
-                            query += constants.CATEGORY_SUPERIORS + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CATEGORY_SUPERIORS + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CATEGORY_SUPERIORS + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CATEGORY_SUPERIORS + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CATEGORY].equals(constants.CATEGORY_HATED) -> {
+                    prefsHashMap[Constants.CATEGORY].equals(Constants.CATEGORY_HATED) -> {
                         if (isFirstTime) {
-                            query += constants.CATEGORY_HATED + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CATEGORY_HATED + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CATEGORY_HATED + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CATEGORY_HATED + " " + "=" + "'" + "true" + "'"
                         }
                     }
                 }
@@ -136,8 +134,8 @@ class GiftActivity : AppCompatActivity() {
             else -> {
                 Log.d("inElse", "true")
                 // random list of categories
-                val list = arrayOf(constants.CATEGORY_BELOVED, constants.CATEGORY_COLLEAGUES, constants.CATEGORY_FAMILY,
-                        constants.CATEGORY_FRIENDS, constants.CATEGORY_HATED, constants.CATEGORY_SUPERIORS)
+                val list = arrayOf(Constants.CATEGORY_BELOVED, Constants.CATEGORY_COLLEAGUES, Constants.CATEGORY_FAMILY,
+                        Constants.CATEGORY_FRIENDS, Constants.CATEGORY_HATED, Constants.CATEGORY_SUPERIORS)
                 if (isFirstTime) {
                     query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
                     isFirstTime = false
@@ -147,38 +145,38 @@ class GiftActivity : AppCompatActivity() {
             }
         }
         when {
-            !prefsHashMap[constants.AGE].equals("") -> {
+            !prefsHashMap[Constants.AGE].equals("") -> {
                 when {
-                    prefsHashMap[constants.AGE].equals(constants.AGE_CHILD) -> {
+                    prefsHashMap[Constants.AGE].equals(Constants.AGE_CHILD) -> {
                         if (isFirstTime) {
-                            query += constants.AGE_CHILD + " " + "=" + "'" + "true" + "'"
+                            query += Constants.AGE_CHILD + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.AGE_CHILD + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.AGE_CHILD + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.AGE].equals(constants.AGE_TEEN) -> {
+                    prefsHashMap[Constants.AGE].equals(Constants.AGE_TEEN) -> {
                         if (isFirstTime) {
-                            query += constants.AGE_TEEN + " " + "=" + "'" + "true" + "'"
+                            query += Constants.AGE_TEEN + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.AGE_TEEN + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.AGE_TEEN + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.AGE].equals(constants.AGE_ADULT) -> {
+                    prefsHashMap[Constants.AGE].equals(Constants.AGE_ADULT) -> {
                         if (isFirstTime) {
-                            query += constants.AGE_ADULT + " " + "=" + "'" + "true" + "'"
+                            query += Constants.AGE_ADULT + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.AGE_ADULT + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.AGE_ADULT + " " + "=" + "'" + "true" + "'"
                         }
                     }
                 }
             }
             else -> {
                 // random list of ages
-                val list = arrayOf(constants.AGE_CHILD, constants.AGE_TEEN,
-                        constants.AGE_ADULT, constants.AGE_ELDERLY)
+                val list = arrayOf(Constants.AGE_CHILD, Constants.AGE_TEEN,
+                        Constants.AGE_ADULT, Constants.AGE_ELDERLY)
                 if (isFirstTime) {
                     query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
                     isFirstTime = false
@@ -188,54 +186,54 @@ class GiftActivity : AppCompatActivity() {
             }
         }
         when {
-            !prefsHashMap[constants.BUDGET].equals("") -> {
+            !prefsHashMap[Constants.BUDGET].equals("") -> {
                 when {
-                    prefsHashMap[constants.BUDGET].equals(constants.BUDGET_MINIMAL) -> {
+                    prefsHashMap[Constants.BUDGET].equals(Constants.BUDGET_MINIMAL) -> {
                         if (isFirstTime) {
-                            query += constants.BUDGET_MINIMAL + " " + "=" + "'" + "true" + "'"
+                            query += Constants.BUDGET_MINIMAL + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.BUDGET_MINIMAL + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.BUDGET_MINIMAL + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.BUDGET].equals(constants.BUDGET_LOW) -> {
+                    prefsHashMap[Constants.BUDGET].equals(Constants.BUDGET_LOW) -> {
                         if (isFirstTime) {
-                            query += constants.BUDGET_LOW + " " + "=" + "'" + "true" + "'"
+                            query += Constants.BUDGET_LOW + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.BUDGET_LOW + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.BUDGET_LOW + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.BUDGET].equals(constants.BUDGET_MIDDLE) -> {
+                    prefsHashMap[Constants.BUDGET].equals(Constants.BUDGET_MIDDLE) -> {
                         if (isFirstTime) {
-                            query += constants.BUDGET_MIDDLE + " " + "=" + "'" + "true" + "'"
+                            query += Constants.BUDGET_MIDDLE + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.BUDGET_MIDDLE + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.BUDGET_MIDDLE + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.BUDGET].equals(constants.BUDGET_MIDDLE_PLUS) -> {
+                    prefsHashMap[Constants.BUDGET].equals(Constants.BUDGET_MIDDLE_PLUS) -> {
                         if (isFirstTime) {
-                            query += constants.BUDGET_MIDDLE_PLUS + " " + "=" + "'" + "true" + "'"
+                            query += Constants.BUDGET_MIDDLE_PLUS + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.BUDGET_MIDDLE_PLUS + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.BUDGET_MIDDLE_PLUS + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.BUDGET].equals(constants.BUDGET_HIGH) -> {
+                    prefsHashMap[Constants.BUDGET].equals(Constants.BUDGET_HIGH) -> {
                         if (isFirstTime) {
-                            query += constants.BUDGET_HIGH + " " + "=" + "'" + "true" + "'"
+                            query += Constants.BUDGET_HIGH + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.BUDGET_HIGH + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.BUDGET_HIGH + " " + "=" + "'" + "true" + "'"
                         }
                     }
                 }
             }
             else -> {
                 // random list of budgets
-                val list = arrayOf(constants.BUDGET_MINIMAL, constants.BUDGET_LOW, constants.BUDGET_MIDDLE,
-                        constants.BUDGET_MIDDLE_PLUS, constants.BUDGET_HIGH)
+                val list = arrayOf(Constants.BUDGET_MINIMAL, Constants.BUDGET_LOW, Constants.BUDGET_MIDDLE,
+                        Constants.BUDGET_MIDDLE_PLUS, Constants.BUDGET_HIGH)
                 if (isFirstTime) {
                     query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
                     isFirstTime = false
@@ -245,54 +243,54 @@ class GiftActivity : AppCompatActivity() {
             }
         }
         when {
-            !prefsHashMap[constants.OCCASION].equals("") -> {
+            !prefsHashMap[Constants.OCCASION].equals("") -> {
                 when {
-                    prefsHashMap[constants.OCCASION].equals(constants.OCCASION_BIRTHDAY) -> {
+                    prefsHashMap[Constants.OCCASION].equals(Constants.OCCASION_BIRTHDAY) -> {
                         if (isFirstTime) {
-                            query += constants.OCCASION_BIRTHDAY + " " + "=" + "'" + "true" + "'"
+                            query += Constants.OCCASION_BIRTHDAY + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.OCCASION_BIRTHDAY + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.OCCASION_BIRTHDAY + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.OCCASION].equals(constants.OCCASION_ANNIVERSARY) -> {
+                    prefsHashMap[Constants.OCCASION].equals(Constants.OCCASION_ANNIVERSARY) -> {
                         if (isFirstTime) {
-                            query += constants.OCCASION_ANNIVERSARY + " " + "=" + "'" + "true" + "'"
+                            query += Constants.OCCASION_ANNIVERSARY + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.OCCASION_ANNIVERSARY + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.OCCASION_ANNIVERSARY + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.OCCASION].equals(constants.OCCASION_HOLIDAY) -> {
+                    prefsHashMap[Constants.OCCASION].equals(Constants.OCCASION_HOLIDAY) -> {
                         if (isFirstTime) {
-                            query += constants.OCCASION_HOLIDAY + " " + "=" + "'" + "true" + "'"
+                            query += Constants.OCCASION_HOLIDAY + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.OCCASION_HOLIDAY + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.OCCASION_HOLIDAY + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.OCCASION].equals(constants.OCCASION_GRADUATION) -> {
+                    prefsHashMap[Constants.OCCASION].equals(Constants.OCCASION_GRADUATION) -> {
                         if (isFirstTime) {
-                            query += constants.OCCASION_GRADUATION + " " + "=" + "'" + "true" + "'"
+                            query += Constants.OCCASION_GRADUATION + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.OCCASION_GRADUATION + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.OCCASION_GRADUATION + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.OCCASION].equals(constants.OCCASION_JUST_BECAUSE) -> {
+                    prefsHashMap[Constants.OCCASION].equals(Constants.OCCASION_JUST_BECAUSE) -> {
                         if (isFirstTime) {
-                            query += constants.OCCASION_JUST_BECAUSE + " " + "=" + "'" + "true" + "'"
+                            query += Constants.OCCASION_JUST_BECAUSE + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.OCCASION_JUST_BECAUSE + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.OCCASION_JUST_BECAUSE + " " + "=" + "'" + "true" + "'"
                         }
                     }
                 }
             }
             else -> {
                 // random list of categories
-                val list = arrayOf(constants.OCCASION_ANNIVERSARY, constants.OCCASION_BIRTHDAY, constants.OCCASION_GRADUATION,
-                        constants.OCCASION_HOLIDAY, constants.OCCASION_JUST_BECAUSE, constants.OCCASION_WEDDING)
+                val list = arrayOf(Constants.OCCASION_ANNIVERSARY, Constants.OCCASION_BIRTHDAY, Constants.OCCASION_GRADUATION,
+                        Constants.OCCASION_HOLIDAY, Constants.OCCASION_JUST_BECAUSE, Constants.OCCASION_WEDDING)
                 if (isFirstTime) {
                     query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
                     isFirstTime = false
@@ -302,46 +300,46 @@ class GiftActivity : AppCompatActivity() {
             }
         }
         when {
-            !prefsHashMap[constants.CLOSE].equals("") -> {
+            !prefsHashMap[Constants.CLOSE].equals("") -> {
                 when {
-                    prefsHashMap[constants.CLOSE].equals(constants.CLOSE_STRANGER) -> {
+                    prefsHashMap[Constants.CLOSE].equals(Constants.CLOSE_STRANGER) -> {
                         if (isFirstTime) {
-                            query += constants.CLOSE_STRANGER + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CLOSE_STRANGER + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CLOSE_STRANGER + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CLOSE_STRANGER + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CLOSE].equals(constants.CLOSE_ONE_TIME_SEEN) -> {
+                    prefsHashMap[Constants.CLOSE].equals(Constants.CLOSE_ONE_TIME_SEEN) -> {
                         if (isFirstTime) {
-                            query += constants.CLOSE_ONE_TIME_SEEN + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CLOSE_ONE_TIME_SEEN + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CLOSE_ONE_TIME_SEEN + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CLOSE_ONE_TIME_SEEN + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CLOSE].equals(constants.CLOSE_ACQUAINTANCE) -> {
+                    prefsHashMap[Constants.CLOSE].equals(Constants.CLOSE_ACQUAINTANCE) -> {
                         if (isFirstTime) {
-                            query += constants.CLOSE_ACQUAINTANCE + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CLOSE_ACQUAINTANCE + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CLOSE_ACQUAINTANCE + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CLOSE_ACQUAINTANCE + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CLOSE].equals(constants.CLOSE_COMRADE) -> {
+                    prefsHashMap[Constants.CLOSE].equals(Constants.CLOSE_COMRADE) -> {
                         if (isFirstTime) {
-                            query += constants.CLOSE_COMRADE + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CLOSE_COMRADE + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CLOSE_COMRADE + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CLOSE_COMRADE + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.CLOSE].equals(constants.CLOSE_CLOSE_PERSON) -> {
+                    prefsHashMap[Constants.CLOSE].equals(Constants.CLOSE_CLOSE_PERSON) -> {
                         if (isFirstTime) {
-                            query += constants.CLOSE_CLOSE_PERSON + " " + "=" + "'" + "true" + "'"
+                            query += Constants.CLOSE_CLOSE_PERSON + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.CLOSE_CLOSE_PERSON + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.CLOSE_CLOSE_PERSON + " " + "=" + "'" + "true" + "'"
                         }
                     }
 
@@ -350,8 +348,8 @@ class GiftActivity : AppCompatActivity() {
             }
             else -> {
                 // random list of close persons
-                val list = arrayOf(constants.CLOSE_STRANGER, constants.CLOSE_ONE_TIME_SEEN,
-                        constants.CLOSE_ACQUAINTANCE, constants.CLOSE_COMRADE, constants.CLOSE_CLOSE_PERSON)
+                val list = arrayOf(Constants.CLOSE_STRANGER, Constants.CLOSE_ONE_TIME_SEEN,
+                        Constants.CLOSE_ACQUAINTANCE, Constants.CLOSE_COMRADE, Constants.CLOSE_CLOSE_PERSON)
                 if (isFirstTime) {
                     query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
                     isFirstTime = false
@@ -361,29 +359,29 @@ class GiftActivity : AppCompatActivity() {
             }
         }
         when {
-            !prefsHashMap[constants.SEX].equals("") -> {
+            !prefsHashMap[Constants.SEX].equals("") -> {
                 when {
-                    prefsHashMap[constants.SEX].equals(constants.SEX_MALE) -> {
+                    prefsHashMap[Constants.SEX].equals(Constants.SEX_MALE) -> {
                         if (isFirstTime) {
-                            query += constants.SEX_MALE + " " + "=" + "'" + "true" + "'"
+                            query += Constants.SEX_MALE + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.SEX_MALE + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.SEX_MALE + " " + "=" + "'" + "true" + "'"
                         }
                     }
-                    prefsHashMap[constants.SEX].equals(constants.SEX_FEMALE) -> {
+                    prefsHashMap[Constants.SEX].equals(Constants.SEX_FEMALE) -> {
                         if (isFirstTime) {
-                            query += constants.SEX_FEMALE + " " + "=" + "'" + "true" + "'"
+                            query += Constants.SEX_FEMALE + " " + "=" + "'" + "true" + "'"
                             isFirstTime = false
                         } else {
-                            query += " " + "and" + " " + constants.SEX_FEMALE + " " + "=" + "'" + "true" + "'"
+                            query += " " + "and" + " " + Constants.SEX_FEMALE + " " + "=" + "'" + "true" + "'"
                         }
                     }
                 }
             }
             else -> {
                 // random list of person's sex
-                val list = arrayOf(constants.SEX_MALE, constants.SEX_FEMALE)
+                val list = arrayOf(Constants.SEX_MALE, Constants.SEX_FEMALE)
                 if (isFirstTime) {
                     query += chooseRandomly(list) + " " + "=" + "'" + "true" + "'"
                     isFirstTime = false

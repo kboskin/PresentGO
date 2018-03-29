@@ -50,11 +50,9 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         // enable back home button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true);
 
-        val constants = Constants()
-
 
         val language = findPreference("Languages") as ListPreference
-        language.value = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(constants.PREFS_LANGUAGE, "")
+        language.value = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.PREFS_LANGUAGE, "")
 
         val tutorial = findPreference("Tutorial") as SwitchPreference
         tutorial.isChecked = false
@@ -62,13 +60,13 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         // tutorial.isEnabled = !tutorial.isEnabled
         tutorial.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
             if (newValue as Boolean == true) {
-                setInPrefs(true, constants.PREFS_TUTORIAL, constants)
-                setInPrefs(true, constants.PREFS_TUTORIAL_IS_SHOWN, constants)
+                setInPrefs(true, Constants.PREFS_TUTORIAL)
+                setInPrefs(true, Constants.PREFS_TUTORIAL_IS_SHOWN)
                 startMainActivity()
                 true
             } else {
-                setInPrefs(false, constants.PREFS_TUTORIAL, constants)
-                setInPrefs(false, constants.PREFS_TUTORIAL_IS_SHOWN, constants)
+                setInPrefs(false, Constants.PREFS_TUTORIAL)
+                setInPrefs(false, Constants.PREFS_TUTORIAL_IS_SHOWN)
                 startMainActivity()
                 true
             }
@@ -79,11 +77,11 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         animation.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
 
             if (newValue.toString() == "true") {
-                setInPrefs(true, constants.PREFS_ANIMATION, constants)
+                setInPrefs(true, Constants.PREFS_ANIMATION)
                 startMainActivity()
                 true
             } else {
-                setInPrefs(false, constants.PREFS_ANIMATION, constants)
+                setInPrefs(false, Constants.PREFS_ANIMATION)
                 startMainActivity()
                 true
             }
@@ -107,8 +105,8 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         }
     }
 
-    private fun setInPrefs(b: Boolean?, nameOfPrefs: String, constants: Constants) {
-        val preferences = getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+    private fun setInPrefs(b: Boolean?, nameOfPrefs: String) {
+        val preferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         val editor = preferences.edit()
         editor.putBoolean(nameOfPrefs, b!!)
         editor.apply()

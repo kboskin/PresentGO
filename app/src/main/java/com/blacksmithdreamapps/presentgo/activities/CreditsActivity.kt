@@ -32,10 +32,6 @@ class CreditsActivity : AppCompatActivity() {
                 finish();
                 true
             }
-        /*R.id.help -> {
-            showHelp()
-            return true
-        }*/
             else -> super.onOptionsItemSelected(item)
         }
     }

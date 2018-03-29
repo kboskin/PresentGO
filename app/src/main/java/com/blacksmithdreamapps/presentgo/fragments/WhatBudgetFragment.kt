@@ -26,7 +26,7 @@ import org.greenrobot.eventbus.Subscribe
 
 class WhatBudgetFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
-        editor.putString(constants.BUDGET, budget)
+        editor.putString(Constants.BUDGET, budget)
         editor.apply()
         viewPager.currentItem = viewPager.currentItem + 1
     }
@@ -34,7 +34,6 @@ class WhatBudgetFragment : Fragment(), View.OnClickListener {
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
     lateinit var budget : String;
-    lateinit var constants: Constants
     lateinit var viewPager: ViewPager
 
     // handling passing here viewPager via eventbus
@@ -59,13 +58,10 @@ class WhatBudgetFragment : Fragment(), View.OnClickListener {
         val view: View = inflater!!.inflate(R.layout.fragment_what_budget, container, false)
         val indicatorSeekBar: IndicatorSeekBar = view.findViewById(R.id.myOwnSeekBar)
 
-        constants = Constants()
-
-
         // default value
-        budget = constants.BUDGET_MIDDLE
+        budget = Constants.BUDGET_MIDDLE
 
-        preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         editor = preferences.edit();
 
         view.button_done_budget.setOnClickListener(this)
@@ -88,11 +84,11 @@ class WhatBudgetFragment : Fragment(), View.OnClickListener {
             override fun onProgressChanged(seekBar: IndicatorSeekBar?, progress: Int, progressFloat: Float, fromUserTouch: Boolean) {
 
                 when (progress) {
-                    15 -> budget = constants.BUDGET_MINIMAL
-                    86 -> budget = constants.BUDGET_LOW
-                    158 -> budget = constants.BUDGET_MIDDLE
-                    229 -> budget = constants.BUDGET_MIDDLE_PLUS
-                    300 -> budget = constants.BUDGET_HIGH
+                    15 -> budget = Constants.BUDGET_MINIMAL
+                    86 -> budget = Constants.BUDGET_LOW
+                    158 -> budget = Constants.BUDGET_MIDDLE
+                    229 -> budget = Constants.BUDGET_MIDDLE_PLUS
+                    300 -> budget = Constants.BUDGET_HIGH
                 }
             }
         })
@@ -100,9 +96,8 @@ class WhatBudgetFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        fun newInstance(viewPager: ViewPager, constants: Constants): WhatBudgetFragment {
+        fun newInstance(viewPager: ViewPager): WhatBudgetFragment {
             val fragment = WhatBudgetFragment()
-            fragment.constants = constants
             fragment.viewPager = viewPager
             return fragment
         }

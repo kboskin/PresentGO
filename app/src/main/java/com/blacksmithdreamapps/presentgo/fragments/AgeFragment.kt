@@ -23,41 +23,12 @@ import org.greenrobot.eventbus.Subscribe
  */
 
 class AgeFragment : Fragment(), View.OnClickListener {
-    override fun onClick(p0: View?) {
-        if (p0 != null) {
-            when (p0.id) {
-                R.id.child_cv -> {
-                    editor.putString(constants.AGE, constants.AGE_CHILD)
-                    editor.commit()
-                    viewPager.currentItem = viewPager.currentItem + 1
-                }
-                R.id.teenager_cv -> {
-                    editor.putString(constants.AGE, constants.AGE_TEEN)
-                    editor.commit()
-                    viewPager.currentItem = viewPager.currentItem + 1
-                }
-                R.id.adult_cv -> {
-                    editor.putString(constants.AGE, constants.AGE_ADULT)
-                    editor.commit()
-                    viewPager.currentItem = viewPager.currentItem + 1
-                }
-                R.id.elderly_cv -> {
-                    editor.putString(constants.AGE, constants.AGE_ELDERLY)
-                    editor.commit()
-                    viewPager.currentItem = viewPager.currentItem + 1
-
-                }
-            }
-        }
-    }
 
     lateinit var viewPager: ViewPager
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var constants: Constants
     lateinit var viewFrag: View
     var bus = EventBus.getDefault()
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -66,13 +37,11 @@ class AgeFragment : Fragment(), View.OnClickListener {
 
         viewFrag = view
 
-        constants = Constants()
-
-        preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         editor = preferences.edit();
 
 
-        if (preferences.getString(constants.SEX, constants.SEX_FEMALE) == constants.SEX_MALE) {
+        if (preferences.getString(Constants.SEX, Constants.SEX_FEMALE) == Constants.SEX_MALE) {
             view.child_cv_image.setImageResource(R.drawable.baby_boy)
             view.teenager_cv_image.setImageResource(R.drawable.teen_boy)
             view.adult_cv_image.setImageResource(R.drawable.adult_man)
@@ -82,7 +51,6 @@ class AgeFragment : Fragment(), View.OnClickListener {
         view.teenager_cv.setOnClickListener(this)
         view.adult_cv.setOnClickListener(this)
         view.elderly_cv.setOnClickListener(this)
-
 
         return view
     }
@@ -109,13 +77,41 @@ class AgeFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        fun newInstance(viewPager: ViewPager, constants: Constants): AgeFragment {
+        fun newInstance(viewPager: ViewPager): AgeFragment {
             val fragment = AgeFragment()
             val args = Bundle()
             fragment.arguments = args
-            fragment.constants = constants
             fragment.viewPager = viewPager
             return fragment
         }
     }
+
+    override fun onClick(p0: View?) {
+        if (p0 != null) {
+            when (p0.id) {
+                R.id.child_cv -> {
+                    editor.putString(com.blacksmithdreamapps.presentgo.Constants.AGE, com.blacksmithdreamapps.presentgo.Constants.AGE_CHILD)
+                    editor.commit()
+                    viewPager.currentItem = viewPager.currentItem + 1
+                }
+                R.id.teenager_cv -> {
+                    editor.putString(com.blacksmithdreamapps.presentgo.Constants.AGE, com.blacksmithdreamapps.presentgo.Constants.AGE_TEEN)
+                    editor.commit()
+                    viewPager.currentItem = viewPager.currentItem + 1
+                }
+                R.id.adult_cv -> {
+                    editor.putString(com.blacksmithdreamapps.presentgo.Constants.AGE, com.blacksmithdreamapps.presentgo.Constants.AGE_ADULT)
+                    editor.commit()
+                    viewPager.currentItem = viewPager.currentItem + 1
+                }
+                R.id.elderly_cv -> {
+                    editor.putString(com.blacksmithdreamapps.presentgo.Constants.AGE, com.blacksmithdreamapps.presentgo.Constants.AGE_ELDERLY)
+                    editor.commit()
+                    viewPager.currentItem = viewPager.currentItem + 1
+
+                }
+            }
+        }
+    }
+
 }// Required empty public constructor

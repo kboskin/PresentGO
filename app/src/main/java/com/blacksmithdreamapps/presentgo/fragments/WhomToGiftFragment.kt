@@ -26,7 +26,6 @@ class WhomToGiftFragment : Fragment(), View.OnClickListener {
     lateinit var viewPager: ViewPager
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var constants: Constants
     var bus = EventBus.getDefault()
 
     // all nulls to manage values
@@ -45,45 +44,45 @@ class WhomToGiftFragment : Fragment(), View.OnClickListener {
         if (p0 != null) {
             when (p0.id) {
                 R.id.family_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
 
-                    editor.putString(constants.CATEGORY, constants.CATEGORY_FAMILY)
+                    editor.putString(Constants.CATEGORY, Constants.CATEGORY_FAMILY)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.friends_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.CATEGORY, constants.CATEGORY_FRIENDS)
+                    editor.putString(Constants.CATEGORY, Constants.CATEGORY_FRIENDS)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.colleagues_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.CATEGORY, constants.CATEGORY_COLLEAGUES)
+                    editor.putString(Constants.CATEGORY, Constants.CATEGORY_COLLEAGUES)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.beloved_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.CATEGORY, constants.CATEGORY_BELOVED)
+                    editor.putString(Constants.CATEGORY, Constants.CATEGORY_BELOVED)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.superiors_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.CATEGORY, constants.CATEGORY_SUPERIORS)
+                    editor.putString(Constants.CATEGORY, Constants.CATEGORY_SUPERIORS)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.person_i_hate_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.CATEGORY, constants.CATEGORY_HATED)
+                    editor.putString(Constants.CATEGORY, Constants.CATEGORY_HATED)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
@@ -95,8 +94,6 @@ class WhomToGiftFragment : Fragment(), View.OnClickListener {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view: View = inflater!!.inflate(R.layout.fragment_whom_to_gift, container, false)
-
-        constants = Constants()
 
         view.family_cv.setOnClickListener(this)
         view.friends_cv.setOnClickListener(this)
@@ -111,10 +108,9 @@ class WhomToGiftFragment : Fragment(), View.OnClickListener {
 
     companion object {
 
-        fun newInstance(viewPager: ViewPager, constants: Constants): WhomToGiftFragment {
+        fun newInstance(viewPager: ViewPager): WhomToGiftFragment {
             val fragment = WhomToGiftFragment()
             fragment.viewPager = viewPager
-            fragment.constants = constants
             return fragment
         }
     }

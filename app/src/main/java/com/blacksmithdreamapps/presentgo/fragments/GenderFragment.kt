@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
 import com.blacksmithdreamapps.presentgo.events.ImageChangeEvent
 import com.blacksmithdreamapps.presentgo.events.PagerPasserEvent
@@ -28,8 +27,6 @@ class GenderFragment : Fragment(), View.OnClickListener {
     lateinit var viewPager: ViewPager
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var constants: Constants
-
 
     // handling passing here viewPager via eventbus
     var bus = EventBus.getDefault()
@@ -49,9 +46,9 @@ class GenderFragment : Fragment(), View.OnClickListener {
         if (p0 != null) {
             when (p0.id) {
                 R.id.male_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.SEX, constants.SEX_MALE)
+                    editor.putString(com.blacksmithdreamapps.presentgo.Constants.SEX, com.blacksmithdreamapps.presentgo.Constants.SEX_MALE)
                     editor.commit()
                     // event bus to track changes
                     val bus = EventBus.getDefault()
@@ -60,9 +57,9 @@ class GenderFragment : Fragment(), View.OnClickListener {
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.female_cv -> {
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putString(constants.SEX, constants.SEX_FEMALE)
+                    editor.putString(com.blacksmithdreamapps.presentgo.Constants.SEX, com.blacksmithdreamapps.presentgo.Constants.SEX_FEMALE)
                     // event bus to track changes
                     val bus = EventBus.getDefault()
                     bus.post(object : ImageChangeEvent(0) {})
@@ -79,8 +76,6 @@ class GenderFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_gender, container, false)
 
-        constants = Constants()
-
         view.female_cv.setOnClickListener(this)
         view.male_cv.setOnClickListener(this)
 
@@ -89,11 +84,10 @@ class GenderFragment : Fragment(), View.OnClickListener {
 
 
     companion object {
-        fun newInstance(viewPager: ViewPager, constants: Constants): GenderFragment {
+        fun newInstance(viewPager: ViewPager): GenderFragment {
             val fragment = GenderFragment()
             val args = Bundle()
 
-            fragment.constants = constants
             fragment.viewPager = viewPager
             fragment.arguments = args
             return fragment

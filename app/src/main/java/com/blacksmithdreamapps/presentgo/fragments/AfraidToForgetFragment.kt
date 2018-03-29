@@ -59,9 +59,9 @@ class AfraidToForgetFragment : Fragment(), View.OnClickListener {
                     // post object using eventbus
                     bus.post(DataPassingEvent(selectedDateMillis.millis))
 
-                    preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                    preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
                     editor = preferences.edit();
-                    editor.putLong(constants.TIME, selectedDateMillis.millis)
+                    editor.putLong(Constants.TIME, selectedDateMillis.millis)
                     editor.commit()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
@@ -72,15 +72,12 @@ class AfraidToForgetFragment : Fragment(), View.OnClickListener {
     lateinit var viewPager: ViewPager
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var constants: Constants
-    lateinit var viewFrag: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_afraid_to_forget, container, false)
 
-        constants = Constants()
 
         // formatter for printing months instead of days
         val formatter = NumberPicker.Formatter {
@@ -115,9 +112,8 @@ class AfraidToForgetFragment : Fragment(), View.OnClickListener {
 
 
     companion object {
-        fun newInstance(viewPager: ViewPager, constants: Constants): AfraidToForgetFragment {
+        fun newInstance(viewPager: ViewPager): AfraidToForgetFragment {
             val fragment = AfraidToForgetFragment()
-            fragment.constants = constants
             fragment.viewPager = viewPager
             return fragment
         }

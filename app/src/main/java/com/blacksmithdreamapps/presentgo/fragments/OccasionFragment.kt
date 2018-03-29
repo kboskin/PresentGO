@@ -44,32 +44,32 @@ class OccasionFragment : Fragment(), View.OnClickListener {
         if (p0 != null) {
             when (p0.id) {
                 R.id.anniversary_cv -> {
-                    editor.putString(constants.OCCASION, constants.OCCASION_ANNIVERSARY)
+                    editor.putString(Constants.OCCASION, Constants.OCCASION_ANNIVERSARY)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.holiday_cv -> {
-                    editor.putString(constants.OCCASION, constants.OCCASION_HOLIDAY)
+                    editor.putString(Constants.OCCASION, Constants.OCCASION_HOLIDAY)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.birthday_cv -> {
-                    editor.putString(constants.OCCASION, constants.OCCASION_BIRTHDAY)
+                    editor.putString(Constants.OCCASION, Constants.OCCASION_BIRTHDAY)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.graduation_cv -> {
-                    editor.putString(constants.OCCASION, constants.OCCASION_GRADUATION)
+                    editor.putString(Constants.OCCASION, Constants.OCCASION_GRADUATION)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.wedding_cv -> {
-                    editor.putString(constants.OCCASION, constants.OCCASION_WEDDING)
+                    editor.putString(Constants.OCCASION, Constants.OCCASION_WEDDING)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
                 R.id.just_because_cv -> {
-                    editor.putString(constants.OCCASION, constants.OCCASION_JUST_BECAUSE)
+                    editor.putString(Constants.OCCASION, Constants.OCCASION_JUST_BECAUSE)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
@@ -80,7 +80,6 @@ class OccasionFragment : Fragment(), View.OnClickListener {
 
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var constants: Constants
     lateinit var viewPager: ViewPager
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -88,9 +87,7 @@ class OccasionFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_occasion, container, false)
 
-        constants = Constants()
-
-        preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         editor = preferences.edit();
 
         view.anniversary_cv.setOnClickListener(this)
@@ -104,10 +101,9 @@ class OccasionFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        fun newInstance(viewPager: ViewPager, constants: Constants): OccasionFragment {
+        fun newInstance(viewPager: ViewPager): OccasionFragment {
             val fragment = OccasionFragment()
 
-            fragment.constants = constants
             fragment.viewPager = viewPager
             return fragment
         }

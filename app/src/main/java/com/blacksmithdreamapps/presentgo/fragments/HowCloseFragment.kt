@@ -1,4 +1,4 @@
-package com.blacksmithdreamapps.presentgo.fragments
+package fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -45,7 +45,7 @@ class HowCloseFragment : Fragment(), View.OnClickListener {
         if (p0 != null) {
             when (p0.id) {
                 R.id.button_done_how_close -> {
-                    editor.putString(constants.CLOSE, closeness)
+                    editor.putString(Constants.CLOSE, closeness)
                     editor.apply()
                     viewPager.currentItem = viewPager.currentItem + 1
                 }
@@ -55,7 +55,6 @@ class HowCloseFragment : Fragment(), View.OnClickListener {
 
     lateinit var preferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var constants: Constants
     lateinit var viewPager: ViewPager
     lateinit var closeness: String
 
@@ -65,12 +64,10 @@ class HowCloseFragment : Fragment(), View.OnClickListener {
         val view = inflater!!.inflate(R.layout.fragment_how_close, container, false)
         val indicatorSeekBar: IndicatorSeekBar = view.findViewById(R.id.myOwnSeekBar)
 
-        constants = Constants()
-
         //default value
-        closeness = constants.CLOSE_ACQUAINTANCE
+        closeness = Constants.CLOSE_ACQUAINTANCE
 
-        preferences = context.getSharedPreferences(constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         editor = preferences.edit();
 
         view.button_done_how_close.setOnClickListener(this)
@@ -95,15 +92,15 @@ class HowCloseFragment : Fragment(), View.OnClickListener {
             @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: IndicatorSeekBar?, progress: Int, progressFloat: Float, fromUserTouch: Boolean) {
                 if (progress in 0..19) {
-                    closeness = constants.CLOSE_STRANGER
+                    closeness = Constants.CLOSE_STRANGER
                 } else if (progress in 20..39) {
-                    closeness = constants.CLOSE_ONE_TIME_SEEN
+                    closeness = Constants.CLOSE_ONE_TIME_SEEN
                 } else if (progress in 40..59) {
-                    closeness = constants.CLOSE_ACQUAINTANCE
+                    closeness = Constants.CLOSE_ACQUAINTANCE
                 } else if (progress in 60..79) {
-                    closeness = constants.CLOSE_COMRADE
+                    closeness = Constants.CLOSE_COMRADE
                 } else {
-                    closeness = constants.CLOSE_CLOSE_PERSON
+                    closeness = Constants.CLOSE_CLOSE_PERSON
                 }
             }
         })
@@ -111,9 +108,8 @@ class HowCloseFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        fun newInstance(viewPager: ViewPager, constants: Constants): HowCloseFragment {
+        fun newInstance(viewPager: ViewPager): HowCloseFragment {
             val fragment = HowCloseFragment()
-            fragment.constants = constants
             fragment.viewPager = viewPager
             return fragment
         }
