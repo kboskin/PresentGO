@@ -60,16 +60,17 @@ class AfraidToForgetInputFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         // admob
-        MobileAds.initialize(context, "ca-app-pub-2631718830975455~9288409657")
+        MobileAds.initialize(context, "")
 
         mInterstitialAd = InterstitialAd(context)
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.adUnitId = ""
         mInterstitialAd.adListener = object : AdListener() {
 
             override fun onAdClosed() {
                 // Load the next interstitial.
-                mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
+                mInterstitialAd.loadAd(AdRequest.Builder().build())
                 startActivity(Intent(context, GiftActivity::class.java))
+                activity.finish()
             }
 
             override fun onAdFailedToLoad(p0: Int) {
@@ -90,7 +91,7 @@ class AfraidToForgetInputFragment : Fragment() {
                 if (triggerForAds == false) {
                     // value to start activity by click of button
                     startActivity(Intent(context, GiftActivity::class.java))
-
+                    activity.finish()
                 }
             }
         }

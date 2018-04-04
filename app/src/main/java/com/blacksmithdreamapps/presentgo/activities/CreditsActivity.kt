@@ -1,9 +1,11 @@
 package com.blacksmithdreamapps.presentgo.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
 import kotlinx.android.synthetic.main.activity_credits.*
 
@@ -47,11 +49,11 @@ class CreditsActivity : AppCompatActivity() {
     // checks for value and starts activity
     private fun startParentActivity() {
         when {
-            intent.extras.get("Activity") == "Main" -> {
+            getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.ACTIVITY, "Main") == "Main" -> {
                 startActivity(Intent(this@CreditsActivity, MainActivity::class.java))
                 finish()
             }
-            intent.extras.get("Activity") == "Gift" -> {
+            getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.ACTIVITY, "Main") == "Gift" -> {
                 startActivity(Intent(this@CreditsActivity, GiftActivity::class.java))
                 finish()
             }

@@ -58,6 +58,7 @@ class Constants {
         var PREFS_TUTORIAL_IS_SHOWN = "false"
         var PREFS_LANGUAGE = "Language"
         var PREFS_LANGUAGE_WAS_SET = "Language_set"
+        var ACTIVITY = "Main"
     }
 
 }

@@ -30,6 +30,7 @@ import java.util.*
 
 class SettingsActivity : AppCompatPreferenceActivity() {
     lateinit var language: ListPreference
+    lateinit var starterIntent : Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,8 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         // enable back home button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true);
 
+
+        starterIntent = intent
 
         language = findPreference("Languages") as ListPreference
         language.value = setDefaultValue()
@@ -133,11 +136,11 @@ class SettingsActivity : AppCompatPreferenceActivity() {
     // checks for value and starts activity
     private fun startParentActivity() {
         when {
-            intent.extras.get("Activity") == "Main" -> {
+            getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.ACTIVITY, "Main") == "Main" -> {
                 startActivity(Intent(this@SettingsActivity, MainActivity::class.java))
                 finish()
             }
-            intent.extras.get("Activity") == "Gift" -> {
+            getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.ACTIVITY, "Main") == "Gift" -> {
                 startActivity(Intent(this@SettingsActivity, GiftActivity::class.java))
                 finish()
             }

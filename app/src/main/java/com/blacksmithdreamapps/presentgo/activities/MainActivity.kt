@@ -58,31 +58,32 @@ class MainActivity : AppCompatActivity(), RatingDialogListener {
         main_tool_bar.overflowIcon = drawable
         setSupportActionBar(main_tool_bar)
 
-        MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")
+        MobileAds.initialize(this, "")
 
         // setting default preferences
         setDefaultPrefs()
         // admob
         mAdView = findViewById(R.id.adView)
         // add here your device id, you can see it in logs
-        val adRequest = AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build()
+        val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
         // banner between pages
         mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.adUnitId = ""
         mInterstitialAd.adListener = object : AdListener() {
 
             override fun onAdClosed() {
                 // Load the next interstitial.
                 mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
                 startActivity(Intent(this@MainActivity, GiftActivity::class.java))
-                Log.d("ishere", "ad was closed")
+                finish()
+                Log.d("AdTag", "ad was closed")
             }
 
             override fun onAdFailedToLoad(p0: Int) {
                 super.onAdFailedToLoad(p0);
-                Log.d("ishere", "failed to load")
+                Log.d("AdTag", "failed to load")
                 // value to start activity by click of button
                 triggerForAds = false
                 //startActivity(Intent(this@MainActivity, GiftActivity::class.java))
@@ -119,6 +120,7 @@ class MainActivity : AppCompatActivity(), RatingDialogListener {
                 } else {
                     if (triggerForAds == false) {
                         startActivity(Intent(this, GiftActivity::class.java))
+                        finish()
                     }
                 }
             } else {
@@ -163,12 +165,24 @@ class MainActivity : AppCompatActivity(), RatingDialogListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_setting -> {
-                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java).putExtra("Activity", "Main"));
+                // trigger to put value for settings/credits activity
+                // so that it will know what to start
+                val prefs = getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                val editor = prefs.edit();
+                editor.putString(Constants.ACTIVITY, "Main")
+                editor.apply()
+
+                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
                 finish()
                 return true
             }
             R.id.action_credits -> {
-                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java).putExtra("Activity", "Main"))
+                val prefs = getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                val editor = prefs.edit();
+                editor.putString(Constants.ACTIVITY, "Main")
+                editor.apply()
+
+                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java))
                 finish()
                 return true
             }

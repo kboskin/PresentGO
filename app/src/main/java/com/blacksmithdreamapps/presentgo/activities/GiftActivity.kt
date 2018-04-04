@@ -55,12 +55,12 @@ class GiftActivity : AppCompatActivity(), RatingDialogListener {
         // enable back home button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true);
 
-        // admob
-        MobileAds.initialize(this, "ca-app-pub-2631718830975455~9288409657")
+        // admob original id
+        MobileAds.initialize(this, "")
 
         mAdView = findViewById(R.id.adViewGifts)
         // add here your device id, you can see it in logs
-        val adRequest = AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build()
+        val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
         // creating helper
@@ -501,16 +501,31 @@ class GiftActivity : AppCompatActivity(), RatingDialogListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_setting -> {
-                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java).putExtra("Activity", "Gift"));
+                // trigger to put value for settings/credits activity
+                // so that it will know what to start
+                val prefs = getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                val editor = prefs.edit();
+                editor.putString(Constants.ACTIVITY, "Gift")
+                editor.apply()
+
+                startActivity(Intent(GiftActivity@ this, SettingsActivity::class.java));
                 return true
             }
             android.R.id.home -> {
                 // close this activity and return to preview activity (if there is any)
+                startActivity(Intent(GiftActivity@ this, MainActivity::class.java));
                 finish();
                 return true
             }
             R.id.action_credits -> {
-                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java).putExtra("Activity", "Gift"))
+                // trigger to put value for settings/credits activity
+                // so that it will know what to start
+                val prefs = getSharedPreferences(com.blacksmithdreamapps.presentgo.Constants.SHARED_PREFS, Context.MODE_PRIVATE)
+                val editor = prefs.edit();
+                editor.putString(Constants.ACTIVITY, "Gift")
+                editor.apply()
+
+                startActivity(Intent(GiftActivity@ this, CreditsActivity::class.java))
                 finish()
                 return true
             }
