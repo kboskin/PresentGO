@@ -16,13 +16,13 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:minWidth="12dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="4dp"
+            android:minWidth="@dimen/twelve_dp"
+            android:paddingBottom="@dimen/four_dp"
+            android:paddingLeft="@dimen/eight_dp"
+            android:paddingRight="@dimen/eight_dp"
+            android:paddingTop="@dimen/four_dp"
             android:text=""
-            android:textSize="13sp" />
+            android:textSize="@dimen/fourteen_sp" />
 
     </LinearLayout>
 

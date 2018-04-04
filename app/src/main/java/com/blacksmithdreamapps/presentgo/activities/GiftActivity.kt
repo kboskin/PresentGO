@@ -1,8 +1,10 @@
 package com.blacksmithdreamapps.presentgo.activities
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -20,6 +22,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.squareup.picasso.Picasso
+import com.stepstone.apprating.AppRatingDialog
+import com.stepstone.apprating.listener.RatingDialogListener
 import kotlinx.android.synthetic.main.activity_gift.*
 import kotlinx.android.synthetic.main.content_gift.*
 import java.sql.SQLException
@@ -33,7 +37,7 @@ import kotlin.collections.HashMap
  * On 007 7.03.2018
  */
 
-class GiftActivity : AppCompatActivity() {
+class GiftActivity : AppCompatActivity(), RatingDialogListener {
 
     lateinit var mAdView: AdView
 
@@ -67,14 +71,25 @@ class GiftActivity : AppCompatActivity() {
         // hashMap to store all the prefs values
         val prefsHashMap = HashMap<String, String>()
 
+
+        // construction to find view in another layout, huh
+        // it is like layout in layout in layout:)
+        // pay no attention
+
+        gift_image_again.setOnClickListener {
+            Log.d("hello", "is clicked")
+            startActivity(Intent(GiftActivity@ this, MainActivity::class.java));
+            finish()
+        }
+
         // writing values to hm
         for (entry in getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).all.entries) {
             prefsHashMap.put(entry.key.toString(), entry.value.toString())
             Log.d("HashMapValues", entry.key + ": " + entry.value.toString())
         }
         // select query
-        val table_name = "en"
-        var query = "select name, description, image from $table_name where "
+        val tableName = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.PREFS_LANGUAGE, "en")
+        var query = "select name, description, image from $tableName where "
 
         // set of variables to trigger state, what the hell am i doing....
         var isFirstTime = true
@@ -486,7 +501,7 @@ class GiftActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_setting -> {
-                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
+                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java).putExtra("Activity", "Gift"));
                 return true
             }
             android.R.id.home -> {
@@ -494,11 +509,69 @@ class GiftActivity : AppCompatActivity() {
                 finish();
                 return true
             }
-        /*R.id.help -> {
-            showHelp()
-            return true
-        }*/
+            R.id.action_credits -> {
+                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java).putExtra("Activity", "Gift"))
+                finish()
+                return true
+            }
+            R.id.action_contact -> {
+                showDialog()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+    private fun showDialog() {
+        AppRatingDialog.Builder()
+                .setPositiveButtonText(getString(R.string.submit))
+                .setNegativeButtonText(getString(R.string.cancel))
+                .setNeutralButtonText(getString(R.string.later))
+                .setNoteDescriptions(Arrays.asList(getString(R.string.very_bad), getString(R.string.bad), getString(R.string.normal), getString(R.string.very_good), getString(R.string.excelent)))
+                .setDefaultRating(5)
+                .setTitle(getString(R.string.rate_the_app))
+                .setDescription(getString(R.string.rate_and_give))
+                .setStarColor(R.color.colorAccent)
+                .setTitleTextColor(R.color.colorAccent)
+                .setDescriptionTextColor(R.color.colorBlueBackground)
+                .setCommentTextColor(R.color.colorWhite)
+                .setDefaultComment(getString(R.string.great_app))
+                .setCommentBackgroundColor(R.color.colorBlueBackground)
+                .create(this@GiftActivity)
+                .show()
+    }
+
+    override fun onPositiveButtonClicked(rate: Int, comment: String) {
+        // interpret results, send it to analytics etc...
+
+        if (rate > 3) {
+            // open google play
+            val appPackageName = packageName
+            val marketIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName))
+            marketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(marketIntent)
+        } else {
+            // open email
+            val intent = Intent(Intent.ACTION_SEND);
+            intent.`package` = "com.google.android.gm";
+            val strTo = arrayOf("blacksmithdreamapps@gmail.com")
+            intent.putExtra(Intent.EXTRA_EMAIL, strTo);
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.application_feedback));
+            if (rate > 1) {
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.i_left) + " " + rate + " " + getString(R.string.multiple_stars_rating) + " " + comment);
+
+            } else {
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.i_left) + " " + rate + " " + getString(R.string.singe_star_rating) + " " + comment);
+            }
+            intent.type = "message/rfc822";
+            startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
+        }
+    }
+
+    override fun onNegativeButtonClicked() {
+
+    }
+
+    override fun onNeutralButtonClicked() {
+
     }
 }

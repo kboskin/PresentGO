@@ -54,6 +54,7 @@ class AfraidToForgetInputFragment : Fragment() {
 
     lateinit var viewPager: ViewPager
     var time: Long = 0
+    var triggerForAds: Boolean? = true
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -72,7 +73,7 @@ class AfraidToForgetInputFragment : Fragment() {
             }
 
             override fun onAdFailedToLoad(p0: Int) {
-                startActivity(Intent(context, GiftActivity::class.java))
+                triggerForAds = false
             }
         }
 
@@ -86,6 +87,11 @@ class AfraidToForgetInputFragment : Fragment() {
             if (mInterstitialAd.isLoaded) {
                 mInterstitialAd.show()
             } else {
+                if (triggerForAds == false) {
+                    // value to start activity by click of button
+                    startActivity(Intent(context, GiftActivity::class.java))
+
+                }
             }
         }
         view.button_done_finally.setOnClickListener {

@@ -65,5 +65,7 @@ dependencies {
     // guide application
     compile 'com.github.deano2390:MaterialShowcaseView:1.2.0'
     compile 'com.github.deano2390:MaterialShowcaseView:1.2.0@aar'
+    // rating of the application
+    compile 'com.stepstone.apprating:app-rating:2.2.0'
 
 }

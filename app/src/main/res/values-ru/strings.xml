@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GoGift</string>
+    <string name="app_name">PresentGO</string>
     <string name="hello_blank_fragment">Привет пустой фрагмент</string>
     <string name="family">Семья</string>
     <string name="friends">Друзья</string>
     <string name="colleagues">Коллеги</string>  
     <string name="beloved">Любимые</string>
     <string name="superiors">Начальство</string>
-    <string name="the_man_i_hate">Несносные</string>
+    <string name="the_man_i_hate">Ненавистные</string>
     <string name="male">Мужской</string>
     <string name="female">Женский</string>
     <string name="to_whom_is_the_gift">Кому подарок?</string>
@@ -152,4 +152,20 @@
     <string name="tap_icon_to_choose_language">Нажмите значок, чтобы выбрать язык</string>
     <string name="change_lang_of_app">Изменить язык приложения</string>
     <string name="suggested_gift">Предлагаем подарок </string>
+
+    <string name="rate_the_app">Оцените приложение</string>
+    <string name="rate_and_give">Оценка и отзыв о приложении</string>
+    <string name="very_bad">Очень плохо</string>
+    <string name="bad">Плохо</string>
+    <string name="normal">Нормально</string>
+    <string name="very_good">Хорошо</string>
+    <string name="excelent">Отлично</string>
+    <string name="submit">Подтвердить</string>
+    <string name="cancel">Отмена</string>
+    <string name="later">Позже</string>
+    <string name="great_app">Отличное приложение! Мне очень понравилось</string>
+    <string name="application_feedback">Отзыв о приложении PresentGo</string>
+    <string name="i_left">Я оставил рейтинг в </string>
+    <string name="multiple_stars_rating"> звезды, потому что я считаю, что это </string>
+    <string name="singe_star_rating"> звезду потому что я считаю, что это </string>
 </resources>

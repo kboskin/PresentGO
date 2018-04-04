@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GoGift</string>
+    <string name="app_name">PresentGO</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="family">Family</string>
@@ -138,4 +138,19 @@
     <string name="tap_icon_to_choose_language">Tap icon to choose language</string>
     <string name="change_lang_of_app">Change language of application</string>
     <string name="suggested_gift">Suggested gift is</string>
+    <string name="rate_the_app">Rate this application</string>
+    <string name="rate_and_give">Rate the app and give feedback</string>
+    <string name="very_bad">Very Bad</string>
+    <string name="bad">Not good</string>
+    <string name="normal">Quite OK</string>
+    <string name="very_good">Very Good</string>
+    <string name="excelent">Excellent!!!</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="later">Later</string>
+    <string name="great_app">Great Application! I love it!</string>
+    <string name="application_feedback">PresentGo application feedback</string>
+    <string name="i_left">I left</string>
+    <string name="multiple_stars_rating">stars rating, because i think, that this</string>
+    <string name="singe_star_rating">star rating, because i think, that this </string>
 </resources>

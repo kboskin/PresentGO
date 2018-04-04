@@ -6,7 +6,7 @@
     android:background="#FF4081"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="@dimen/eight_dp"
     tools:context=".activities.MainActivity">
     <!--if you want to change this text by progress,
     you can set the TextView's id to isb_progress.-->

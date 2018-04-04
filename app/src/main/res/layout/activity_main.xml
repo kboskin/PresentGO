@@ -26,7 +26,7 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tabDots"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/thirty_dp"
         android:layout_above="@+id/adView"
         android:layout_centerHorizontal="true"
         app:tabBackground="@drawable/tab_selector"
@@ -49,9 +49,10 @@
 
     <RelativeLayout
         android:id="@+id/back_ui"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/thirty_five_dp"
         android:layout_above="@+id/adView"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_alignParentStart="true">
 
         <TextView
@@ -64,7 +65,7 @@
             app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:text="@string/previous"
             android:textColor="@color/mostlyTextColor"
-            android:textSize="14sp" />
+            android:textSize="@dimen/fourteen_sp" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -79,8 +80,9 @@
 
     <RelativeLayout
         android:id="@+id/forward_ui"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/thirty_five_dp"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_above="@+id/adView"
         android:layout_alignParentEnd="true">
 
@@ -94,7 +96,7 @@
             app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:text="@string/skip_this"
             android:textColor="@color/mostlyTextColor"
-            android:textSize="14sp" />
+            android:textSize="@dimen/fourteen_sp" />
 
         <ImageButton
             android:layout_width="wrap_content"

@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
@@ -22,7 +23,8 @@ class SplashActivity : AppCompatActivity() {
 
         // lines makes activity to become full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         if (isLangSet()) {
 
@@ -50,7 +52,8 @@ class SplashActivity : AppCompatActivity() {
                             resources.displayMetrics
                     )
                 }
-                else -> {}
+                else -> {
+                }
             }
             startIntent = Intent(this, MainActivity::class.java)
             startActivity(startIntent)

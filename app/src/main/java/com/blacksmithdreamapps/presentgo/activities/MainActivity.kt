@@ -3,6 +3,7 @@ package com.blacksmithdreamapps.presentgo.activities
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
@@ -20,10 +21,14 @@ import com.blacksmithdreamapps.presentgo.events.PagerPasserEvent
 import com.blacksmithdreamapps.presentgo.viewpager.NonSwipableViewPager
 import com.blacksmithdreamapps.presentgo.viewpager.PagesAdapter
 import com.google.android.gms.ads.*
+import com.stepstone.apprating.AppRatingDialog
+import com.stepstone.apprating.listener.RatingDialogListener
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
+import java.util.*
+
 
 /**
  * Developed and designed by Dream Apps Blacksmith
@@ -32,14 +37,14 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
  */
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), RatingDialogListener {
     lateinit var mAdView: AdView
     lateinit var viewPager: NonSwipableViewPager
     lateinit var mTabLayout: TabLayout
     lateinit var previousButton: RelativeLayout
     lateinit var forwardButton: RelativeLayout
     private lateinit var mInterstitialAd: InterstitialAd
-
+    private var triggerForAds: Boolean? = true
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // toolbar, title is empty
         main_tool_bar.title = ""
+
         // setting custom image instead of three dots
         val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.setting_shape)
         main_tool_bar.overflowIcon = drawable
@@ -71,10 +77,15 @@ class MainActivity : AppCompatActivity() {
                 // Load the next interstitial.
                 mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
                 startActivity(Intent(this@MainActivity, GiftActivity::class.java))
+                Log.d("ishere", "ad was closed")
             }
 
             override fun onAdFailedToLoad(p0: Int) {
-                startActivity(Intent(this@MainActivity, GiftActivity::class.java))
+                super.onAdFailedToLoad(p0);
+                Log.d("ishere", "failed to load")
+                // value to start activity by click of button
+                triggerForAds = false
+                //startActivity(Intent(this@MainActivity, GiftActivity::class.java))
             }
         }
         mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
@@ -106,26 +117,21 @@ class MainActivity : AppCompatActivity() {
                 if (mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
                 } else {
+                    if (triggerForAds == false) {
+                        startActivity(Intent(this, GiftActivity::class.java))
+                    }
                 }
-                Log.d("Pager item", viewPager.currentItem.toString())
             } else {
                 viewPager.currentItem = viewPager.currentItem + 1
-                Log.d("Pager item", viewPager.currentItem.toString())
             }
-
         }
 
         val prefs = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         // check if tutorial must be shown by settings of app
 
-        val preferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
-        val allEntries = preferences.getAll()
-        for (entry in allEntries.entries) {
-            Log.d("PrefsValuesActivity", entry.key + ": " + entry.value.toString())
-        }
-
         if (prefs.getBoolean(Constants.PREFS_TUTORIAL, true)) {
             showTutorial()
+
             Log.d("Prefs", (prefs.getBoolean(Constants.PREFS_TUTORIAL, false)).toString())
             val editor = prefs.edit();
             editor.putBoolean(Constants.PREFS_TUTORIAL, false)
@@ -147,24 +153,29 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onResume() {
+        super.onResume()
+        mInterstitialAd.loadAd(AdRequest.Builder().addTestDevice("4AB458BDDA5C649998AB1AA81B0EEE8E").build())
+    }
+
+    // extras in intent, to check in settings, what activity must
+    // be started after setting onDestroy
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_setting -> {
-                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java));
+                startActivity(Intent(MainActivity@ this, SettingsActivity::class.java).putExtra("Activity", "Main"));
+                finish()
                 return true
             }
             R.id.action_credits -> {
-                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java))
+                startActivity(Intent(MainActivity@ this, CreditsActivity::class.java).putExtra("Activity", "Main"))
+                finish()
                 return true
             }
-            R.id.action_language -> {
-                startActivity(Intent(MainActivity@ this, ChooseLangActivity::class.java))
+            R.id.action_contact -> {
+                showDialog()
                 return true
             }
-        /*R.id.help -> {
-            showHelp()
-            return true
-        }*/
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -201,5 +212,60 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.title_descr_etc), getString(R.string.got_it_text))
 
         sequence.start()
+    }
+
+    private fun showDialog() {
+        AppRatingDialog.Builder()
+                .setPositiveButtonText(getString(R.string.submit))
+                .setNegativeButtonText(getString(R.string.cancel))
+                .setNeutralButtonText(getString(R.string.later))
+                .setNoteDescriptions(Arrays.asList(getString(R.string.very_bad), getString(R.string.bad), getString(R.string.normal), getString(R.string.very_good), getString(R.string.excelent)))
+                .setDefaultRating(5)
+                .setTitle(getString(R.string.rate_the_app))
+                .setDescription(getString(R.string.rate_and_give))
+                .setStarColor(R.color.colorAccent)
+                .setTitleTextColor(R.color.colorAccent)
+                .setDescriptionTextColor(R.color.colorBlueBackground)
+                .setCommentTextColor(R.color.colorWhite)
+                .setDefaultComment(getString(R.string.great_app))
+                .setCommentBackgroundColor(R.color.colorBlueBackground)
+                .create(this@MainActivity)
+                .show()
+    }
+
+
+    override fun onPositiveButtonClicked(rate: Int, comment: String) {
+        // interpret results, send it to analytics etc...
+
+        if (rate > 3) {
+            // open google play
+            val appPackageName = packageName
+            val marketIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName))
+            marketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(marketIntent)
+        } else {
+            // open email
+            val intent = Intent(Intent.ACTION_SEND);
+            intent.`package` = "com.google.android.gm";
+            val strTo = arrayOf("blacksmithdreamapps@gmail.com")
+            intent.putExtra(Intent.EXTRA_EMAIL, strTo);
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.application_feedback));
+            if (rate > 1) {
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.i_left) + " " + rate + " " + getString(R.string.multiple_stars_rating) + " " + comment);
+
+            } else {
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.i_left) + " " + rate + " " + getString(R.string.singe_star_rating) + " " + comment);
+            }
+            intent.type = "message/rfc822";
+            startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
+        }
+    }
+
+    override fun onNegativeButtonClicked() {
+
+    }
+
+    override fun onNeutralButtonClicked() {
+
     }
 }

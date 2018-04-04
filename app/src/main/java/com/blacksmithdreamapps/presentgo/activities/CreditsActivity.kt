@@ -1,5 +1,6 @@
 package com.blacksmithdreamapps.presentgo.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
@@ -29,10 +30,35 @@ class CreditsActivity : AppCompatActivity() {
         return when (item!!.itemId) {
             android.R.id.home -> {
                 // close this activity and return to preview activity (if there is any)
+                startParentActivity()
                 finish();
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        startParentActivity()
+    }
+
+    // method to restart parent activity
+    // takes value from starter intent
+    // checks for value and starts activity
+    private fun startParentActivity() {
+        when {
+            intent.extras.get("Activity") == "Main" -> {
+                startActivity(Intent(this@CreditsActivity, MainActivity::class.java))
+                finish()
+            }
+            intent.extras.get("Activity") == "Gift" -> {
+                startActivity(Intent(this@CreditsActivity, GiftActivity::class.java))
+                finish()
+            }
+            else -> {
+
+            }
+        }
+
     }
 }

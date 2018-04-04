@@ -2,20 +2,24 @@ package com.blacksmithdreamapps.presentgo.activities.settings
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.preference.ListPreference
 import android.preference.Preference
+import android.preference.Preference.OnPreferenceChangeListener
 import android.preference.SwitchPreference
+import android.util.Log
 import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.blacksmithdreamapps.presentgo.Constants
 import com.blacksmithdreamapps.presentgo.R
+import com.blacksmithdreamapps.presentgo.activities.GiftActivity
 import com.blacksmithdreamapps.presentgo.activities.MainActivity
 import kotlinx.android.synthetic.main.settings_toolbar.*
-
-
+import java.util.*
 
 
 /**
@@ -25,6 +29,7 @@ import kotlinx.android.synthetic.main.settings_toolbar.*
  */
 
 class SettingsActivity : AppCompatPreferenceActivity() {
+    lateinit var language: ListPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +56,23 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true);
 
 
-        val language = findPreference("Languages") as ListPreference
-        language.value = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.PREFS_LANGUAGE, "")
+        language = findPreference("Languages") as ListPreference
+        language.value = setDefaultValue()
+
+        language.onPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
+            val index = language.findIndexOfValue(newValue.toString())
+
+            if (index != -1) {
+                if (index == 0) {
+                    setLocalization("ru")
+                } else if (index == 1) {
+                    setLocalization("en")
+                } else {
+                    Log.d("Some shit", "oh dude")
+                }
+            }
+            true
+        };
 
         val tutorial = findPreference("Tutorial") as SwitchPreference
         tutorial.isChecked = false
@@ -62,12 +82,10 @@ class SettingsActivity : AppCompatPreferenceActivity() {
             if (newValue as Boolean == true) {
                 setInPrefs(true, Constants.PREFS_TUTORIAL)
                 setInPrefs(true, Constants.PREFS_TUTORIAL_IS_SHOWN)
-                startMainActivity()
                 true
             } else {
                 setInPrefs(false, Constants.PREFS_TUTORIAL)
                 setInPrefs(false, Constants.PREFS_TUTORIAL_IS_SHOWN)
-                startMainActivity()
                 true
             }
         }
@@ -78,11 +96,9 @@ class SettingsActivity : AppCompatPreferenceActivity() {
 
             if (newValue.toString() == "true") {
                 setInPrefs(true, Constants.PREFS_ANIMATION)
-                startMainActivity()
                 true
             } else {
                 setInPrefs(false, Constants.PREFS_ANIMATION)
-                startMainActivity()
                 true
             }
         }
@@ -93,7 +109,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         return when (item!!.itemId) {
             android.R.id.home -> {
                 // close this activity and return to preview activity (if there is any)
-                startMainActivity()
+                startParentActivity()
                 finish();
                 true
             }
@@ -111,8 +127,73 @@ class SettingsActivity : AppCompatPreferenceActivity() {
         editor.putBoolean(nameOfPrefs, b!!)
         editor.apply()
     }
-    private fun startMainActivity() {
-        startActivity(Intent(this@SettingsActivity, MainActivity::class.java))
+
+    // method to restart parent activity
+    // takes value from starter intent
+    // checks for value and starts activity
+    private fun startParentActivity() {
+        when {
+            intent.extras.get("Activity") == "Main" -> {
+                startActivity(Intent(this@SettingsActivity, MainActivity::class.java))
+                finish()
+            }
+            intent.extras.get("Activity") == "Gift" -> {
+                startActivity(Intent(this@SettingsActivity, GiftActivity::class.java))
+                finish()
+            }
+            else -> {
+
+            }
+        }
+
+    }
+
+    private fun setLocalization(langId: String) {
+        // set localization into shared prefs
+        val preferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor = preferences.edit();
+        editor.putString(Constants.PREFS_LANGUAGE, langId)
+        editor.putBoolean(Constants.PREFS_LANGUAGE_WAS_SET, true)
+        editor.apply()
+
+        val locale = Locale(langId)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config,
+                baseContext.resources.displayMetrics)
+        startActivity(Intent(SettingsActivity@ this, SettingsActivity::class.java))
         finish()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        applicationContext.resources.updateConfiguration(newConfig, baseContext.resources.displayMetrics)
+        preferenceScreen = null
+        addPreferencesFromResource(R.xml.settings_screen);
+        setTitle(R.string.app_name);
+        language.value = setDefaultValue()
+
+
+        // Checks the active language
+        if (newConfig.locale === Locale.ENGLISH) {
+            Toast.makeText(this, "English", Toast.LENGTH_SHORT).show()
+        } else if (newConfig.locale === Locale.FRENCH) {
+            Toast.makeText(this, "French", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setDefaultValue(): String {
+        val lng = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE).getString(Constants.PREFS_LANGUAGE, "")
+        return if (lng == "ru") {
+            "Русский"
+        } else {
+            "English"
+        }
+    }
+
+    override fun onBackPressed() {
+        startParentActivity()
     }
 }

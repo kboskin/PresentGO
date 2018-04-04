@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/subroot_gift_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_lightblue"
@@ -12,7 +13,7 @@
 
     <TextView
         android:id="@+id/gift_title"
-        android:layout_width="@dimen/two_hundred_fifty_dp"
+        android:layout_width="@dimen/three_hundred_dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/forty_dp"
         android:layout_marginTop="@dimen/fifty_dp"
@@ -25,10 +26,11 @@
 
     <TextView
         android:id="@+id/gift_description_0"
-        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/twenty_five_dp"
         android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="@dimen/thirty_five_dp"
+        android:maxLines="2"
         android:textColor="@color/mostlyTextColor"
         android:textSize="@dimen/eighteen_sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +38,11 @@
 
     <TextView
         android:id="@+id/gift_description_1"
-        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/twenty_five_dp"
         android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="@dimen/eight_dp"
+        android:maxLines="2"
         android:textColor="@color/mostlyTextColor"
         android:textSize="@dimen/eighteen_sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,10 +50,11 @@
 
     <TextView
         android:id="@+id/gift_description_2"
-        android:layout_width="@dimen/two_hundred_dp"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/twenty_five_dp"
         android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginTop="@dimen/eight_dp"
+        android:maxLines="2"
         android:textColor="@color/mostlyTextColor"
         android:textSize="@dimen/eighteen_sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,9 +79,11 @@
         app:layout_constraintVertical_bias="0.8" />
 
     <RelativeLayout
+        android:id="@+id/restart_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/sixteen_dp"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/adViewGifts"
         app:layout_constraintEnd_toStartOf="@+id/gift_image"
         app:layout_constraintHorizontal_bias="0.0"
@@ -96,10 +102,10 @@
             android:background="@drawable/gift" />
 
         <ImageView
-            android:layout_marginTop="@dimen/twenty_five_dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/twenty_five_dp"
             android:background="@drawable/ic_refresh_white_48dp" />
 
     </RelativeLayout>
